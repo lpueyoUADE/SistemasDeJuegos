@@ -10,7 +10,7 @@ public class EnemyPool : MonoBehaviour
     {
         foreach (GameObject enemy in enemies)
         {
-            if (enemy.GetComponent<EnemyBase>().EnemyType == requestedEnemy)
+            if (enemy.GetComponent<EnemyBase>().Data.EnemyType == requestedEnemy)
             {
                 return enemy;
             }
