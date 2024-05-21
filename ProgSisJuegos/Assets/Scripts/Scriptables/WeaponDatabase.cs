@@ -10,6 +10,7 @@ public enum WeaponType
 [CreateAssetMenu(fileName = "NewWeaponData", menuName = "Databases/Weapon")]
 public class WeaponDatabase : ScriptableObject
 {
+    [SerializeField] private Sprite _weaponIcon;
     [SerializeField] private WeaponType _type = WeaponType.BlueRail;
     [SerializeField, Range(0, 100)] private float _damage = 1;
     [SerializeField, Range(0, 5)] private float _recoil = 1;
@@ -18,6 +19,7 @@ public class WeaponDatabase : ScriptableObject
 
     [SerializeField, Range(0, 20)] private float _projectileSpeed = 3;
 
+    public Sprite Icon => _weaponIcon;
     public WeaponType WeapType => _type;
     public float WeapDamage => _damage;
     public float WeapRecoil => _recoil;

@@ -4,6 +4,8 @@ public class WeaponNone : IWeapon
 {
     public WeaponType WeaponType => throw new System.NotImplementedException();
 
+    Sprite IWeapon.WeaponIcon => throw new System.NotImplementedException();
+
     public void Fire(Vector3 projectileOutPosition)
     {
         Debug.Log("Empty weapon.");

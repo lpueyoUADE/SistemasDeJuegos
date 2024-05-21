@@ -10,6 +10,7 @@ public class WeaponBase : IWeapon
     public float CurrentRecoil => _currentRecoil;
 
     WeaponType IWeapon.WeaponType { get => WeapType; }
+    Sprite IWeapon.WeaponIcon { get => WeaponData.Icon; }
     public WeaponDatabase WeaponData => _weaponData;
     public WeaponType WeapType => WeaponData.WeapType;
 
@@ -33,4 +34,6 @@ public class WeaponBase : IWeapon
     {
         if (_currentRecoil > 0) _currentRecoil -= deltaTime;
     }
+
+
 }
