@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum EnemyType
+{
+    CannonFoder
+}
+
 public class EnemyBase : MonoBehaviour
 {
-    private int _id;
+    private EnemyType _enemyType;
 
-    public int ID => _id;
+    public EnemyType EnemyType => _enemyType;
 }

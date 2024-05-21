@@ -5,17 +5,17 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
     private List<GameObject> enemies = new List<GameObject>();
-
-    public GameObject SpawnEnemy(int requestedEnemy, Vector3 position)
+    private EnemyFactory _factory;
+    public GameObject SpawnEnemy(EnemyType requestedEnemy, Vector3 position)
     {
         foreach (GameObject enemy in enemies)
         {
-            if (enemy.GetComponent<IEnemy>().ID == requestedEnemy)
+            if (enemy.GetComponent<EnemyBase>().EnemyType == requestedEnemy)
             {
                 return enemy;
             }
         }
 
-        return default; //Call Factory
+        return _factory.GenerateEnemy(requestedEnemy);
     }
 }
