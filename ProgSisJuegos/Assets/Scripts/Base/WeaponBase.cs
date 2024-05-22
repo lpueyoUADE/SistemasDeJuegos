@@ -28,6 +28,7 @@ public class WeaponBase : IWeapon
             projectile.transform.position = spawnPosition;
             _currentRecoil = WeaponData.WeapRecoil;
         }
+        else { Debug.Log("No ammo"); }
     }
 
     public virtual void Recoil(float deltaTime)

@@ -18,9 +18,7 @@ MonoBehaviour:
   _defaultWeapon: 0
   _shieldDuration: 1
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}
-  _speed: 0
-  _damageResistance: 0
-  _defaultWeapon: 0
+  _speed: 5
   _scoreReward: 0
   _enemyType: 0
-  _fireRate: 0
+  _fireRate: 2
