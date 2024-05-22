@@ -20,7 +20,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public int ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
     
-    protected virtual void Start()
+    private void Start()
     {
         _rBody = GetComponent<Rigidbody>();
         _weaponList = new List<IWeapon>();
@@ -54,7 +54,6 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         if (_currentWeapon != null)
             _currentWeapon.Fire(_projectileOut.position);
-        else { Debug.Log("No weapon to use"); }
     }
 
     public void AnyDamage(float amount)
