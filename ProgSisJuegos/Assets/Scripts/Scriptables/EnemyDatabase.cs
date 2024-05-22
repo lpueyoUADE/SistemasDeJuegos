@@ -7,19 +7,21 @@ public enum EnemyType
 }
 
 [CreateAssetMenu(fileName = "NewEnemyData", menuName = "Databases/Enemy Ship")]
-public class EnemyDatabase : MonoBehaviour
+public class EnemyDatabase : ShipDatabase
 {
     [Header("Ship Settings")]
     [SerializeField] private float _speed;
-    [SerializeField, Range(0, 99)] private float _damageResistance;
-    [SerializeField] private WeaponType _defaultWeapon;
+    //[SerializeField, Range(0, 99)] private float _damageResistance;
+    //[SerializeField] private WeaponType _defaultWeapon;
     [SerializeField] private int _scoreReward;
     [SerializeField] private EnemyType _enemyType;
+    [SerializeField] private float _fireRate;
 
 
     public EnemyType EnemyType => _enemyType;
     public float Speed => _speed;
-    public float DamageResistance => _damageResistance;
-    public WeaponType DefaultWeapon => _defaultWeapon;
+    //public float DamageResistance => _damageResistance;
+    //public WeaponType DefaultWeapon => _defaultWeapon;
     public int Score => _scoreReward;
+    public float FireRate => _fireRate;
 }

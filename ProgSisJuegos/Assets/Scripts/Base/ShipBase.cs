@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipBase : MonoBehaviour, IDamageable, IShip
 {
-    [SerializeField] private ShipDatabase _shipData;
+    [SerializeField] protected ShipDatabase _shipData;
     [SerializeField] private Transform _projectileOut;
 
     private Rigidbody _rBody;
