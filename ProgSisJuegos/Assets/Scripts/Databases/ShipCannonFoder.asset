@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e8d84b1f0ddb64d8e8a669e00096f7, type: 3}
   m_Name: ShipCannonFoder
   m_EditorClassIdentifier: 
+  _shipType: 1
   _prebab: {fileID: 0}
   _points: 0
   _maxSpeed: 0
   _acceleration: 0
-  _damageResistance: 0
+  _damageResistance: 10
   _defaultWeapon: 0
   _shieldDuration: 1
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}
