@@ -1,6 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+public enum StatesEnum
+{
+    Default,
+    Idle,
+    Movement,
+    CloseRangedAttack,
+    LongRangedAttack,
+    Chase,
+    Dead,
+    Patrol,
+    Steering
+}
 
 public class FiniteStateMachine<T>
 {
