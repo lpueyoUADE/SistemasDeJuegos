@@ -1,5 +1,5 @@
 # SistemasDeJuegos
-3D Shooter
+Navecitas
 
 ### Integrantes
 Ariel Irala | Nicolás Perez Viña | Luciano Pueyo
