@@ -17,6 +17,7 @@ public class EnemyFactory : MonoBehaviour
         _enemies = enemies;
     }
 
+    /*
     public GameObject GenerateEnemy(EnemyType type)
     {
         for (int i = 0; i < _enemies.Count; i++)
@@ -26,4 +27,5 @@ public class EnemyFactory : MonoBehaviour
         Debug.Log($"Factory: No enemy of type {type} was found.");
         return null;
     }
+    */
 }

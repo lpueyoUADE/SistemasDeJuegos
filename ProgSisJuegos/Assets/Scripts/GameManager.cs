@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private static Pool _pool;
     private static FactoryProjectiles _factoryProjectile;
     private static FactoryWeapon _factoryWeapon;
-    private static EnemyFactory _enemyFactory;
+    //private static EnemyFactory _enemyFactory;
 
     public static GameManager Instance { get { return _instance; } }
 
@@ -32,6 +32,6 @@ public class GameManager : MonoBehaviour
 
         _pool = new Pool(_projectileList, _factoryProjectile);
         _factoryWeapon = new FactoryWeapon(_weaponsList);
-        _enemyFactory = new EnemyFactory(_enemyList);
+        //_enemyFactory = new EnemyFactory(_enemyList);
     }
 }

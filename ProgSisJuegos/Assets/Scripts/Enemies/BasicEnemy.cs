@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class BasicEnemy : EnemyBase
 {
+    private Transform _targetLocation;
+    // Agregar IA referencias
+
+    public override void Move(Vector3 direction, float speed, ForceMode type = ForceMode.Acceleration)
+    {
+        // movimiento tiene que llamarse aca
+        base.Move(direction, speed, type);
+    }
+
+    public virtual void UpdateTargetLocation(Transform newTargetLocation)
+    {
+        _targetLocation = newTargetLocation;
+    }
+
+    // 
+
+
+    /*
     [SerializeField ]private float positionCheckDelay = 5;
     private float positionCheckTimer = 0;
     private bool moveRight = false;
 
+    
     // Update is called once per frame
     protected override void Update()
     {         
@@ -33,6 +52,7 @@ public class BasicEnemy : EnemyBase
         base.Update();
     }
 
+    
     private void MoveLeft()
     {
         this.transform.position += -transform.right * _data.Speed * Time.deltaTime;
@@ -54,6 +74,7 @@ public class BasicEnemy : EnemyBase
             moveRight = false;
         }
     }
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -62,4 +83,5 @@ public class BasicEnemy : EnemyBase
             moveRight = !moveRight;
         }
     }
+    */
 }

@@ -66,13 +66,4 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         throw new System.NotImplementedException();
     }
 
-    public void PoolPooled()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void PoolSleep()
-    {
-        throw new System.NotImplementedException();
-    }
 }

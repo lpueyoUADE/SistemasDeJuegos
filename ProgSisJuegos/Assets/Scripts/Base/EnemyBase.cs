@@ -3,22 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBase : ShipBase
-{    
-   //protected EnemyDatabase _data;
-   protected GameObject _player;
-   protected float _currentTimeToFire;
-   protected EnemyDatabase _data;
+{
+    [SerializeField] protected ShipType _type = ShipType.CannonFoder;
 
 
-   [HideInInspector]public EnemyDatabase Data => _data;
 
-
-    protected virtual void Start()
-    {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _data = _shipData as EnemyDatabase;
-    }
-
+    /*
     protected virtual void Update()
     {
         if (_currentTimeToFire < _data.FireRate)
@@ -32,6 +22,5 @@ public class EnemyBase : ShipBase
             _currentTimeToFire = 0;
         }
     }
-
-
+    */
 }
