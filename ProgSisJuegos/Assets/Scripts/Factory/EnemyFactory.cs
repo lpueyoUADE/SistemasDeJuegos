@@ -13,7 +13,7 @@ public class EnemyFactory : MonoBehaviour
 
     public void UpdateAvailableEnemies(List<GameObject> enemies)
     {
-        Debug.Log($"Factory: Projectiles initialized, {enemies.Count} items.");
+        Debug.Log($"Factory: Enemies initialized, {enemies.Count} items.");
         _enemies = enemies;
     }
 
@@ -28,4 +28,20 @@ public class EnemyFactory : MonoBehaviour
         return null;
     }
     */
+
+    public GameObject CreateEnemy(ShipType requestedEnemy)
+    {
+        GameObject result;
+        result = EnemyPool.GetEnemy(requestedEnemy);
+
+        if (result == null)
+        {
+            for (int i = 0; i < _enemies.Count; i++)
+                if (_enemies[i].GetComponent<ShipBase>().ShipData.Type == requestedEnemy)
+                    return Instantiate(_enemies[i]);
+        }
+
+        return result;
+    }
+
 }
