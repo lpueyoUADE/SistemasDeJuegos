@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,26 @@ using UnityEngine;
 public class EnemyBase : ShipBase
 {
     [SerializeField] protected ShipType _type = ShipType.CannonFoder;
+    protected FiniteStateMachine<StatesEnum> _fsm;
 
+    private Action<Vector3, float, ForceMode> ActionMovement;
 
+    protected virtual void Start()
+    {
+        ActionMovement += Move;
+    }
 
-    /*
+    public virtual void InitializeFSM()
+    {
+        var patrol = new StatePatrolGeneric<StatesEnum>(ActionMovement);
+
+        _fsm = new FiniteStateMachine<StatesEnum>(patrol);
+    }
+
+    
     protected virtual void Update()
     {
-        if (_currentTimeToFire < _data.FireRate)
-        {
-            _currentTimeToFire += Time.deltaTime;
-        }
-        else if (_currentTimeToFire >= _data.FireRate)
-        {
-            //Fire();
-            Debug.Log("Fire at player");
-            _currentTimeToFire = 0;
-        }
+        _fsm.OnUpdate();
     }
-    */
+    
 }
