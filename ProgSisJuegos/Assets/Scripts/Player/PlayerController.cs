@@ -22,6 +22,6 @@ public class PlayerController : ShipBase
 
     private void FixedUpdate()
     {
-        Move(_movement, ShipData.Acceleration);
+        Move(_movement);
     }
 }

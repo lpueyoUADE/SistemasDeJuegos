@@ -16,7 +16,7 @@ MonoBehaviour:
   _prebab: {fileID: 0}
   _points: 0
   _maxSpeed: 0
-  _acceleration: 0
+  _acceleration: 2
   _damageResistance: 10
   _defaultWeapon: 0
   _shieldDuration: 1

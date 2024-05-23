@@ -1,19 +1,54 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatePatrolGeneric<T> : StateBase<T>
 {
-    private Action<Vector3, float, ForceMode> _move;
+    private ShipBase _controller;
+    private ModifierPatrolPoints _patrolPoints;
 
-    public StatePatrolGeneric(Action<Vector3, float, ForceMode> movement)
+    private int _index;
+    private bool _isReversePatrol;
+
+    public StatePatrolGeneric(ShipBase controller, ModifierPatrolPoints patrolPoints)
     {
-        _move = movement;
+        _controller = controller;
+        _patrolPoints = patrolPoints;
     }
 
     public override void Execute()
     {
-        _move.Invoke(new Vector3(1, 0, 0), 5, ForceMode.Force);
+        Vector3 dir = _patrolPoints.GetPatrolPoint(_index) - _controller.transform.position;
+        _controller?.Move(dir.normalized);
+
+        if (dir.magnitude <= _patrolPoints.Tolerance)
+        {
+            if (!_isReversePatrol)
+            {
+                if (_index == _patrolPoints.PatrolPointsCount - 1)
+                {
+                    _isReversePatrol = true;
+                    _index = _patrolPoints.PatrolPointsCount - 2;
+                    return;
+                }
+
+                _index++;
+            }
+
+            else
+            {
+                if (_index == 0)
+                {
+                    _isReversePatrol = false;
+                    _index = 1;
+                    return;
+                }
+
+                _index--;
+            }
+        }
+    }
+
+    public override void Sleep()
+    {
+        _patrolPoints.UpdateIndex(_index);
     }
 }

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class StateIdleGeneric<T> : StateBase<T>
 {
-    public StateIdleGeneric()
-    {
+    private EnemyBase _controller;
 
+    public StateIdleGeneric(EnemyBase controller)
+    {
+        _controller = controller;
     }
 
-    public override void Execute()
+    public override void Enter()
     {
-        base.Execute();
+        if (!_controller.IsIdling)
+            _controller.StartIdle();
     }
 }

@@ -1,6 +1,13 @@
+using System.Diagnostics;
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public enum StatesEnum
 {
     Default,
+    Stunned,
     Idle,
     Movement,
     CloseRangedAttack,
@@ -24,6 +31,7 @@ public class FiniteStateMachine<T>
     public void SetInitialState(IState<T> initialState) 
     {
         _current = initialState;
+        _current.Enter();
     }
 
     public void OnUpdate()
