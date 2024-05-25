@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class PlayerController : ShipBase
 {
     private Vector3 _movement;
+    public event Action<int> OnHpChanged;
+    public event Action OnWeaponChanged;
 
     void Update()
     {
@@ -19,6 +22,6 @@ public class PlayerController : ShipBase
 
     private void FixedUpdate()
     {
-        Move(_movement, ShipData.Acceleration);
+        Move(_movement);
     }
 }

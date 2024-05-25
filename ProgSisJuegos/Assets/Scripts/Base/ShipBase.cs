@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipBase : MonoBehaviour, IDamageable, IShip
 {
-    [SerializeField] private ShipDatabase _shipData;
+    [SerializeField] protected ShipDatabase _shipData;
     [SerializeField] private Transform _projectileOut;
 
     private Rigidbody _rBody;
@@ -19,8 +19,8 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public IWeapon ShipCurrentWeapon => _currentWeapon;
     public int ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
-    
-    private void Start()
+
+    private void Awake()
     {
         _rBody = GetComponent<Rigidbody>();
         _weaponList = new List<IWeapon>();
@@ -33,6 +33,11 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         float delta = Time.deltaTime;
         if (_currentWeapon != null) _currentWeapon.Recoil(delta);
+    }
+
+    public virtual void Move(Vector3 direction)
+    {
+        _rBody.AddForce(direction * _shipData.Acceleration, ForceMode.Acceleration);
     }
 
     public virtual void Move(Vector3 direction, float speed, ForceMode type = ForceMode.Acceleration)
@@ -56,7 +61,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
             _currentWeapon.Fire(_projectileOut.position);
     }
 
-    public void AnyDamage(float amount)
+    public virtual void AnyDamage(float amount)
     {
         throw new System.NotImplementedException();
     }
@@ -66,13 +71,4 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         throw new System.NotImplementedException();
     }
 
-    public void PoolPooled()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void PoolSleep()
-    {
-        throw new System.NotImplementedException();
-    }
 }
