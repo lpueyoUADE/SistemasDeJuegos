@@ -8,7 +8,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     [SerializeField] private Transform _projectileOut;
 
     private Rigidbody _rBody;
-    private List<IWeapon> _weaponList;
+    private List<IWeapon> _weaponList = new List<IWeapon>();
     private IWeapon _currentWeapon;
 
     private int _currentLife = 1;
@@ -23,8 +23,10 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     private void Awake()
     {
         _rBody = GetComponent<Rigidbody>();
-        _weaponList = new List<IWeapon>();
+    }
 
+    protected virtual void Start()
+    {
         AddWeapon(ShipData.DefaultWeapon);
         _currentWeapon = _weaponList[0];
     }
@@ -57,8 +59,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void Fire()
     {
-        if (_currentWeapon != null)
-            _currentWeapon.Fire(_projectileOut.position);
+        _currentWeapon?.Fire(_projectileOut.position);
     }
 
     public virtual void AnyDamage(float amount)
