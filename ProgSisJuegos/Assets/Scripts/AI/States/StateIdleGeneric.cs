@@ -5,15 +5,20 @@ using UnityEngine;
 public class StateIdleGeneric<T> : StateBase<T>
 {
     private EnemyBase _controller;
+    private FSMAIBase _machine;
 
-    public StateIdleGeneric(EnemyBase controller)
+    public StateIdleGeneric(EnemyBase controller, FSMAIBase fsm)
     {
         _controller = controller;
+        _machine = fsm;
     }
 
     public override void Enter()
     {
-        if (!_controller.IsIdling)
-            _controller.StartIdle();
+        if (!_machine.QuestionIsIdling())
+        {
+            float randTime = Random.Range(_machine.BehaviourData.IdleTimeMin, _machine.BehaviourData.IdleTimeMax);
+            _machine.ActionStartIdle(randTime);
+        }
     }
 }

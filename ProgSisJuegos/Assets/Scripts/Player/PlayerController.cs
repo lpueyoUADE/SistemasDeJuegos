@@ -9,7 +9,7 @@ public class PlayerController : ShipBase
     public event Action<int> OnHpChanged;
     public event Action OnWeaponChanged;
 
-    void Update()
+    protected override void Update()
     {
         float delta = Time.deltaTime;
         _movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));

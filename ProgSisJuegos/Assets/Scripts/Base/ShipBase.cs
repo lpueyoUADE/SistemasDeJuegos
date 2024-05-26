@@ -29,7 +29,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _currentWeapon = _weaponList[0];
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         float delta = Time.deltaTime;
         if (_currentWeapon != null) _currentWeapon.Recoil(delta);
