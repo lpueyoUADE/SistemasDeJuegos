@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e8d84b1f0ddb64d8e8a669e00096f7, type: 3}
-  m_Name: ShipCannonFoder
+  m_Script: {fileID: 11500000, guid: 3e7c92b82268e874cb58a316f4805cce, type: 3}
+  m_Name: WeaponEnemyBlueRail
   m_EditorClassIdentifier: 
-  _shipType: 1
-  _prebab: {fileID: 0}
-  _points: 0
-  _maxSpeed: 0
-  _acceleration: 2
-  _damageResistance: 10
-  _defaultWeapon: 7
-  _shieldDuration: 1
-  _shieldColor: {r: 0, g: 1, b: 0, a: 1}
+  _weaponIcon: {fileID: 0}
+  _type: 7
+  _damage: 12
+  _recoil: 0.75
+  _hasInfiniteAmmo: 1
+  _defaultAmmoAmount: 0
+  _projectileSpeed: 2

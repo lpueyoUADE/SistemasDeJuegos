@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -48,8 +48,11 @@ MonoBehaviour:
   _weaponsList:
   - {fileID: 11400000, guid: 82059ee03da0b564fb8394cc6240f62d, type: 2}
   - {fileID: 11400000, guid: 737bde63256487c4b8c5c875f9242258, type: 2}
+  - {fileID: 11400000, guid: cc4a5644095a9b3459208006c06e9af7, type: 2}
   _projectileList:
   - {fileID: -2332886714929930556, guid: 64386285120186b42b413ecb2a3c7269, type: 3}
+  - {fileID: 1044241210396319529, guid: 28ae0de8b1c360c448c0ea60186f17d3, type: 3}
+  _enemyList: []
 --- !u!114 &1181906096915222107
 MonoBehaviour:
   m_ObjectHideFlags: 0

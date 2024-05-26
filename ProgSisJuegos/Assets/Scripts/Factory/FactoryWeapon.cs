@@ -12,7 +12,7 @@ public class FactoryWeapon
         foreach (WeaponDatabase weapon in weapons)
             _weaponsDict.Add(weapon.WeapType, weapon);
 
-        Debug.Log($"Factory: Weapons initialized, {_weaponsDict.Count} items.");
+        Debug.Log($"Factory (WEAPONS): initialized, {_weaponsDict.Count} items.");
     }
 
     public static IWeapon CreateWeapon(WeaponType type)
@@ -22,9 +22,15 @@ public class FactoryWeapon
 
         switch (type)
         {
+            // Player type
             case WeaponType.BlueRail: return new WeaponBlueRail(data);
-            case WeaponType.RedDiamond: return new WeaponBlueRail(data);
-            default: return new WeaponNone();
+            case WeaponType.RedDiamond: return new WeaponRedDiamond(data);
+
+            // Enemy type
+            case WeaponType.EnemyBlueRail: return new WeaponEnemyBlueRail(data);
+
+            // Not found
+            default: Debug.Log($"Factory (WEAPONS): Weapon of type {type} not found."); return new WeaponNone();
         }
     }
 }

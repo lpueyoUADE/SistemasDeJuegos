@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, Gamma
+    BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, Gamma,
+    EnemyBlueRail
 }
 
 [CreateAssetMenu(fileName = "NewWeaponData", menuName = "Databases/Weapon")]

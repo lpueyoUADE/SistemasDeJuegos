@@ -16,8 +16,8 @@ public class PlayerController : ShipBase
 
         if (Input.GetKey(KeyCode.Space))
             Fire();
-
-        if (ShipCurrentWeapon != null) ShipCurrentWeapon.Recoil(delta);
+        
+        Recoil(delta);
     }
 
     private void FixedUpdate()

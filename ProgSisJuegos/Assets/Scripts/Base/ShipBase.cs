@@ -17,6 +17,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public ShipDatabase ShipData => _shipData;
     public List<IWeapon> ShipWeapons => _weaponList;
     public IWeapon ShipCurrentWeapon => _currentWeapon;
+    public Transform ShipProyectileOut => _projectileOut;
     public int ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
@@ -27,14 +28,19 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     protected virtual void Start()
     {
-        AddWeapon(ShipData.DefaultWeapon);
-        _currentWeapon = _weaponList[0];
+        InitializeWeapons();
     }
 
     protected virtual void Update()
     {
         float delta = Time.deltaTime;
-        if (_currentWeapon != null) _currentWeapon.Recoil(delta);
+        Recoil(delta);
+    }
+
+    public virtual void InitializeWeapons()
+    {
+        AddWeapon(ShipData.DefaultWeapon);
+        _currentWeapon = _weaponList[0];
     }
 
     public virtual void Move(Vector3 direction)
@@ -59,7 +65,12 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void Fire()
     {
-        _currentWeapon?.Fire(_projectileOut.position);
+        _currentWeapon?.Fire(ShipProyectileOut);
+    }
+
+    public virtual void Recoil(float delta)
+    {
+        _currentWeapon?.Recoil(delta);
     }
 
     public virtual void AnyDamage(float amount)
@@ -71,5 +82,4 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         throw new System.NotImplementedException();
     }
-
 }
