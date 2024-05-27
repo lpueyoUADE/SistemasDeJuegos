@@ -63,6 +63,54 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _weaponList.Add(FactoryWeapon.CreateWeapon(type));
     }
 
+    public virtual void SwapWeapon(bool isNext = true)
+    {
+        if (ShipWeapons.Count <= 1) return;
+
+        bool swap = false;
+
+        // Check if the next weapon is valid, if not, then set current weapon to the first one.
+        if (isNext)
+        {
+            for (int i = 0; i < ShipWeapons.Count - 1; i++)
+            {
+                if (ShipCurrentWeapon == ShipWeapons[i])
+                    swap = true;
+
+                if (swap && ShipWeapons[i + 1] != null)
+                    _currentWeapon = ShipWeapons[i + 1];
+
+                else
+                    _currentWeapon = ShipWeapons[0];
+            }
+        }
+
+        // Check if the previous weapon is valid, if not, then set current weapon to the last one.
+        else
+        {
+            for (int i = ShipWeapons.Count - 1; i > 0; i--)
+            {
+                if (ShipCurrentWeapon == ShipWeapons[i])
+                    swap = true;
+
+                if (swap && ShipWeapons[i - 1] != null)
+                    _currentWeapon = ShipWeapons[i - 1];
+                else
+                    _currentWeapon = ShipWeapons[ShipWeapons.Count - 1];
+            }
+        }
+    }
+
+    public virtual void SwapWeapon(WeaponType type)
+    {
+        // Directly switch to X weapon
+        for (int i = 0; i < ShipWeapons.Count; i++)
+        {
+            if (ShipWeapons[i].WeaponType == type)
+                _currentWeapon = ShipWeapons[i];
+        }
+    }
+
     public virtual void Fire()
     {
         _currentWeapon?.Fire(ShipProyectileOut);

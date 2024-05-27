@@ -20,7 +20,7 @@ public class WeaponDatabase : ScriptableObject
 
     [SerializeField, Range(0, 20)] private float _projectileSpeed = 3;
 
-    public Sprite Icon => _weaponIcon;
+    public Sprite WeapIcon => _weaponIcon;
     public WeaponType WeapType => _type;
     public float WeapDamage => _damage;
     public float WeapRecoil => _recoil;

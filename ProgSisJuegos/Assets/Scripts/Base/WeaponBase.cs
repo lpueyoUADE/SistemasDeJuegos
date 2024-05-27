@@ -10,7 +10,7 @@ public class WeaponBase : IWeapon
     public float CurrentRecoil => _currentRecoil;
 
     WeaponType IWeapon.WeaponType { get => WeapType; }
-    Sprite IWeapon.WeaponIcon { get => WeaponData.Icon; }
+    Sprite IWeapon.WeaponIcon { get => WeaponData.WeapIcon; }
     public WeaponDatabase WeaponData => _weaponData;
     public WeaponType WeapType => WeaponData.WeapType;
 

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // References
     [SerializeField] private List<WeaponDatabase> _weaponsList = new List<WeaponDatabase>();
     [SerializeField] private List<ProjectileBase> _projectileList = new List<ProjectileBase>();
-    [SerializeField] private List<GameObject> _enemyList = new List<GameObject>();
+    [SerializeField] private List<EnemyBase> _enemyList = new List<EnemyBase>();
+    [SerializeField] private UIManager _uiManager;
+
     // Static instances
-    private static GameManager _instance;
+    private static GameManager _instance;    
     private static Pool _pool;
     private static FactoryProjectiles _factoryProjectile;
     private static FactoryWeapon _factoryWeapon;
@@ -33,5 +36,9 @@ public class GameManager : MonoBehaviour
         _pool = new Pool(_projectileList, _factoryProjectile);
         _factoryWeapon = new FactoryWeapon(_weaponsList);
         //_enemyFactory = new EnemyFactory(_enemyList);
+
+        UIEvents.OnAllWeaponsInitialize?.Invoke(_weaponsList);
+
+
     }
 }
