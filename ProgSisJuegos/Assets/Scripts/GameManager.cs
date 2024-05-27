@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Scene references
+    [SerializeField] private PlayerController _playerPrefab;
+    [SerializeField] private PlayerCamera _playerCamera;
+
     // References
     [SerializeField] private List<WeaponDatabase> _weaponsList = new List<WeaponDatabase>();
     [SerializeField] private List<ProjectileBase> _projectileList = new List<ProjectileBase>();
     [SerializeField] private List<EnemyBase> _enemyList = new List<EnemyBase>();
     [SerializeField] private UIManager _uiManager;
+
+    private PlayerController _currentPlayer;
 
     // Static instances
     private static GameManager _instance;    
@@ -29,6 +35,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
+        
+
         // Initialize instances
         _factoryProjectile = GetComponent<FactoryProjectiles>();
         _factoryProjectile.UpdateAvailableProjectiles(_projectileList);
@@ -36,9 +44,14 @@ public class GameManager : MonoBehaviour
         _pool = new Pool(_projectileList, _factoryProjectile);
         _factoryWeapon = new FactoryWeapon(_weaponsList);
         //_enemyFactory = new EnemyFactory(_enemyList);
+    }
 
-        UIEvents.OnAllWeaponsInitialize?.Invoke(_weaponsList);
+    private void Start()
+    {
+        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
 
-
+        _currentPlayer = Instantiate(_playerPrefab);
+        _playerCamera.enabled = true;
+        _playerCamera._player = _currentPlayer;
     }
 }

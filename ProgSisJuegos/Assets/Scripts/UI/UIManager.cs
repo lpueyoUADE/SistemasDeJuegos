@@ -23,7 +23,6 @@ public class UIManager : MonoBehaviour
     private Dictionary<WeaponType, GameObject> _currentWeaponsInUI = new Dictionary<WeaponType, GameObject>();
 
     // Instance
-    private static UIEvents _uiEvents;
     private static UIManager _instance;
     public UIManager Instance => _instance;    
 
@@ -37,14 +36,12 @@ public class UIManager : MonoBehaviour
             // DontDestroyOnLoad(this.gameObject);
         }
 
-        _uiEvents = new UIEvents();
+        new UIEvents();
 
         // Hook UI events
         UIEvents.OnAllWeaponsInitialize += CreateWeaponsList;
-
         UIEvents.OnAddInventoryWeapon += AddInventoryWeapon;
         UIEvents.OnRemoveInventoryWeapon += RemoveInventoryWeapon;
-
         UIEvents.OnWeaponSwap += WeaponSwap;
 
         /*
@@ -104,7 +101,7 @@ public class UIManager : MonoBehaviour
     private void WeaponSwap(WeaponType type)
     {
          if (!_currentWeaponsInUI.ContainsKey(type)) return;
-
+        
         // Move weapon selector to selection
         _currentWeaponsInUI.TryGetValue(type, out var weapon);
         _createdWeaponSelector.transform.SetParent(weapon.transform, false);
