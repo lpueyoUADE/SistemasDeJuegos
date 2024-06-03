@@ -18,4 +18,11 @@ public class EnemyBase : ShipBase
         Recoil(delta);
         _behaviour?.FSMUpdate(delta);
     }
+
+    [ContextMenu("Destroy")]
+    private void Destroy()
+    {
+        _currentLife = 0;
+    }
 }
+

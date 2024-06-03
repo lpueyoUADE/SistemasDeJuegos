@@ -12,18 +12,18 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     private List<IWeapon> _weaponList = new List<IWeapon>();
     private IWeapon _currentWeapon;
 
-    private int _currentLife = 1;
+    protected float _currentLife = 1;
     private bool _isShielded = false;
 
     public ShipDatabase ShipData => _shipData;
     public List<IWeapon> ShipWeapons => _weaponList;
     public IWeapon ShipCurrentWeapon => _currentWeapon;
     public Transform ShipProyectileOut => _projectileOut;
-    public int ShipCurrentLife => _currentLife;
+    public float ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
     //Events
-    public event Action OnDestroy;
+    public event Action OnDestroyed;
 
     private void Awake()
     {
@@ -127,11 +127,16 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void AnyDamage(float amount)
     {
-        throw new System.NotImplementedException();
+        _currentLife -= amount;
+        if (_currentLife <= 0)
+        {
+            OnDeath();
+        }
     }
 
     public void OnDeath()
     {
-        OnDestroy();
+        OnDestroyed();
+        Destroy(this.gameObject);
     }
 }

@@ -6,34 +6,46 @@ public class EnemyManager : MonoBehaviour
 {
     private int _index = 0;
     private int _enemiesOnScreen = 0;
-    [SerializeField] private List<EnemyWave> _enemyWaves;
+    [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
 
     private void Update()
     {
-        if(_enemiesOnScreen == 0)
+        if (_enemiesOnScreen == 0)
         {
             LoadNextEnemyWave();
         }
     }
 
+    private void Start()
+    {
+        LoadNextEnemyWave();
+    }
+
     private void LoadNextEnemyWave()
     {
-        foreach (ShipBase enemy in _enemyWaves[_index].Enemies)
+        if (_index < _enemyWaves.Count)
         {
-            if (enemy != null)
+            foreach (EnemyBase enemy in _enemyWaves[_index].Enemies)
             {
-               GameManager.Instance.SpawnEnemy(enemy.ShipData);
-                _enemiesOnScreen++;
-                enemy.OnDestroy += EnemyDestroyed;
+                if (enemy != null)
+                {
+                    GameManager.Instance.SpawnEnemy(enemy.ShipData);
+                    _enemiesOnScreen++;
+                    enemy.OnDestroyed += EnemyDestroyed;
+                }
             }
+            _index++;
         }
-        _index++;
+        else if (_index == _enemyWaves.Count)
+        {
+            //no more enemy waves, level cleared
+            print("Level Cleared!");
+        }
+       
     }
 
     private void EnemyDestroyed()
     {
         _enemiesOnScreen--;
     }
-
-
 }
