@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private static Pool _pool;
     private static FactoryProjectiles _factoryProjectile;
     private static FactoryWeapon _factoryWeapon;
-    //private static EnemyFactory _enemyFactory;
+    private static ShipFactory _shipFactory;
 
     public static GameManager Instance { get { return _instance; } }
 
@@ -53,5 +53,10 @@ public class GameManager : MonoBehaviour
         _currentPlayer = Instantiate(_playerPrefab);
         _playerCamera.enabled = true;
         _playerCamera._player = _currentPlayer;
+    }
+
+    public void SpawnEnemy(ShipDatabase ship)
+    {
+        _shipFactory.CreateEnemy(ship.Type);
     }
 }

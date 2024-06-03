@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,9 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public Transform ShipProyectileOut => _projectileOut;
     public int ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
+
+    //Events
+    public event Action OnDestroy;
 
     private void Awake()
     {
@@ -128,6 +132,6 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public void OnDeath()
     {
-        throw new System.NotImplementedException();
+        OnDestroy();
     }
 }
