@@ -22,8 +22,9 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public float ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
+    public event Action OnDisabled;
+
     //Events
-    public event Action OnDestroyed;
 
     private void Awake()
     {
@@ -134,9 +135,10 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         }
     }
 
+    [ContextMenu("Destroy")]
     public void OnDeath()
     {
-        OnDestroyed();
-        Destroy(this.gameObject);
+        OnDisabled();
+        gameObject.SetActive(false);
     }
 }

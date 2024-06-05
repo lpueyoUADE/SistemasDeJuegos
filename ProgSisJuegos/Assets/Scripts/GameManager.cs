@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
     // References
     [SerializeField] private List<WeaponDatabase> _weaponsList = new List<WeaponDatabase>();
     [SerializeField] private List<ProjectileBase> _projectileList = new List<ProjectileBase>();
-    [SerializeField] private List<EnemyBase> _enemyList = new List<EnemyBase>();
+    [SerializeField] private List<ShipBase> _shipList = new List<ShipBase>();
     [SerializeField] private UIManager _uiManager;
 
     private PlayerController _currentPlayer;
@@ -44,15 +45,17 @@ public class GameManager : MonoBehaviour
         _pool = new Pool(_projectileList, _factoryProjectile);
         _factoryWeapon = new FactoryWeapon(_weaponsList);
         //_enemyFactory = new EnemyFactory(_enemyList);
+       _shipFactory = new ShipFactory(_shipList);
     }
 
     private void Start()
-    {
-        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
+    {        
 
         _currentPlayer = Instantiate(_playerPrefab);
         _playerCamera.enabled = true;
         _playerCamera._player = _currentPlayer;
+
+        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
     }
 
     public void SpawnEnemy(ShipDatabase ship)

@@ -19,10 +19,6 @@ public class EnemyBase : ShipBase
         _behaviour?.FSMUpdate(delta);
     }
 
-    [ContextMenu("Destroy")]
-    private void Destroy()
-    {
-        _currentLife = 0;
-    }
+    
 }
 

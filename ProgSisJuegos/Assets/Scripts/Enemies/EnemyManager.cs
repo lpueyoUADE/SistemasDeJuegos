@@ -7,18 +7,36 @@ public class EnemyManager : MonoBehaviour
     private int _index = 0;
     private int _enemiesOnScreen = 0;
     [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
+    private bool startUpdate = false;
+
+    private float totalWaitTime = 60;
+    private float currentWaitTime;
 
     private void Update()
     {
-        if (_enemiesOnScreen == 0)
+        if (startUpdate)
         {
-            LoadNextEnemyWave();
+            if (_enemiesOnScreen == 0)
+            {
+                LoadNextEnemyWave();
+            }
         }
+        else
+        {
+            currentWaitTime += Time.deltaTime;
+            if (currentWaitTime >= totalWaitTime)
+            {
+                Initialize();
+                print("EnemyManager Initialized");
+            }
+        }
+
     }
 
-    private void Start()
+    private void Initialize()
     {
         LoadNextEnemyWave();
+        EnableUpdate();
     }
 
     private void LoadNextEnemyWave()
@@ -31,7 +49,8 @@ public class EnemyManager : MonoBehaviour
                 {
                     GameManager.Instance.SpawnEnemy(enemy.ShipData);
                     _enemiesOnScreen++;
-                    enemy.OnDestroyed += EnemyDestroyed;
+                    //enemy += EnemyDestroyed;
+                    enemy.OnDisabled += EnemyDestroyed;
                 }
             }
             _index++;
@@ -42,6 +61,11 @@ public class EnemyManager : MonoBehaviour
             print("Level Cleared!");
         }
        
+    }
+
+    private void EnableUpdate()
+    {
+        startUpdate = true;
     }
 
     private void EnemyDestroyed()
