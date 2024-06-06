@@ -14,11 +14,9 @@ public class EnemyBase : ShipBase
     {
         float delta = Time.deltaTime;
 
-        Fire();
-        Recoil(delta);
-        _behaviour?.FSMUpdate(delta);
-    }
-
-    
+        //Fire();
+        //Recoil(delta);
+        //_behaviour?.FSMUpdate(delta);
+    }    
 }
 

@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
     private bool startUpdate = false;
 
-    private float totalWaitTime = 60;
+    private float totalWaitTime = 2;
     private float currentWaitTime;
 
     private void Update()
@@ -60,6 +60,8 @@ public class EnemyManager : MonoBehaviour
             //no more enemy waves, level cleared
             print("Level Cleared!");
         }
+
+        print("Wave: " + (_index - 1));
        
     }
 

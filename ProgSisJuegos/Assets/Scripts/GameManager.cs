@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         _playerCamera.enabled = true;
         _playerCamera._player = _currentPlayer;
 
-        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
+        //UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
     }
 
     public void SpawnEnemy(ShipDatabase ship)
