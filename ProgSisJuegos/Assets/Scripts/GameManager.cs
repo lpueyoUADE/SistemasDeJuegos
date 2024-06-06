@@ -58,8 +58,9 @@ public class GameManager : MonoBehaviour
         //UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
     }
 
-    public void SpawnEnemy(ShipDatabase ship)
+    public GameObject SpawnEnemy(ShipDatabase ship)
     {
-        _shipFactory.CreateEnemy(ship.Type);
+        return _shipFactory.CreateEnemy(ship.Type);
+
     }
 }

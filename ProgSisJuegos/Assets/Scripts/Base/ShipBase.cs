@@ -138,7 +138,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     [ContextMenu("Destroy")]
     public void OnDeath()
     {
-        OnDisabled();
+        OnDisabled?.Invoke();
         gameObject.SetActive(false);
     }
 }
