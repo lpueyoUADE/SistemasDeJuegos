@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerController : ShipBase
 {
     private Vector3 _movement;
-    public event Action<int> OnHpChanged;
-    public event Action<WeaponType> OnWeaponChanged;
+    public event Action<WeaponType> OnWeaponChanged; // needs to be removed
 
     protected override void Update()
     {
@@ -26,14 +25,32 @@ public class PlayerController : ShipBase
         Recoil(delta);
     }
 
+    private void Awake()
+    {
+        
+    }
+
     protected override void Start()
     {
+        PlayerEvents.OnPlayerSpawn?.Invoke(this);
         OnWeaponChanged += WeaponSwapTest;
         base.Start();
         SwapWeapon();        
 
         // Testing
         AddWeapon(WeaponType.RedDiamond);
+    }
+
+    public override void AnyDamage(float amount)
+    {
+        base.AnyDamage(amount);
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(amount);
+    }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        PlayerEvents.OnPlayerDeath?.Invoke();
     }
 
     // Testing UI swap indicator

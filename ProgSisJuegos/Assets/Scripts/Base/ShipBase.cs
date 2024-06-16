@@ -7,7 +7,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     [SerializeField] protected ShipDatabase _shipData;
     [SerializeField] private Transform _projectileOut;
 
-    private Rigidbody _rBody;
+    public Rigidbody _rBody;
     private List<IWeapon> _weaponList = new List<IWeapon>();
     private IWeapon _currentWeapon;
 
@@ -21,13 +21,9 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public int ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
-    private void Awake()
-    {
-        _rBody = GetComponent<Rigidbody>();
-    }
-
     protected virtual void Start()
     {
+        _rBody = GetComponent<Rigidbody>();
         InitializeWeapons();
     }
 
@@ -45,7 +41,8 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void Move(Vector3 direction)
     {
-        _rBody.AddForce(direction * _shipData.Acceleration, ForceMode.Acceleration);
+        if (_rBody != null)
+            _rBody.AddForce(direction * _shipData.Acceleration, ForceMode.Acceleration);
     }
 
     public virtual void Move(Vector3 direction, float speed, ForceMode type = ForceMode.Acceleration)
@@ -126,8 +123,8 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         throw new System.NotImplementedException();
     }
 
-    public void OnDeath()
+    public virtual void OnDeath()
     {
-        throw new System.NotImplementedException();
+        print($"{this.name} is dead.");
     }
 }

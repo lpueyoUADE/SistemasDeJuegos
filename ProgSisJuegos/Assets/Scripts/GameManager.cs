@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // Scene references
-    [SerializeField] private PlayerController _playerPrefab;
+    [SerializeField] private ShipDatabase _playerPrefab;
     [SerializeField] private PlayerCamera _playerCamera;
 
     // References
@@ -14,28 +14,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EnemyBase> _enemyList = new List<EnemyBase>();
     [SerializeField] private UIManager _uiManager;
 
-    private PlayerController _currentPlayer;
-
     // Static instances
-    private static GameManager _instance;    
     private static Pool _pool;
     private static FactoryProjectiles _factoryProjectile;
     private static FactoryWeapon _factoryWeapon;
     //private static EnemyFactory _enemyFactory;
 
-    public static GameManager Instance { get { return _instance; } }
-
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-            Destroy(this.gameObject);
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-
-        
+        SubEvents();
 
         // Initialize instances
         _factoryProjectile = GetComponent<FactoryProjectiles>();
@@ -46,12 +33,47 @@ public class GameManager : MonoBehaviour
         //_enemyFactory = new EnemyFactory(_enemyList);
     }
 
+    private void OnDestroy()
+    {
+        UnsubEvents();
+    }
+
+    private void SubEvents()
+    {
+        PlayerEvents.OnPlayerSpawn += EventOnPlayerSpawned;
+        PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
+        PlayerEvents.OnPlayerDeath += EventOnPlayerDeath;
+    }
+
+    private void UnsubEvents()
+    {
+        PlayerEvents.OnPlayerSpawn -= EventOnPlayerSpawned;
+        PlayerEvents.OnPlayerHPUpdate -= EventOnPlayerHPUpdate;
+        PlayerEvents.OnPlayerDeath -= EventOnPlayerDeath;
+    }
+
     private void Start()
     {
-        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
+        Instantiate(_playerPrefab.Prefab);
 
-        _currentPlayer = Instantiate(_playerPrefab);
+        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);        
+
         _playerCamera.enabled = true;
-        _playerCamera._player = _currentPlayer;
+    }
+
+    private void EventOnPlayerSpawned(PlayerController reference)
+    {
+        _playerCamera._player = reference;
+        UIEvents.OnPlayerSpawn.Invoke();
+    }
+
+    private void EventOnPlayerHPUpdate(float currentLife)
+    {
+        UIEvents.OnPlayerHPUpdate.Invoke(currentLife);
+    }
+
+    private void EventOnPlayerDeath()
+    {
+        UIEvents.OnPlayerDeath.Invoke();
     }
 }

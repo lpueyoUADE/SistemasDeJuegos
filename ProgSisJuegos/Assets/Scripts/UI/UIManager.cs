@@ -17,41 +17,13 @@ public class UIManager : MonoBehaviour
 
     // Values
     private GameObject _createdWeaponSelector;
-    private int _score = 0;
-
-    // Values
     private Dictionary<WeaponType, GameObject> _currentWeaponsInUI = new Dictionary<WeaponType, GameObject>();
-
-    // Instance
-    private static UIManager _instance;
-    public UIManager Instance => _instance;    
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-            Destroy(this.gameObject);
-        else
-        {
-            _instance = this;
-            // DontDestroyOnLoad(this.gameObject);
-        }
-
-        new UIEvents();
-
-        // Hook UI events
-        UIEvents.OnAllWeaponsInitialize += CreateWeaponsList;
-        UIEvents.OnAddInventoryWeapon += AddInventoryWeapon;
-        UIEvents.OnRemoveInventoryWeapon += RemoveInventoryWeapon;
-        UIEvents.OnWeaponSwap += WeaponSwap;
-
-        /*
-        instance = this;
-        _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        _playerController.OnHpChanged += UpdateHpBar;
-        _playerController.OnWeaponChanged += UpdateCurrentWeaponIcon;
-        */
+        SubEvents();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         /*
@@ -59,28 +31,50 @@ public class UIManager : MonoBehaviour
         _createdWeaponSelector = Instantiate(_weaponSelector);
     }
 
-    private void UpdateHpBar(int currentHP)
+    private void OnDestroy()
+    {
+        UnsubEvents();
+    }
+
+    private void SubEvents()
+    {
+        UIEvents.OnAllWeaponsInitialize += CreateWeaponsList;
+        UIEvents.OnAddInventoryWeapon += AddInventoryWeapon;
+        UIEvents.OnRemoveInventoryWeapon += RemoveInventoryWeapon;
+        UIEvents.OnWeaponSwap += WeaponSwap;
+        UIEvents.OnPlayerSpawn += OnPlayerSpawn;
+        UIEvents.OnPlayerHPUpdate += UpdateHpBar;
+        //UIEvents.OnPlayerDeath += 
+        UIEvents.OnScoreUpdate += UpdateScore;
+    }
+
+    private void UnsubEvents()
+    {
+        UIEvents.OnAllWeaponsInitialize -= CreateWeaponsList;
+        UIEvents.OnAddInventoryWeapon -= AddInventoryWeapon;
+        UIEvents.OnRemoveInventoryWeapon -= RemoveInventoryWeapon;
+        UIEvents.OnWeaponSwap -= WeaponSwap;
+        UIEvents.OnPlayerSpawn -= OnPlayerSpawn;
+        UIEvents.OnPlayerHPUpdate -= UpdateHpBar;
+        //UIEvents.OnPlayerDeath -= 
+        UIEvents.OnScoreUpdate -= UpdateScore;
+    }
+
+    private void OnPlayerSpawn()
+    {
+
+    }
+
+    private void UpdateHpBar(float currentHP)
     {
         _healthBar.value = currentHP;
     }
 
-    private void UpdateCurrentWeaponIcon()
+    private void UpdateScore(float newScore)
     {
-        //_currentWeapon.sprite = _playerController.ShipCurrentWeapon.WeaponIcon;
+        _scoreText.text = newScore.ToString();
     }
 
-    private void AddScore(int value)
-    {
-        _score += value;
-        UpdateScoreText();
-    }
-
-    private void UpdateScoreText()
-    {
-        _scoreText.text = _score.ToString();
-    }
-
-    // Hooked events
     private void CreateWeaponsList(List<WeaponDatabase> weapons)
     {
         foreach (WeaponDatabase weapon in weapons)

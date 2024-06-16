@@ -9,7 +9,7 @@ public class PlayerCamera : MonoBehaviour
     public Vector3 offset;
     public PlayerController _player;
 
-    void Update()
+    void FixedUpdate()
     {
         if (_player == null) return;
 
