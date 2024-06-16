@@ -5,7 +5,6 @@ using UnityEngine;
 public class BasicEnemy : EnemyBase
 {
     private Transform _targetLocation;
-    // Agregar IA referencias
 
     public override void Move(Vector3 direction, float speed, ForceMode type = ForceMode.Acceleration)
     {

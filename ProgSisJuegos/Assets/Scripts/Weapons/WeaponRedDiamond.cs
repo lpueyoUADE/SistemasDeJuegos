@@ -9,7 +9,7 @@ public class WeaponRedDiamond : WeaponBase
         InitializeWeapon(data);
     }
 
-    new public void Fire()
+    public void Fire()
     {
         Debug.Log("red caca " + WeaponData.WeapHasInfiniteAmmo);
     }

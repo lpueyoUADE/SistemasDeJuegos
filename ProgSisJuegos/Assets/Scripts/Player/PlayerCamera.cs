@@ -7,16 +7,9 @@ public class PlayerCamera : MonoBehaviour
 {
     public float followSpeed = 3;
     public Vector3 offset;
-    GameObject _player;
+    public PlayerController _player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _player = FindObjectOfType<PlayerController>().gameObject;
-    }
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (_player == null) return;
 

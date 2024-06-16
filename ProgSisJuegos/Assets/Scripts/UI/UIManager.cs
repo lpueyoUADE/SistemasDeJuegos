@@ -6,50 +6,117 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    // References
+    [SerializeField] private HorizontalLayoutGroup _UIWeaponsBox;
+    [SerializeField] private GameObject _weaponSingleItem;
+    [SerializeField] private GameObject _weaponSelector;
+
     [SerializeField] private Slider _healthBar;
     [SerializeField] private Image _currentWeapon;
     [SerializeField] private TMPro.TMP_Text _scoreText;
-    private int _score = 0;
-    private PlayerController _playerController;
-    public static UIManager instance;
+
+    // Values
+    private GameObject _createdWeaponSelector;
+    private Dictionary<WeaponType, GameObject> _currentWeaponsInUI = new Dictionary<WeaponType, GameObject>();
 
     private void Awake()
     {
-        instance = this;
-        _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        _playerController.OnHpChanged += UpdateHpBar;
-        _playerController.OnWeaponChanged += UpdateCurrentWeaponIcon;
+        SubEvents();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-        _healthBar.value = _healthBar.maxValue;
+        /*
+        _healthBar.value = _healthBar.maxValue;*/
+        _createdWeaponSelector = Instantiate(_weaponSelector);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        UnsubEvents();
     }
 
-    private void UpdateHpBar(int currentHP)
+    private void SubEvents()
+    {
+        UIEvents.OnAllWeaponsInitialize += CreateWeaponsList;
+        UIEvents.OnAddInventoryWeapon += AddInventoryWeapon;
+        UIEvents.OnRemoveInventoryWeapon += RemoveInventoryWeapon;
+        UIEvents.OnWeaponSwap += WeaponSwap;
+        UIEvents.OnPlayerSpawn += OnPlayerSpawn;
+        UIEvents.OnPlayerHPUpdate += UpdateHpBar;
+        //UIEvents.OnPlayerDeath += 
+        UIEvents.OnScoreUpdate += UpdateScore;
+    }
+
+    private void UnsubEvents()
+    {
+        UIEvents.OnAllWeaponsInitialize -= CreateWeaponsList;
+        UIEvents.OnAddInventoryWeapon -= AddInventoryWeapon;
+        UIEvents.OnRemoveInventoryWeapon -= RemoveInventoryWeapon;
+        UIEvents.OnWeaponSwap -= WeaponSwap;
+        UIEvents.OnPlayerSpawn -= OnPlayerSpawn;
+        UIEvents.OnPlayerHPUpdate -= UpdateHpBar;
+        //UIEvents.OnPlayerDeath -= 
+        UIEvents.OnScoreUpdate -= UpdateScore;
+    }
+
+    private void OnPlayerSpawn()
+    {
+
+    }
+
+    private void UpdateHpBar(float currentHP)
     {
         _healthBar.value = currentHP;
     }
 
-    private void UpdateCurrentWeaponIcon()
+    private void UpdateScore(float newScore)
     {
-        _currentWeapon.sprite = _playerController.ShipCurrentWeapon.WeaponIcon;
+        _scoreText.text = newScore.ToString();
     }
 
-    private void AddScore(int value)
+    private void CreateWeaponsList(List<WeaponDatabase> weapons)
     {
-        _score += value;
-        UpdateScoreText();
+        foreach (WeaponDatabase weapon in weapons)
+        {
+            if (_currentWeaponsInUI.ContainsKey(weapon.WeapType)) return;
+            if (weapon.WeapType == WeaponType.EnemyBlueRail) return;
+
+            GameObject newWeaponItem = Instantiate(_weaponSingleItem);
+            Image weapImage = newWeaponItem.GetComponent<Image>();
+            weapImage.sprite = weapon.WeapIcon;
+            _currentWeaponsInUI.Add(weapon.WeapType, newWeaponItem);
+
+            newWeaponItem.transform.SetParent(_UIWeaponsBox.transform, false);
+            newWeaponItem.SetActive(false);
+        }
     }
 
-    private void UpdateScoreText()
+    private void WeaponSwap(WeaponType type)
     {
-        _scoreText.text = _score.ToString();
+         if (!_currentWeaponsInUI.ContainsKey(type)) return;
+        
+        // Move weapon selector to selection
+        _currentWeaponsInUI.TryGetValue(type, out var weapon);
+        _createdWeaponSelector.transform.SetParent(weapon.transform, false);
+    }        
+    
+    private void AddInventoryWeapon(WeaponType type)
+    {
+        // Check if the weapon is on the allowed list
+        if (!_currentWeaponsInUI.ContainsKey(type)) return;
+
+        _currentWeaponsInUI.TryGetValue(type, out var weapon);
+        weapon.SetActive(true);
+    }    
+    
+    // Maybe replace this with a bool in InventoryWeapon to manage adding/removing?
+    private void RemoveInventoryWeapon(WeaponType type)
+    {
+        // Check if the weapon is on the allowed list
+        if (!_currentWeaponsInUI.ContainsKey(type)) return;
+
+        _currentWeaponsInUI.TryGetValue(type, out var weapon);
+        weapon.SetActive(false);
     }
 }

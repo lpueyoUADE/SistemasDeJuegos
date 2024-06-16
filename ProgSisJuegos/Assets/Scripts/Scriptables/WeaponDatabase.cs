@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, Gamma
+    BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, Gamma,
+    EnemyBlueRail
 }
 
 [CreateAssetMenu(fileName = "NewWeaponData", menuName = "Databases/Weapon")]
@@ -19,7 +20,7 @@ public class WeaponDatabase : ScriptableObject
 
     [SerializeField, Range(0, 20)] private float _projectileSpeed = 3;
 
-    public Sprite Icon => _weaponIcon;
+    public Sprite WeapIcon => _weaponIcon;
     public WeaponType WeapType => _type;
     public float WeapDamage => _damage;
     public float WeapRecoil => _recoil;

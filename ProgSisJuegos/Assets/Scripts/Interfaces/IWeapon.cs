@@ -4,6 +4,6 @@ public interface IWeapon
 {
     public WeaponType WeaponType { get; }
     public Sprite WeaponIcon { get; }
-    void Fire(Vector3 projectileOutPosition);
+    void Fire(Transform projectileOutTransform);
     void Recoil(float deltaTime);
 }

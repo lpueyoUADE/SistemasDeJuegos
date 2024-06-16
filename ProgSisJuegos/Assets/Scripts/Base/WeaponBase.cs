@@ -10,7 +10,7 @@ public class WeaponBase : IWeapon
     public float CurrentRecoil => _currentRecoil;
 
     WeaponType IWeapon.WeaponType { get => WeapType; }
-    Sprite IWeapon.WeaponIcon { get => WeaponData.Icon; }
+    Sprite IWeapon.WeaponIcon { get => WeaponData.WeapIcon; }
     public WeaponDatabase WeaponData => _weaponData;
     public WeaponType WeapType => WeaponData.WeapType;
 
@@ -19,13 +19,14 @@ public class WeaponBase : IWeapon
         _weaponData = data;
     }
 
-    public virtual void Fire(Vector3 spawnPosition)
+    public virtual void Fire(Transform spawnTransform)
     {
         if ((WeaponData.WeapHasInfiniteAmmo || _currentAmmo > 0) && _currentRecoil <= 0)
         {
             ProjectileBase projectile = Pool.CreateProjectile(WeapType);
             projectile.UpdateStats(WeaponData.WeapDamage, WeaponData.WeapProjectileSpeed);
-            projectile.transform.position = spawnPosition;
+            projectile.transform.rotation = spawnTransform.rotation;
+            projectile.transform.position = spawnTransform.position;
             _currentRecoil = WeaponData.WeapRecoil;
         }
     }

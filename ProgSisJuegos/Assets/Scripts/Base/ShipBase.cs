@@ -7,8 +7,8 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     [SerializeField] protected ShipDatabase _shipData;
     [SerializeField] private Transform _projectileOut;
 
-    private Rigidbody _rBody;
-    private List<IWeapon> _weaponList;
+    public Rigidbody _rBody;
+    private List<IWeapon> _weaponList = new List<IWeapon>();
     private IWeapon _currentWeapon;
 
     private int _currentLife = 1;
@@ -17,27 +17,32 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public ShipDatabase ShipData => _shipData;
     public List<IWeapon> ShipWeapons => _weaponList;
     public IWeapon ShipCurrentWeapon => _currentWeapon;
+    public Transform ShipProyectileOut => _projectileOut;
     public int ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
-    private void Awake()
+    protected virtual void Start()
     {
         _rBody = GetComponent<Rigidbody>();
-        _weaponList = new List<IWeapon>();
+        InitializeWeapons();
+    }
 
+    protected virtual void Update()
+    {
+        float delta = Time.deltaTime;
+        Recoil(delta);
+    }
+
+    public virtual void InitializeWeapons()
+    {
         AddWeapon(ShipData.DefaultWeapon);
         _currentWeapon = _weaponList[0];
     }
 
-    private void Update()
-    {
-        float delta = Time.deltaTime;
-        if (_currentWeapon != null) _currentWeapon.Recoil(delta);
-    }
-
     public virtual void Move(Vector3 direction)
     {
-        _rBody.AddForce(direction * _shipData.Acceleration, ForceMode.Acceleration);
+        if (_rBody != null)
+            _rBody.AddForce(direction * _shipData.Acceleration, ForceMode.Acceleration);
     }
 
     public virtual void Move(Vector3 direction, float speed, ForceMode type = ForceMode.Acceleration)
@@ -55,10 +60,62 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _weaponList.Add(FactoryWeapon.CreateWeapon(type));
     }
 
+    public virtual void SwapWeapon(bool isNext = true)
+    {
+        if (ShipWeapons.Count <= 1) return;
+
+        bool swap = false;
+
+        // Check if the next weapon is valid, if not, then set current weapon to the first one.
+        if (isNext)
+        {
+            for (int i = 0; i < ShipWeapons.Count - 1; i++)
+            {
+                if (ShipCurrentWeapon == ShipWeapons[i])
+                    swap = true;
+
+                if (swap && ShipWeapons[i + 1] != null)
+                    _currentWeapon = ShipWeapons[i + 1];
+
+                else
+                    _currentWeapon = ShipWeapons[0];
+            }
+        }
+
+        // Check if the previous weapon is valid, if not, then set current weapon to the last one.
+        else
+        {
+            for (int i = ShipWeapons.Count - 1; i > 0; i--)
+            {
+                if (ShipCurrentWeapon == ShipWeapons[i])
+                    swap = true;
+
+                if (swap && ShipWeapons[i - 1] != null)
+                    _currentWeapon = ShipWeapons[i - 1];
+                else
+                    _currentWeapon = ShipWeapons[ShipWeapons.Count - 1];
+            }
+        }
+    }
+
+    public virtual void SwapWeapon(WeaponType type)
+    {
+        // Directly switch to X weapon
+        for (int i = 0; i < ShipWeapons.Count; i++)
+        {
+            if (ShipWeapons[i].WeaponType == type)
+                _currentWeapon = ShipWeapons[i];
+        }
+    }
+
     public virtual void Fire()
     {
-        if (_currentWeapon != null)
-            _currentWeapon.Fire(_projectileOut.position);
+        _currentWeapon?.Fire(ShipProyectileOut);
+    }
+
+    public virtual void Recoil(float delta)
+    {
+        _currentWeapon?.Recoil(delta);
     }
 
     public virtual void AnyDamage(float amount)
@@ -66,9 +123,8 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         throw new System.NotImplementedException();
     }
 
-    public void OnDeath()
+    public virtual void OnDeath()
     {
-        throw new System.NotImplementedException();
+        print($"{this.name} is dead.");
     }
-
 }
