@@ -16,6 +16,7 @@ public class ShipDatabase : ScriptableObject
     [SerializeField] private int _points;
 
     [Header("Ship Settings")]
+    [SerializeField] private float _life = 10;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _acceleration;
     [SerializeField, Range(0, 99)] protected float _damageResistance;
@@ -30,6 +31,7 @@ public class ShipDatabase : ScriptableObject
     public ShipBase Prefab => _prebab;
     public int Points => _points;
 
+    public float Life => _life;
     public float MaxSpeed => _maxSpeed;
     public float Acceleration => _acceleration;
     public float DamageResistance => _damageResistance;

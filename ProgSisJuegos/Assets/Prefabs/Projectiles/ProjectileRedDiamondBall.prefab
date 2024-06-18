@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 562785426370179137}
   - component: {fileID: 562785426370179136}
   - component: {fileID: 6096224609395286495}
-  - component: {fileID: 5187089154809103770}
+  - component: {fileID: 5667236381158089664}
   m_Layer: 10
-  m_Name: ProjectileHeatTrail
+  m_Name: ProjectileRedDiamondBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &5187089154809103770
+--- !u!114 &5667236381158089664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,15 +125,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 562785426370179139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584708e7947571b43bb0a7c3bb54b620, type: 3}
+  m_Script: {fileID: 11500000, guid: a8afb3eede3befb498669924399e2ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _targetTag: Enemy
   _maskObs:
     serializedVersion: 2
     m_Bits: 2113
-  _life: 1
-  _projectileType: 5
+  _life: 5
+  _projectileType: 3
 --- !u!1 &6503677493305782699
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 7106709596183312178}
   - component: {fileID: 6767276596282358986}
   m_Layer: 10
-  m_Name: fire1-0
+  m_Name: preddiamondball_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a390249256aaab04ea5e093810eecab0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3f68f0575d7b8448b623b9f2c524c6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

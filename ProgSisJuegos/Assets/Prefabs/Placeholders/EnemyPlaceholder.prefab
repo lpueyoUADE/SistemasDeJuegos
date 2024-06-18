@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 8906304283985753766}
   m_Layer: 6
   m_Name: EnemyPlaceholder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8906304283985753759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0058465e03e6bd438b8b0ba9ba98b3a, type: 3}
   m_Name: 

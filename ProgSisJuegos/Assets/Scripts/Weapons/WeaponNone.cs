@@ -15,4 +15,9 @@ public class WeaponNone : IWeapon
     {
         Debug.Log("Empty weapon.");
     }
+
+    public void Reset()
+    {
+        Debug.Log("Empty weapon.");
+    }
 }

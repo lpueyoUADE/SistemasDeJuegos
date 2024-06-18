@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Slider _healthBar;
     [SerializeField] private Image _currentWeapon;
-    [SerializeField] private TMPro.TMP_Text _scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
     // Values
     private AudioSource _audio;
@@ -71,7 +70,8 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHpBar(float currentHP)
     {
-        _healthBar.value = currentHP;
+
+        //_healthBar.value = currentHP;
     }
 
     private void UpdateScore(float newScore)

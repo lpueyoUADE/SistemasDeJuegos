@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipType: 1
   _prebab: {fileID: 0}
-  _points: 0
+  _points: 5
+  _life: 9999
   _maxSpeed: 0
   _acceleration: 2
   _damageResistance: 10

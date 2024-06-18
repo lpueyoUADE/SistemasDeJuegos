@@ -128,8 +128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccfbef2656f93740b7abe7541f76970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 3
+  _targetTag: Enemy
+  _maskObs:
+    serializedVersion: 2
+    m_Bits: 2113
+  _life: 1
   _projectileType: 4
+  _maxHits: 3
+  _currentMaxHits: 0
 --- !u!1 &6503677493305782699
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
 
     // References
     [SerializeField] private List<WeaponDatabase> _weaponsList = new List<WeaponDatabase>();
+    [SerializeField] private List<ProjectileBase> _extraProjectiles = new List<ProjectileBase>();
     [SerializeField] private List<EnemyBase> _enemyList = new List<EnemyBase>();
-    [SerializeField] private UIManager _uiManager;
 
-    //private static EnemyFactory _enemyFactory;
+    // Values
+    private float _currentScore = 0;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void SubEvents()
     {
+        GameManagerEvents.OnEnemyDestroyed += EventOnEnemyDestroyed;
         PlayerEvents.OnPlayerSpawn += EventOnPlayerSpawned;
         PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath += EventOnPlayerDeath;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void UnsubEvents()
     {
+        GameManagerEvents.OnEnemyDestroyed -= EventOnEnemyDestroyed;
         PlayerEvents.OnPlayerSpawn -= EventOnPlayerSpawned;
         PlayerEvents.OnPlayerHPUpdate -= EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath -= EventOnPlayerDeath;
@@ -48,6 +51,8 @@ public class GameManager : MonoBehaviour
             if (weapon.WeapType == WeaponType.None) continue;
             weaponProjectiles.Add(weapon.WeapProjectilePrefab);
         }
+
+        foreach (ProjectileBase projectile in _extraProjectiles) weaponProjectiles.Add(projectile);
 
         FactoryProjectiles.UpdateAvailableProjectiles(weaponProjectiles);
         Pool.InitializePool(weaponProjectiles);
@@ -71,5 +76,11 @@ public class GameManager : MonoBehaviour
     private void EventOnPlayerDeath()
     {
         UIEvents.OnPlayerDeath.Invoke();
+    }
+
+    private void EventOnEnemyDestroyed(float points)
+    {
+        _currentScore += points;
+        UIEvents.OnScoreUpdate(_currentScore);
     }
 }

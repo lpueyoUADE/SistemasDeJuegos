@@ -6,4 +6,5 @@ public interface IWeapon
     public Sprite WeaponIcon { get; }
     void Fire(Transform projectileOutTransform);
     void Recoil(float deltaTime);
+    void Reset();
 }

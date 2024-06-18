@@ -128,6 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1d2e105b27c0342838a539e8197f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetTag: Enemy
+  _maskObs:
+    serializedVersion: 2
+    m_Bits: 2113
   _life: 5
   _projectileType: 6
 --- !u!1 &6503677493305782699

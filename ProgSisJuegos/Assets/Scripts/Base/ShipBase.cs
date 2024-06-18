@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     private IWeapon _currentWeapon;
     private int _weaponIndex;
 
-    private int _currentLife = 1;
+    private float _currentLife = 1;
     private bool _isShielded = false;
 
     public ShipDatabase ShipData => _shipData;
@@ -20,12 +21,19 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public IWeapon ShipCurrentWeapon => _currentWeapon;
     public Transform ShipProyectileOut => _projectileOut;
     public int ShipCurrentWeaponIndex => _weaponIndex;
-    public int ShipCurrentLife => _currentLife;
+    public float ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
     private void Awake()
     {
         _rBody = GetComponent<Rigidbody>();
+        _currentLife = _shipData.Life;
+    }
+
+    private void OnEnable()
+    {
+        _currentLife = _shipData.Life;
+        _currentWeapon?.Reset();
     }
 
     protected virtual void Start()
@@ -107,11 +115,14 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void AnyDamage(float amount)
     {
-        throw new System.NotImplementedException();
+        _currentLife -= amount;
+
+        if (_currentLife <= 0) OnDeath();
     }
 
     public virtual void OnDeath()
     {
         print($"{this.name} is dead.");
+        this.gameObject.SetActive(false);
     }
 }

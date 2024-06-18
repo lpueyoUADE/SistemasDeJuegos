@@ -1,18 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ProjectileBase : MonoBehaviour
+public class ProjectileBase : MonoBehaviour, IProjectile
 {
-    [SerializeField] private float _life = 5;
+    [SerializeField] private string _targetTag = "Enemy";
+    [SerializeField] private LayerMask _maskObs;
+    [SerializeField] protected float _life = 5;
     [SerializeField] private WeaponType _projectileType;
-    private float _currentLife;
-    private Rigidbody _rBody;
+    protected float _currentLife;
+    protected Rigidbody _rBody;
+    protected float _damage = 1;
+    protected float _speed = 1;
+    protected Vector3 _lastPosition = Vector3.zero;
 
-    private float _damage;
-    private float _speed;
-
+    public Vector3 LastPositionDirection => (_lastPosition - transform.position).normalized;
+    public float LastPositionDistance => Vector3.Distance(transform.position, _lastPosition);
     public WeaponType ProjectileType => _projectileType;
     public Action OnSleep;
 
@@ -21,9 +26,18 @@ public class ProjectileBase : MonoBehaviour
         _rBody = GetComponent<Rigidbody>();
     }
 
-    void Start()
+    protected private virtual void OnEnable()
     {
         _currentLife = _life;
+        _rBody.velocity = Vector3.zero;
+        _lastPosition = Vector3.zero;
+    }
+
+    protected private virtual void OnDisable()
+    {
+        _currentLife = _life;
+        _lastPosition = Vector3.zero;
+        OnSleep?.Invoke();
     }
 
     protected private virtual void Update()
@@ -32,29 +46,68 @@ public class ProjectileBase : MonoBehaviour
 
         if (_currentLife <= 0)
             gameObject.SetActive(false);
+
+        if (_lastPosition == Vector3.zero) return;
+        RaycastToBack();
     }
 
     protected private virtual void FixedUpdate()
     {
         _rBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
+
+        if (transform.position != Vector3.zero)
+            _lastPosition = transform.position;
     }
 
-    private void OnEnable()
+    protected private virtual void OnTriggerEnter(Collider other)
     {
-        _rBody.velocity= Vector3.zero;
-        _currentLife = _life;
+        if (!other.CompareTag(_targetTag)) return;
+        other.TryGetComponent(out IDamageable damageble);
+
+        if (damageble == null) return;
+        ProjectileHit(damageble);
     }
 
-    private void OnDisable()
+    public virtual void RaycastToBack()
     {
-        OnSleep?.Invoke();
+        // Check if this projectile has ignored anything in the previous frame?
+        Debug.DrawLine(transform.position, _lastPosition, Color.yellow);
+        RaycastHit rHit;
+        if (Physics.Raycast(transform.position, LastPositionDirection, out rHit, LastPositionDistance))
+        {
+            rHit.transform.TryGetComponent(out Rigidbody rBody);
+            if (rBody != null && rBody != this._rBody && rBody.CompareTag(_targetTag))
+                ProjectileHit(rBody);
+        }
     }
 
-    public void UpdateStats(float damage, float speed, float life = 5)
+    public virtual void UpdateStats(float damage, float speed)
     {
-        _life = life;
+        _lastPosition = transform.position;
         _damage = damage;
         _speed = speed;
+
+        _currentLife = _life;
+        _rBody.AddForce(transform.forward * _speed, ForceMode.Force);
     }
 
+    public virtual void ProjectileHit(IDamageable hit)
+    {
+        hit.AnyDamage(_damage);
+        _currentLife = 0;
+    }
+
+    public virtual void ProjectileHit(Rigidbody hitRBody)
+    {
+        hitRBody.TryGetComponent(out IDamageable damageble);
+
+        // check later for stuff that can be "damaged" but is inmortal? like world environment?
+        if (damageble == null)
+        {
+            _currentLife = 0;
+            return;
+        }
+
+        ProjectileHit(damageble);
+    }
 }

@@ -1,4 +1,8 @@
+using UnityEngine;
+
 public interface IProjectile
 {
-    void ProjectileUpdate(float deltaTime);
+    void UpdateStats(float damage, float speed);
+    void ProjectileHit(IDamageable hit);
+    void ProjectileHit(Rigidbody hitRBody);
 }

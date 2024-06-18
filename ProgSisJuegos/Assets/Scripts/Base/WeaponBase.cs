@@ -25,9 +25,9 @@ public class WeaponBase : IWeapon
         if ((!WeaponData.WeapHasInfiniteAmmo || _currentAmmo <= 0) && _currentRecoil > 0) return;
 
         ProjectileBase projectile = Pool.CreateProjectile(WeapType);
-        projectile.UpdateStats(WeaponData.WeapDamage, WeaponData.WeapProjectileSpeed);
         projectile.transform.rotation = spawnTransform.rotation;
         projectile.transform.position = spawnTransform.position;
+        projectile.UpdateStats(WeaponData.WeapDamage, WeaponData.WeapProjectileSpeed);
         _currentRecoil = WeaponData.WeapRecoil;
         UseAmmo();
     }
@@ -42,5 +42,9 @@ public class WeaponBase : IWeapon
         if (!WeaponData.WeapHasInfiniteAmmo) _currentAmmo -= 1;
     }
 
-
+    public void Reset()
+    {
+        _currentAmmo = _weaponData.WeapInitialAmmoAmount;
+        _currentRecoil = 0;
+    }
 }
