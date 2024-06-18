@@ -6,17 +6,19 @@ public class Pool
 {
     // References
     private static Dictionary<WeaponType, ProjectileBase> _projectiles = new Dictionary<WeaponType, ProjectileBase>();
-    private static FactoryProjectiles _factory;
 
     // Pools
     private static ProjectilePool<ProjectileBase> _projectilesPool = new ProjectilePool<ProjectileBase>();
 
-    public Pool(List<ProjectileBase> projectiles, FactoryProjectiles factory)
+    public static void InitializePool(List<ProjectileBase> projectiles)
     {
         foreach (ProjectileBase projectile in projectiles)
+        {
+            if (_projectiles.ContainsKey(projectile.ProjectileType)) continue;
             _projectiles.Add(projectile.ProjectileType, projectile);
+        }
 
-        _factory = factory;
+        _projectilesPool = new ProjectilePool<ProjectileBase>();
     }
     
     public static ProjectileBase CreateProjectile(WeaponType type)
@@ -26,13 +28,14 @@ public class Pool
         // Get a new projectile & listen to sleep event
         if (projectile.Value == null) 
         {
-            projectile.Value = _factory.GenerateProjectile(type);
+            projectile.Value = FactoryProjectiles.GenerateProjectile(type);
 
             projectile.Value.OnSleep += () =>
             {
                 projectile.Value.gameObject.SetActive(false);
                 _projectilesPool.InUseToAvailable(projectile);
             };
+
         }
 
         projectile.Value.gameObject.SetActive(true);

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private UISoundsDatabase _soundsDatabase;
+
     // References
     [SerializeField] private HorizontalLayoutGroup _UIWeaponsBox;
     [SerializeField] private GameObject _weaponSingleItem;
@@ -16,11 +18,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text _scoreText;
 
     // Values
+    private AudioSource _audio;
     private GameObject _createdWeaponSelector;
     private Dictionary<WeaponType, GameObject> _currentWeaponsInUI = new Dictionary<WeaponType, GameObject>();
 
     private void Awake()
     {
+        _audio = GetComponent<AudioSource>();
         SubEvents();
     }
 
@@ -99,6 +103,7 @@ public class UIManager : MonoBehaviour
         // Move weapon selector to selection
         _currentWeaponsInUI.TryGetValue(type, out var weapon);
         _createdWeaponSelector.transform.SetParent(weapon.transform, false);
+        _audio.PlayOneShot(_soundsDatabase.UISoundChangeWeapon);
     }        
     
     private void AddInventoryWeapon(WeaponType type)

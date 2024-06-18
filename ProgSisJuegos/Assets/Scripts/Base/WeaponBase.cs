@@ -17,23 +17,29 @@ public class WeaponBase : IWeapon
     public void InitializeWeapon(WeaponDatabase data)
     {
         _weaponData = data;
+        _currentAmmo = _weaponData.WeapInitialAmmoAmount;
     }
 
     public virtual void Fire(Transform spawnTransform)
     {
-        if ((WeaponData.WeapHasInfiniteAmmo || _currentAmmo > 0) && _currentRecoil <= 0)
-        {
-            ProjectileBase projectile = Pool.CreateProjectile(WeapType);
-            projectile.UpdateStats(WeaponData.WeapDamage, WeaponData.WeapProjectileSpeed);
-            projectile.transform.rotation = spawnTransform.rotation;
-            projectile.transform.position = spawnTransform.position;
-            _currentRecoil = WeaponData.WeapRecoil;
-        }
+        if ((!WeaponData.WeapHasInfiniteAmmo || _currentAmmo <= 0) && _currentRecoil > 0) return;
+
+        ProjectileBase projectile = Pool.CreateProjectile(WeapType);
+        projectile.UpdateStats(WeaponData.WeapDamage, WeaponData.WeapProjectileSpeed);
+        projectile.transform.rotation = spawnTransform.rotation;
+        projectile.transform.position = spawnTransform.position;
+        _currentRecoil = WeaponData.WeapRecoil;
+        UseAmmo();
     }
 
     public virtual void Recoil(float deltaTime)
     {
         if (_currentRecoil > 0) _currentRecoil -= deltaTime;
+    }
+
+    public virtual void UseAmmo()
+    {
+        if (!WeaponData.WeapHasInfiniteAmmo) _currentAmmo -= 1;
     }
 
 

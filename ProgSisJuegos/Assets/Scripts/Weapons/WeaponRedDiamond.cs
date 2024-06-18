@@ -8,9 +8,4 @@ public class WeaponRedDiamond : WeaponBase
     {
         InitializeWeapon(data);
     }
-
-    public void Fire()
-    {
-        Debug.Log("red caca " + WeaponData.WeapHasInfiniteAmmo);
-    }
 }

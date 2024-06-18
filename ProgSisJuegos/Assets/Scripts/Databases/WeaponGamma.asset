@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7c92b82268e874cb58a316f4805cce, type: 3}
+  m_Name: WeaponGamma
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 7838721513252415023, guid: 285fc1fb3d05ad44c8d263010b1379ee, type: 3}
+  _weaponIcon: {fileID: 21300000, guid: d655b0b78dadba04aacb979016483db6, type: 3}
+  _type: 7
+  _damage: 25
+  _recoil: 0.25
+  _hasInfiniteAmmo: 0
+  _defaultAmmoAmount: 300
+  _projectileSpeed: 3

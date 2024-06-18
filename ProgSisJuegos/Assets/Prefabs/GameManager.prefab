@@ -45,14 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d270839fbf42984ca0b6f3bb15ffde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 11400000, guid: 118817d7f5e074c46b1546b574e17c44, type: 2}
+  _playerCamera: {fileID: 0}
   _weaponsList:
   - {fileID: 11400000, guid: 82059ee03da0b564fb8394cc6240f62d, type: 2}
   - {fileID: 11400000, guid: 737bde63256487c4b8c5c875f9242258, type: 2}
+  - {fileID: 11400000, guid: cac2d2cc4bee3c6429db32f6c595274b, type: 2}
+  - {fileID: 11400000, guid: 3db09d4bac7970c4bb005a5ea8f2acd0, type: 2}
+  - {fileID: 11400000, guid: 7178d8685ccf2874eb9594aa3c70a863, type: 2}
+  - {fileID: 11400000, guid: 38e84f37b2c04954690c09711a47b519, type: 2}
   - {fileID: 11400000, guid: cc4a5644095a9b3459208006c06e9af7, type: 2}
   _projectileList:
   - {fileID: -2332886714929930556, guid: 64386285120186b42b413ecb2a3c7269, type: 3}
+  - {fileID: 5895988416739716884, guid: f6f4ade9ac6353e4f8633c8f2a49c372, type: 3}
+  - {fileID: 3435555938649777502, guid: eafd82438b122d74299b32ff51b6136b, type: 3}
+  - {fileID: 5187089154809103770, guid: 8081cb53074bc91469a129fbf9f22d57, type: 3}
+  - {fileID: 7277553606078588316, guid: 5250d2ea46a9edd46bd5bb1b88ee6ecd, type: 3}
   - {fileID: 1044241210396319529, guid: 28ae0de8b1c360c448c0ea60186f17d3, type: 3}
   _enemyList: []
+  _uiManager: {fileID: 0}
 --- !u!114 &1181906096915222107
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,11 +25,6 @@ public class PlayerController : ShipBase
         Recoil(delta);
     }
 
-    private void Awake()
-    {
-        
-    }
-
     protected override void Start()
     {
         PlayerEvents.OnPlayerSpawn?.Invoke(this);
@@ -39,6 +34,10 @@ public class PlayerController : ShipBase
 
         // Testing
         AddWeapon(WeaponType.RedDiamond);
+        AddWeapon(WeaponType.GreenCrast);
+        AddWeapon(WeaponType.HeatTrail);
+        AddWeapon(WeaponType.OrbWeaver);
+        AddWeapon(WeaponType.Gamma);
     }
 
     public override void AnyDamage(float amount)

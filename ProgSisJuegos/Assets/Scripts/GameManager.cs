@@ -10,27 +10,15 @@ public class GameManager : MonoBehaviour
 
     // References
     [SerializeField] private List<WeaponDatabase> _weaponsList = new List<WeaponDatabase>();
-    [SerializeField] private List<ProjectileBase> _projectileList = new List<ProjectileBase>();
     [SerializeField] private List<EnemyBase> _enemyList = new List<EnemyBase>();
     [SerializeField] private UIManager _uiManager;
 
-    // Static instances
-    private static Pool _pool;
-    private static FactoryProjectiles _factoryProjectile;
-    private static FactoryWeapon _factoryWeapon;
     //private static EnemyFactory _enemyFactory;
 
     private void Awake()
     {
         SubEvents();
-
-        // Initialize instances
-        _factoryProjectile = GetComponent<FactoryProjectiles>();
-        _factoryProjectile.UpdateAvailableProjectiles(_projectileList);
-
-        _pool = new Pool(_projectileList, _factoryProjectile);
-        _factoryWeapon = new FactoryWeapon(_weaponsList);
-        //_enemyFactory = new EnemyFactory(_enemyList);
+        FactoryWeapon.InitializeFactoryWeapons(_weaponsList);
     }
 
     private void OnDestroy()
@@ -54,10 +42,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        List<ProjectileBase> weaponProjectiles = new List<ProjectileBase>();
+        foreach (WeaponDatabase weapon in _weaponsList)
+        {
+            if (weapon.WeapType == WeaponType.None) continue;
+            weaponProjectiles.Add(weapon.WeapProjectilePrefab);
+        }
+
+        FactoryProjectiles.UpdateAvailableProjectiles(weaponProjectiles);
+        Pool.InitializePool(weaponProjectiles);
+
         Instantiate(_playerPrefab.Prefab);
-
-        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);        
-
+        UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
         _playerCamera.enabled = true;
     }
 

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private UISoundsDatabase _soundsDatabase;
+
     [Header("Menu settings and references")]
     [SerializeField] private ScenesDatabase _scenesData;
     [SerializeField] private VerticalLayoutGroup _mainMenu;

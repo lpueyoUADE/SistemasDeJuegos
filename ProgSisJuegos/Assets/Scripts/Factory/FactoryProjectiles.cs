@@ -6,13 +6,13 @@ public class FactoryProjectiles : MonoBehaviour
 {
     private static List<ProjectileBase> _projectiles = new List<ProjectileBase>();
 
-    public void UpdateAvailableProjectiles(List<ProjectileBase> projectiles)
+    public static void UpdateAvailableProjectiles(List<ProjectileBase> projectiles)
     {
-        Debug.Log($"Factory: Projectiles initialized, {projectiles.Count} items.");
+        Debug.Log($"Factory Projectiles: initialized {projectiles.Count} items.");
         _projectiles = projectiles;
     }
 
-    public ProjectileBase GenerateProjectile(WeaponType type)
+    public static ProjectileBase GenerateProjectile(WeaponType type)
     {
         for (int i = 0; i < _projectiles.Count; i++)
             if (_projectiles[i].ProjectileType == type)

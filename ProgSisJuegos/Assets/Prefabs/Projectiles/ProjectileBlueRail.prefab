@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _life: 1
-  _projectileType: 0
+  _projectileType: 1
 --- !u!1 &6503677493305782699
 GameObject:
   m_ObjectHideFlags: 0

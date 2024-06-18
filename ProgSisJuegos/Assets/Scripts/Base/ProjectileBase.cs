@@ -26,7 +26,7 @@ public class ProjectileBase : MonoBehaviour
         _currentLife = _life;
     }
 
-    void Update()
+    protected private virtual void Update()
     {
         _currentLife -= Time.deltaTime;
 
@@ -34,7 +34,7 @@ public class ProjectileBase : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    private void FixedUpdate()
+    protected private virtual void FixedUpdate()
     {
         _rBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
     }

@@ -7,9 +7,10 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     [SerializeField] protected ShipDatabase _shipData;
     [SerializeField] private Transform _projectileOut;
 
-    public Rigidbody _rBody;
+    private Rigidbody _rBody;
     private List<IWeapon> _weaponList = new List<IWeapon>();
     private IWeapon _currentWeapon;
+    private int _weaponIndex;
 
     private int _currentLife = 1;
     private bool _isShielded = false;
@@ -18,12 +19,17 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public List<IWeapon> ShipWeapons => _weaponList;
     public IWeapon ShipCurrentWeapon => _currentWeapon;
     public Transform ShipProyectileOut => _projectileOut;
+    public int ShipCurrentWeaponIndex => _weaponIndex;
     public int ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
-    protected virtual void Start()
+    private void Awake()
     {
         _rBody = GetComponent<Rigidbody>();
+    }
+
+    protected virtual void Start()
+    {
         InitializeWeapons();
     }
 
@@ -64,38 +70,19 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         if (ShipWeapons.Count <= 1) return;
 
-        bool swap = false;
-
-        // Check if the next weapon is valid, if not, then set current weapon to the first one.
-        if (isNext)
+        if (!isNext)
         {
-            for (int i = 0; i < ShipWeapons.Count - 1; i++)
-            {
-                if (ShipCurrentWeapon == ShipWeapons[i])
-                    swap = true;
-
-                if (swap && ShipWeapons[i + 1] != null)
-                    _currentWeapon = ShipWeapons[i + 1];
-
-                else
-                    _currentWeapon = ShipWeapons[0];
-            }
+            if (_weaponIndex < _weaponList.Count - 1) _weaponIndex++;
+            else _weaponIndex = 0;
         }
 
-        // Check if the previous weapon is valid, if not, then set current weapon to the last one.
         else
         {
-            for (int i = ShipWeapons.Count - 1; i > 0; i--)
-            {
-                if (ShipCurrentWeapon == ShipWeapons[i])
-                    swap = true;
-
-                if (swap && ShipWeapons[i - 1] != null)
-                    _currentWeapon = ShipWeapons[i - 1];
-                else
-                    _currentWeapon = ShipWeapons[ShipWeapons.Count - 1];
-            }
+            if (_weaponIndex <= 0) _weaponIndex = _weaponList.Count - 1;
+            else _weaponIndex--;
         }
+
+        _currentWeapon = _weaponList[_weaponIndex];
     }
 
     public virtual void SwapWeapon(WeaponType type)
