@@ -12,7 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _weaponSingleItem;
     [SerializeField] private GameObject _weaponSelector;
 
-    [SerializeField] private Slider _healthBar;
+    [SerializeField] private Image _healthBar;
+    private float _maxHealth = 0;
     [SerializeField] private Image _currentWeapon;
     [SerializeField] private TextMeshProUGUI _scoreText;
 
@@ -70,8 +71,11 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHpBar(float currentHP)
     {
-
-        //_healthBar.value = currentHP;
+        if (_maxHealth == 0)
+        {
+            _maxHealth = currentHP;
+        }
+        _healthBar.fillAmount = currentHP/_maxHealth;
     }
 
     private void UpdateScore(float newScore)
