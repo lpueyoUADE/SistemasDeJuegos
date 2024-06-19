@@ -76,3 +76,6 @@ crashlytics-build.properties
 /ProgSisJuegos/UserSettings
 /ProgSisJuegos/obj
 /ProgSisJuegos/obj
+
+# Build
+/ProgSisJuegos/Build
