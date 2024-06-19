@@ -68,4 +68,13 @@ public class PlayerController : ShipBase
         base.SwapWeapon(isNext);
         OnWeaponChanged?.Invoke(ShipCurrentWeapon.WeaponType);
     }
+
+
+    //For TESTING only
+
+    [ContextMenu("Damage")]
+    public void Damage()
+    {
+        AnyDamage(0.15f);
+    }
 }

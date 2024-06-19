@@ -255,6 +255,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -110
       objectReference: {fileID: 0}
+    - target: {fileID: 2600684055753481442, guid: 68cb59fda13c4e943b5e139cac296fe3, type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 1212766753903205409}
     - target: {fileID: 2600684055753481443, guid: 68cb59fda13c4e943b5e139cac296fe3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
