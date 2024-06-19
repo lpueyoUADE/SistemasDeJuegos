@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7c92b82268e874cb58a316f4805cce, type: 3}
   m_Name: WeaponGamma
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 8133190492648607727, guid: 2ebe6704f84adec478b58517bd122d06, type: 3}
   _weaponIcon: {fileID: 21300000, guid: d655b0b78dadba04aacb979016483db6, type: 3}
-  _type: 7
-  _damage: 25
+  _type: 9
   _recoil: 0.25
   _hasInfiniteAmmo: 0
   _defaultAmmoAmount: 300
-  _projectileSpeed: 3
+  _projectilePrefab: {fileID: 8133190492648607727, guid: 2ebe6704f84adec478b58517bd122d06, type: 3}
+  _projectileDamage: 25
+  _projectileSpeed: 0

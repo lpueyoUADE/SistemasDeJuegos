@@ -132,8 +132,10 @@ MonoBehaviour:
   _maskObs:
     serializedVersion: 2
     m_Bits: 2113
-  _life: 5
   _projectileType: 3
+  _ballDamage: 3
+  _ballSpeed: 1
+  _ballLife: 1
 --- !u!1001 &8911893237182036718
 PrefabInstance:
   m_ObjectHideFlags: 0

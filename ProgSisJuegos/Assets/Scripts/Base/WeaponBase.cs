@@ -27,7 +27,7 @@ public class WeaponBase : IWeapon
         ProjectileBase projectile = Pool.CreateProjectile(WeapType);
         projectile.transform.rotation = spawnTransform.rotation;
         projectile.transform.position = spawnTransform.position;
-        projectile.UpdateStats(WeaponData.WeapDamage, WeaponData.WeapProjectileSpeed);
+        projectile.UpdateStats(WeaponData.WeapProjectileDamage, WeaponData.WeapProjectileSpeed, WeaponData.WeapProjectileLife);
         _currentRecoil = WeaponData.WeapRecoil;
         UseAmmo();
     }

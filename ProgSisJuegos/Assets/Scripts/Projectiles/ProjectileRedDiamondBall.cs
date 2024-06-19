@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class ProjectileRedDiamondBall : ProjectileBase
 {
+    [SerializeField, Range(1, 10)] private float _ballDamage = 3;
+    [SerializeField, Range(0.1f, 10)] private float _ballSpeed = 3;
+    [SerializeField, Range(1, 10)] private float _ballLife = 3;
     private IDamageable _lastDamagedEnemy;
+
+    public override void UpdateStats()
+    {
+        base.UpdateStats(_ballDamage, _ballSpeed, _ballLife);
+    }
 
     public override void ProjectileHit(IDamageable hit)
     {

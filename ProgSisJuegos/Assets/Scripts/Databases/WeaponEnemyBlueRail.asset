@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 1044241210396319529, guid: 28ae0de8b1c360c448c0ea60186f17d3, type: 3}
   _weaponIcon: {fileID: 21300000, guid: bfb4f2667d8d6a94db7d5c89a0ddb3d6, type: 3}
-  _type: 8
+  _type: 10
   _damage: 12
   _recoil: 0.75
   _hasInfiniteAmmo: 1
