@@ -12,24 +12,27 @@ public enum WeaponType
 [CreateAssetMenu(fileName = "NewWeaponData", menuName = "Databases/Weapon")]
 public class WeaponDatabase : ScriptableObject
 {
-    [SerializeField] private ProjectileBase _projectilePrefab;
-
-    [Header("Weapon settings")]
+    [Header("Weapon Settings")]
     [SerializeField] private Sprite _weaponIcon;
     [SerializeField] private WeaponType _type = WeaponType.BlueRail;
-    [SerializeField, Range(0, 100)] private float _damage = 1;
     [SerializeField, Range(0, 5)] private float _recoil = 1;
     [SerializeField] private bool _hasInfiniteAmmo = false;
     [SerializeField] private int _defaultAmmoAmount = 1;
 
+    [Header("Projectile Settings")]
+    [SerializeField] private ProjectileBase _projectilePrefab;
+    [SerializeField, Range(0, 100)] private float _projectileDamage = 1;
     [SerializeField, Range(0, 20)] private float _projectileSpeed = 3;
+    [SerializeField, Range(0, 20)] private float _projectileLife = 5;
 
-    public ProjectileBase WeapProjectilePrefab => _projectilePrefab;
     public Sprite WeapIcon => _weaponIcon;
-    public WeaponType WeapType => _type;
-    public float WeapDamage => _damage;
+    public WeaponType WeapType => _type;    
     public float WeapRecoil => _recoil;
     public bool WeapHasInfiniteAmmo => _hasInfiniteAmmo;
     public int WeapInitialAmmoAmount => _defaultAmmoAmount;
+
+    public ProjectileBase WeapProjectilePrefab => _projectilePrefab;
+    public float WeapProjectileDamage => _projectileDamage;
     public float WeapProjectileSpeed => _projectileSpeed;
+    public float WeapProjectileLife => _projectileLife;
 }

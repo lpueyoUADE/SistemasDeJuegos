@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7c92b82268e874cb58a316f4805cce, type: 3}
   m_Name: WeaponOrbWeaver
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 7277553606078588316, guid: 5250d2ea46a9edd46bd5bb1b88ee6ecd, type: 3}
   _weaponIcon: {fileID: 21300000, guid: adfb300ad7c675541aa727b4b52c2242, type: 3}
   _type: 6
-  _damage: 15
-  _recoil: 0.5
-  _hasInfiniteAmmo: 1
-  _defaultAmmoAmount: 0
-  _projectileSpeed: 3
+  _recoil: 0
+  _hasInfiniteAmmo: 0
+  _defaultAmmoAmount: 50
+  _projectilePrefab: {fileID: 7277553606078588316, guid: 5250d2ea46a9edd46bd5bb1b88ee6ecd, type: 3}
+  _projectileDamage: 1
+  _projectileSpeed: 0.5
+  _projectileLife: 5

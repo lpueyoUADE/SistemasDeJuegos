@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ProjectileEmpy : ProjectileBase
 {
-    private void Awake()
+    private protected override void Awake()
     {
+        base.Awake();
         Debug.Log("This projectile is only for testing purposes.");
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }

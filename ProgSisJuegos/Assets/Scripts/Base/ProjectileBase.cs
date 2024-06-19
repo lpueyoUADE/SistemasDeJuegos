@@ -7,7 +7,6 @@ public class ProjectileBase : MonoBehaviour, IProjectile
 {
     [SerializeField] private string _targetTag = "Enemy";
     [SerializeField] private LayerMask _maskObs;
-    [SerializeField] protected float _life = 5;
     [SerializeField] private WeaponType _projectileType;
     protected float _currentLife;
     protected Rigidbody _rBody;
@@ -28,14 +27,12 @@ public class ProjectileBase : MonoBehaviour, IProjectile
 
     protected private virtual void OnEnable()
     {
-        _currentLife = _life;
         _rBody.velocity = Vector3.zero;
         _lastPosition = Vector3.zero;
     }
 
     protected private virtual void OnDisable()
     {
-        _currentLife = _life;
         _lastPosition = Vector3.zero;
         OnSleep?.Invoke();
     }
@@ -81,13 +78,26 @@ public class ProjectileBase : MonoBehaviour, IProjectile
         }
     }
 
+    public virtual void UpdateStats(float damage, float speed, float life)
+    {
+        _lastPosition = transform.position;
+        _currentLife = life;
+        _damage = damage;
+        _speed = speed;
+        _rBody.AddForce(transform.forward * _speed, ForceMode.Force);
+    }
+
     public virtual void UpdateStats(float damage, float speed)
     {
         _lastPosition = transform.position;
         _damage = damage;
         _speed = speed;
+        _rBody.AddForce(transform.forward * _speed, ForceMode.Force);
+    }
 
-        _currentLife = _life;
+    public virtual void UpdateStats()
+    {
+        _lastPosition = transform.position;
         _rBody.AddForce(transform.forward * _speed, ForceMode.Force);
     }
 

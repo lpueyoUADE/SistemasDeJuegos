@@ -8,11 +8,11 @@ public class ProjectileGreenCrast : ProjectileBase
     public int _currentMaxHits;
     public List<IDamageable> _lastHit = new List<IDamageable>();
 
-    public override void UpdateStats(float damage, float speed)
+    public override void UpdateStats(float damage, float speed, float life)
     {
         _lastHit.Clear();
         _currentMaxHits = _maxHits;
-        base.UpdateStats(damage, speed);
+        base.UpdateStats(damage, speed, life);
     }
 
     public override void ProjectileHit(IDamageable hit)
