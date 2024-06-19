@@ -132,8 +132,7 @@ MonoBehaviour:
   _maskObs:
     serializedVersion: 2
     m_Bits: 1032
-  _life: 5
-  _projectileType: 8
+  _projectileType: 10
 --- !u!1 &6503677493305782699
 GameObject:
   m_ObjectHideFlags: 0
