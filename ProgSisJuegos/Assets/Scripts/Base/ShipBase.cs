@@ -13,7 +13,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     private IWeapon _currentWeapon;
     private int _weaponIndex;
 
-    private float _currentLife = 1;
+    protected float _currentLife = 1;
     private bool _isShielded = false;
 
     public ShipDatabase ShipData => _shipData;
@@ -123,6 +123,19 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _currentLife -= amount;
 
         if (_currentLife <= 0) OnDeath();
+    }
+
+    public virtual void Heal(float amount)
+    {
+        if ((_currentLife + amount) < ShipData.Life)
+        {
+            _currentLife += amount;
+        }
+        else
+        {
+            _currentLife = ShipData.Life;
+        }
+        
     }
 
     public virtual void OnDeath()

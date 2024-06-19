@@ -14,6 +14,7 @@ public class UIEvents
 
     public static Action OnPlayerSpawn;
     public static Action<float> OnPlayerHPUpdate;
+    public static Action<float> OnPlayerMaxLifeUpdate;
     public static Action OnPlayerDeath;
 
     public static Action<float> OnScoreUpdate;

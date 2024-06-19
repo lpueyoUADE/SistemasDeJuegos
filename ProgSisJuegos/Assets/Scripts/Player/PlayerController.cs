@@ -8,6 +8,7 @@ public class PlayerController : ShipBase
     [SerializeField] private Animator _anim;
     private Vector3 _movement;
     public event Action<WeaponType> OnWeaponChanged; // needs to be removed
+    private float _maxLife;
 
     protected override void Update()
     {
@@ -26,11 +27,13 @@ public class PlayerController : ShipBase
     }
 
     protected override void Start()
-    {
+    {        
         PlayerEvents.OnPlayerSpawn?.Invoke(this);
         OnWeaponChanged += WeaponSwapTest;
         base.Start();
-        SwapWeapon();        
+        SwapWeapon();
+        _maxLife = _shipData.Life;
+        IncreaseMaxLife(0);
 
         // Testing
         AddWeapon(WeaponType.RedDiamond);
@@ -43,7 +46,27 @@ public class PlayerController : ShipBase
     public override void AnyDamage(float amount)
     {
         base.AnyDamage(amount);
-        PlayerEvents.OnPlayerHPUpdate?.Invoke(amount);
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife);
+    }
+
+    public override void Heal(float amount)
+    {
+        if((_currentLife + amount) < _maxLife)
+        {
+            _currentLife += amount;            
+        }
+        else
+        {
+            _currentLife = _maxLife;
+        }
+
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife);
+    }
+
+    private void IncreaseMaxLife(float amount)
+    {
+        _maxLife += amount;
+        UIEvents.OnPlayerMaxLifeUpdate?.Invoke(_maxLife);
     }
 
     public override void OnDeath()
@@ -75,6 +98,12 @@ public class PlayerController : ShipBase
     [ContextMenu("Damage")]
     public void Damage()
     {
-        AnyDamage(0.15f);
+        AnyDamage(1);
+    }
+
+    [ContextMenu("Heal")]
+    public void Repair()
+    {
+        Heal(2);
     }
 }

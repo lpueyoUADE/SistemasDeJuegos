@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _weaponSelector;
 
     [SerializeField] private Image _healthBar;
+    private float _maxLife = 0;
     [SerializeField] private Image _currentWeapon;
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private GameObject _defeatScreen;
 
     // Values
     private AudioSource _audio;
@@ -25,6 +28,7 @@ public class UIManager : MonoBehaviour
     {
         _audio = GetComponent<AudioSource>();
         SubEvents();
+        _defeatScreen.SetActive(false);
     }
 
     void Start()
@@ -47,6 +51,8 @@ public class UIManager : MonoBehaviour
         UIEvents.OnWeaponSwap += WeaponSwap;
         UIEvents.OnPlayerSpawn += OnPlayerSpawn;
         UIEvents.OnPlayerHPUpdate += UpdateHpBar;
+        UIEvents.OnPlayerMaxLifeUpdate += UpdateMaxLife;
+        UIEvents.OnPlayerDeath += ShowDefeatScreen;
         //UIEvents.OnPlayerDeath += 
         UIEvents.OnScoreUpdate += UpdateScore;
     }
@@ -59,6 +65,8 @@ public class UIManager : MonoBehaviour
         UIEvents.OnWeaponSwap -= WeaponSwap;
         UIEvents.OnPlayerSpawn -= OnPlayerSpawn;
         UIEvents.OnPlayerHPUpdate -= UpdateHpBar;
+        UIEvents.OnPlayerMaxLifeUpdate -= UpdateMaxLife;
+        UIEvents.OnPlayerDeath -= ShowDefeatScreen;
         //UIEvents.OnPlayerDeath -= 
         UIEvents.OnScoreUpdate -= UpdateScore;
     }
@@ -68,9 +76,19 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void UpdateHpBar(float damage)
+    private void UpdateHpBar(float currentLife)
     {
-        _healthBar.fillAmount -= damage;
+        _healthBar.fillAmount = currentLife/_maxLife;        
+    }
+
+    private void UpdateMaxLife(float amount)
+    {
+        _maxLife = amount;
+    }
+
+    private void ShowDefeatScreen()
+    {
+        _defeatScreen.SetActive(true);
     }
 
     private void UpdateScore(float newScore)
@@ -122,5 +140,10 @@ public class UIManager : MonoBehaviour
 
         _currentWeaponsInUI.TryGetValue(type, out var weapon);
         weapon.SetActive(false);
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
