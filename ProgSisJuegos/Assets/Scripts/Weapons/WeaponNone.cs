@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class WeaponNone : IWeapon
 {
-    public WeaponType WeaponType => throw new System.NotImplementedException();
+    public WeaponType WeaponType => 0;
 
-    Sprite IWeapon.WeaponIcon => throw new System.NotImplementedException();
+    Sprite IWeapon.WeaponIcon => null;
 
     public void Fire(Transform projectileOutPosition)
     {
@@ -17,6 +17,11 @@ public class WeaponNone : IWeapon
     }
 
     public void Reset()
+    {
+        Debug.Log("Empty weapon.");
+    }
+
+    public void StopFire()
     {
         Debug.Log("Empty weapon.");
     }

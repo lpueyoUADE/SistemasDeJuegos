@@ -9,10 +9,14 @@ public class FactoryWeapon
 
     public static void InitializeFactoryWeapons(List<WeaponDatabase> weapons)
     {
+        string message = "Factory Weapons: \n";
         foreach (WeaponDatabase weapon in weapons)
+        {
             _weaponsDict.Add(weapon.WeapType, weapon);
+            message += $"{weapon.WeapType}, ";
+        }
 
-        Debug.Log($"Factory Weapons: initialized {_weaponsDict.Count} items.");
+        Debug.Log($"{message} Initialized {_weaponsDict.Count} items.");
     }
 
     public static IWeapon CreateWeapon(WeaponType type)

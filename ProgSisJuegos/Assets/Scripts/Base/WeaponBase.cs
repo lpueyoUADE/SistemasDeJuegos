@@ -3,8 +3,8 @@ using UnityEngine;
 public class WeaponBase : IWeapon
 {
     private WeaponDatabase _weaponData;
-    private int _currentAmmo;
-    private float _currentRecoil;
+    protected int _currentAmmo;
+    protected float _currentRecoil;
 
     public int Ammo => _currentAmmo;
     public float CurrentRecoil => _currentRecoil;
@@ -30,6 +30,11 @@ public class WeaponBase : IWeapon
         projectile.UpdateStats(WeaponData.WeapDamage, WeaponData.WeapProjectileSpeed);
         _currentRecoil = WeaponData.WeapRecoil;
         UseAmmo();
+    }
+
+    public virtual void StopFire()
+    {
+
     }
 
     public virtual void Recoil(float deltaTime)

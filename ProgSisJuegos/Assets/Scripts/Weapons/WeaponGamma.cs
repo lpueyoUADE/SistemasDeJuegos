@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WeaponGamma : WeaponBase
 {
-    [SerializeField] private GameObject _trail;
+    [SerializeField] private ProjectileBase _trail;
+    private bool _stopHolding;
 
     public WeaponGamma(WeaponDatabase data)
     {
@@ -13,11 +14,21 @@ public class WeaponGamma : WeaponBase
 
     public override void Fire(Transform spawnTransform)
     {
-        Debug.Log("WeaponGamma fire");
+        if ((!WeaponData.WeapHasInfiniteAmmo || _currentAmmo <= 0) && _currentRecoil > 0) return;
+        if (_trail == null) _trail = Pool.CreateProjectile(WeapType);
 
-        if (WeaponData.WeapHasInfiniteAmmo || Ammo > 0)
+        _trail.transform.rotation = spawnTransform.rotation;
+        _trail.transform.position = spawnTransform.position;
+        _trail.transform.localScale = new Vector3(_trail.transform.localScale.x, _trail.transform.localScale.y, 800);
+        UseAmmo();
+    }
+
+    public override void StopFire()
+    {
+        if (_trail != null)
         {
-            UseAmmo();
+            _trail.gameObject.SetActive(false);
+            _trail = null;
         }
     }
 }

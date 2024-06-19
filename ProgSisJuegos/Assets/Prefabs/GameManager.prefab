@@ -57,7 +57,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc4a5644095a9b3459208006c06e9af7, type: 2}
   _extraProjectiles:
   - {fileID: 5667236381158089664, guid: 73d4a7835d431234693ebed034a41e1b, type: 3}
-  _enemyList: []
+  _enemyList:
+  - {fileID: 11400000, guid: 3a9536cd520ce894b9adda75328c3f98, type: 2}
 --- !u!114 &1181906096915222107
 MonoBehaviour:
   m_ObjectHideFlags: 0

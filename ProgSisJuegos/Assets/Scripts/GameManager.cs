@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     // References
     [SerializeField] private List<WeaponDatabase> _weaponsList = new List<WeaponDatabase>();
     [SerializeField] private List<ProjectileBase> _extraProjectiles = new List<ProjectileBase>();
-    [SerializeField] private List<EnemyBase> _enemyList = new List<EnemyBase>();
+    [SerializeField] private List<ShipDatabase> _enemyList = new List<ShipDatabase>();
 
     // Values
     private float _currentScore = 0;

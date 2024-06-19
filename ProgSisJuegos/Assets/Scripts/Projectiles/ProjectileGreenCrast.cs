@@ -17,11 +17,7 @@ public class ProjectileGreenCrast : ProjectileBase
 
     public override void ProjectileHit(IDamageable hit)
     {
-        if (_lastHit.Contains(hit))
-        {
-            print("????");
-            return;
-        }
+        if (_lastHit.Contains(hit)) return;
 
         _lastHit.Add(hit);
         hit.AnyDamage(_damage);

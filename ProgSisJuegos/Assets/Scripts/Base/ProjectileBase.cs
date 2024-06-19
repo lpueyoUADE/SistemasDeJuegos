@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour, IProjectile
@@ -21,9 +20,10 @@ public class ProjectileBase : MonoBehaviour, IProjectile
     public WeaponType ProjectileType => _projectileType;
     public Action OnSleep;
 
-    private void Awake()
+    protected private virtual void Awake()
     {
-        _rBody = GetComponent<Rigidbody>();
+        TryGetComponent(out Rigidbody rBody);
+        if (rBody != null) _rBody = rBody;
     }
 
     protected private virtual void OnEnable()

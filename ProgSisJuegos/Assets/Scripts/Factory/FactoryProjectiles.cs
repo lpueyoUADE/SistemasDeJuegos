@@ -8,7 +8,11 @@ public class FactoryProjectiles : MonoBehaviour
 
     public static void UpdateAvailableProjectiles(List<ProjectileBase> projectiles)
     {
-        Debug.Log($"Factory Projectiles: initialized {projectiles.Count} items.");
+        string message = "Factory Projectiles: \n";
+        foreach (ProjectileBase projectile in projectiles)
+            message += $"{projectile.ProjectileType}, ";
+
+        Debug.Log($"{message} Initialized {projectiles.Count} items.");
         _projectiles = projectiles;
     }
 

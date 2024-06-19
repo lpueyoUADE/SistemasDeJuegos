@@ -108,6 +108,11 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _currentWeapon?.Fire(ShipProyectileOut);
     }
 
+    public virtual void StopFire()
+    {
+        _currentWeapon?.StopFire();
+    }
+
     public virtual void Recoil(float delta)
     {
         _currentWeapon?.Recoil(delta);

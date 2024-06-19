@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : ShipBase
 {
+    [SerializeField] private Animator _anim;
     private Vector3 _movement;
     public event Action<WeaponType> OnWeaponChanged; // needs to be removed
 
@@ -13,16 +14,15 @@ public class PlayerController : ShipBase
         float delta = Time.deltaTime;
         _movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        if (Input.GetKey(KeyCode.Space))
-            Fire();
+        if (Input.GetKey(KeyCode.Space)) Fire();
+        else StopFire();
 
-        if (Input.GetKeyDown(KeyCode.E))
-            SwapWeapon(true);        
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-            SwapWeapon(false);
+        if (Input.GetKeyDown(KeyCode.E)) SwapWeapon(true);
+        if (Input.GetKeyDown(KeyCode.Q)) SwapWeapon(false);
 
         Recoil(delta);
+        _anim.SetFloat("dirX", _movement.x);
+        _anim.SetFloat("dirY", _movement.z);
     }
 
     protected override void Start()
