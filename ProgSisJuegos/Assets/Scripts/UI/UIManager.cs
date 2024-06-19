@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _weaponSingleItem;
     [SerializeField] private GameObject _weaponSelector;
 
-    [SerializeField] private Slider _healthBar;
+    [SerializeField] private Image _healthBar;
     [SerializeField] private Image _currentWeapon;
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private GameObject _defeatScreen;
 
     // Values
     private AudioSource _audio;
@@ -25,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         _audio = GetComponent<AudioSource>();
         SubEvents();
+        _defeatScreen.SetActive(false);
     }
 
     void Start()
@@ -46,7 +49,8 @@ public class UIManager : MonoBehaviour
         UIEvents.OnRemoveInventoryWeapon += RemoveInventoryWeapon;
         UIEvents.OnWeaponSwap += WeaponSwap;
         UIEvents.OnPlayerSpawn += OnPlayerSpawn;
-        UIEvents.OnPlayerHPUpdate += UpdateHpBar;
+        UIEvents.OnPlayerHPUpdate += UpdateHpBar;        
+        UIEvents.OnPlayerDeath += ShowDefeatScreen;
         //UIEvents.OnPlayerDeath += 
         UIEvents.OnScoreUpdate += UpdateScore;
     }
@@ -58,7 +62,8 @@ public class UIManager : MonoBehaviour
         UIEvents.OnRemoveInventoryWeapon -= RemoveInventoryWeapon;
         UIEvents.OnWeaponSwap -= WeaponSwap;
         UIEvents.OnPlayerSpawn -= OnPlayerSpawn;
-        UIEvents.OnPlayerHPUpdate -= UpdateHpBar;
+        UIEvents.OnPlayerHPUpdate -= UpdateHpBar;        
+        UIEvents.OnPlayerDeath -= ShowDefeatScreen;
         //UIEvents.OnPlayerDeath -= 
         UIEvents.OnScoreUpdate -= UpdateScore;
     }
@@ -68,10 +73,14 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void UpdateHpBar(float currentHP)
+    private void UpdateHpBar(float currentLife, float maxLife)
     {
+        _healthBar.fillAmount = currentLife/maxLife;        
+    } 
 
-        //_healthBar.value = currentHP;
+    private void ShowDefeatScreen()
+    {
+        _defeatScreen.SetActive(true);
     }
 
     private void UpdateScore(float newScore)
@@ -123,5 +132,10 @@ public class UIManager : MonoBehaviour
 
         _currentWeaponsInUI.TryGetValue(type, out var weapon);
         weapon.SetActive(false);
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

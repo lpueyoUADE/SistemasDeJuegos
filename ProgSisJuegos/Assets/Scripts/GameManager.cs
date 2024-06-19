@@ -68,9 +68,9 @@ public class GameManager : MonoBehaviour
         UIEvents.OnPlayerSpawn.Invoke();
     }
 
-    private void EventOnPlayerHPUpdate(float currentLife)
+    private void EventOnPlayerHPUpdate(float currentLife, float maxLife)
     {
-        UIEvents.OnPlayerHPUpdate.Invoke(currentLife);
+        UIEvents.OnPlayerHPUpdate.Invoke(currentLife, maxLife);
     }
 
     private void EventOnPlayerDeath()
