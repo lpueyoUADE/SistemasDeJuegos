@@ -30,4 +30,13 @@ public class WeaponGamma : WeaponBase
             _trail = null;
         }
     }
+
+    public override void Swapped()
+    {
+        if (_trail != null)
+        {
+            _trail.gameObject.SetActive(false);
+            _trail = null;
+        }
+    }
 }

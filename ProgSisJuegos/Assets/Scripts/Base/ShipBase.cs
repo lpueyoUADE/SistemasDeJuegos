@@ -90,6 +90,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
             else _weaponIndex--;
         }
 
+        _currentWeapon?.Swapped();
         _currentWeapon = _weaponList[_weaponIndex];
     }
 
