@@ -5,7 +5,6 @@ using UnityEngine;
 public class WeaponGamma : WeaponBase
 {
     [SerializeField] private ProjectileBase _trail;
-    private bool _stopHolding;
 
     public WeaponGamma(WeaponDatabase data)
     {

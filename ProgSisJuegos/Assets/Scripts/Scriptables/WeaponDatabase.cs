@@ -5,7 +5,7 @@ using UnityEngine;
 public enum WeaponType
 {
     None,
-    BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, Gamma,
+    BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, OrbWeaverCharger, OrbWeaverHit, Gamma,
     EnemyBlueRail
 }
 

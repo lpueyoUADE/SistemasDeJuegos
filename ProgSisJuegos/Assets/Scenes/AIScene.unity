@@ -1286,7 +1286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ee90b056f79eab94fa81c35e97f1b32a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3604,7 +3604,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b16103b96bd5b4449b18377a58190298, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4357,6 +4357,18 @@ PrefabInstance:
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 963194229}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _extraProjectiles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _extraProjectiles.Array.data[1]
+      value: 
+      objectReference: {fileID: -6804866372505550419, guid: 62c3b979cf3be5042975a46c0fd6b98c, type: 3}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _extraProjectiles.Array.data[2]
+      value: 
+      objectReference: {fileID: -1774760262613465974, guid: 10c40411d2be43b46955bae6643373a2, type: 3}
     - target: {fileID: 4744384303318102725, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: m_RootOrder
       value: 2
