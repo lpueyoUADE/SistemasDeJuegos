@@ -11,8 +11,6 @@ public class WeaponHeatTrail : WeaponBase
 
     public override void Fire(Transform spawnTransform)
     {
-        Debug.Log("HeatTrail fire");
-
         if (WeaponData.WeapHasInfiniteAmmo || Ammo > 0)
         {
             UseAmmo();

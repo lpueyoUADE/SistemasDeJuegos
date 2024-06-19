@@ -52,6 +52,7 @@ public class WeaponOrbWeaver : WeaponBase
             ProjectileBase orbProjectile = Pool.CreateProjectile(WeapType);
             orbProjectile.transform.position = _spawnTransform.position;
             orbProjectile.transform.rotation = _spawnTransform.rotation;
+            orbProjectile.UpdateStats();
             orbProjectile.UpdateStats(WeaponData.WeapProjectileDamage, WeaponData.WeapProjectileSpeed, WeaponData.WeapProjectileLife);
             UseAmmo();
             _spawnTransform = null;

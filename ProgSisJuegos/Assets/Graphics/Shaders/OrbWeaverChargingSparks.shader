@@ -195,7 +195,7 @@ Shader "Custom/OrbWeaverChargingSparks"
 }
 /*ASEBEGIN
 Version=18900
-254;437;1731;735;1994.228;171.2052;1;True;False
+489;303;1239;764;1748.228;185.7052;1;True;False
 Node;AmplifyShaderEditor.RangedFloatNode;7;-1723.613,211.9497;Inherit;False;Property;_Speed1;Speed;1;0;Create;True;0;0;0;False;0;False;1.2;1.2;1;10;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;3;-917.5023,212.5969;Inherit;False;Property;_Scale1;Scale;0;0;Create;True;0;0;0;False;0;False;2;2;0.1;5;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;6;-1360.712,220.4649;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
@@ -207,8 +207,8 @@ Node;AmplifyShaderEditor.RangedFloatNode;10;-1148.5,458;Inherit;False;Constant;_
 Node;AmplifyShaderEditor.NoiseGeneratorNode;12;-576.8312,609.3312;Inherit;True;Simplex3D;True;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;2;-576.5,91;Inherit;True;Simplex3D;True;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleDivideOpNode;9;-920.4,369.4998;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleSubtractOpNode;11;-243.2001,286.4;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;8;-590.5,345;Inherit;True;Simplex3D;True;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleSubtractOpNode;11;-243.2001,286.4;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.Vector3Node;15;-38.3689,935.5801;Inherit;False;Constant;_Vector0;Vector 0;2;0;Create;True;0;0;0;False;0;False;1,1,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.NormalVertexDataNode;14;-20.16902,776.98;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;13;143.6848,484.4406;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
@@ -231,9 +231,9 @@ WireConnection;2;0;4;0
 WireConnection;2;1;3;0
 WireConnection;9;0;6;0
 WireConnection;9;1;10;0
+WireConnection;8;0;9;0
 WireConnection;11;0;2;0
 WireConnection;11;1;12;0
-WireConnection;8;0;9;0
 WireConnection;13;0;11;0
 WireConnection;13;1;8;0
 WireConnection;16;0;14;0
@@ -249,4 +249,4 @@ WireConnection;0;2;20;0
 WireConnection;0;9;13;0
 WireConnection;0;11;18;0
 ASEEND*/
-//CHKSM=246FF761CB789D2684B509BF56B9CF3F1E7C1C69
+//CHKSM=0A0661BBB6EC8ECB630E4C515762769D9BE24D38

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ProjectileGreenCrast : ProjectileBase
 {
-    [SerializeField] public int _maxHits = 3;
-    public int _currentMaxHits;
-    public List<IDamageable> _lastHit = new List<IDamageable>();
+    [SerializeField] private int _maxHits = 3;
+    private int _hitsLeft;
+    private List<IDamageable> _lastHit = new List<IDamageable>();
 
     public override void UpdateStats(float damage, float speed, float life)
     {
         _lastHit.Clear();
-        _currentMaxHits = _maxHits;
+        _hitsLeft = _maxHits;
         base.UpdateStats(damage, speed, life);
     }
 
@@ -22,8 +22,8 @@ public class ProjectileGreenCrast : ProjectileBase
         _lastHit.Add(hit);
         hit.AnyDamage(_damage);
 
-        if (_currentMaxHits <= 0) _currentLife = 0;
-        _currentMaxHits--;
+        if (_hitsLeft <= 0) _currentLife = 0;
+        _hitsLeft--;
     }
 
     public override void ProjectileHit(Rigidbody hitRBody)
@@ -35,7 +35,7 @@ public class ProjectileGreenCrast : ProjectileBase
         // check later for stuff that can be "damaged" but is inmortal? like world environment?
         if (damageble == null)
         {
-            if (_currentMaxHits <= 0) _currentLife = 0;
+            if (_hitsLeft <= 0) _currentLife = 0;
             return;
         }
 

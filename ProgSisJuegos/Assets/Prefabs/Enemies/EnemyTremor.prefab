@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4413666431233550695}
   - component: {fileID: 4413666431233550688}
+  - component: {fileID: 421031870414318803}
   - component: {fileID: 4413666431233550692}
   - component: {fileID: 4413666431233550698}
   - component: {fileID: 4413666431233550699}
   - component: {fileID: 4413666431233550693}
-  - component: {fileID: 421031870414318803}
   m_Layer: 6
   m_Name: EnemyTremor
   m_TagString: Enemy
@@ -47,6 +47,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4413666431233550684}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &421031870414318803
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4413666431233550684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.63
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!54 &4413666431233550692
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -107,19 +120,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _tolerance: 1
---- !u!135 &421031870414318803
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4413666431233550684}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.63
-  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &5105378504716304471
 GameObject:
   m_ObjectHideFlags: 0
