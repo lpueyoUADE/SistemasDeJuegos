@@ -47,7 +47,12 @@ public class WeaponBase : IWeapon
         if (!WeaponData.WeapHasInfiniteAmmo) _currentAmmo -= 1;
     }
 
-    public void Reset()
+    public virtual void Swapped()
+    {
+
+    }
+
+    public virtual void Reset()
     {
         _currentAmmo = _weaponData.WeapInitialAmmoAmount;
         _currentRecoil = 0;
