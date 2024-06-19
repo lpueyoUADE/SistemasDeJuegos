@@ -46,7 +46,7 @@ public class PlayerController : ShipBase
     public override void AnyDamage(float amount)
     {
         base.AnyDamage(amount);
-        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife);
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, _maxLife);
     }
 
     public override void Heal(float amount)
@@ -60,13 +60,13 @@ public class PlayerController : ShipBase
             _currentLife = _maxLife;
         }
 
-        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife);
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, _maxLife);
     }
 
     private void IncreaseMaxLife(float amount)
     {
         _maxLife += amount;
-        UIEvents.OnPlayerMaxLifeUpdate?.Invoke(_maxLife);
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, _maxLife);
     }
 
     public override void OnDeath()

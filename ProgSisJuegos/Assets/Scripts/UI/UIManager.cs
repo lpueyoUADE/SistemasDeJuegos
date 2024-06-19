@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _weaponSelector;
 
     [SerializeField] private Image _healthBar;
-    private float _maxLife = 0;
     [SerializeField] private Image _currentWeapon;
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private GameObject _defeatScreen;
@@ -50,8 +49,7 @@ public class UIManager : MonoBehaviour
         UIEvents.OnRemoveInventoryWeapon += RemoveInventoryWeapon;
         UIEvents.OnWeaponSwap += WeaponSwap;
         UIEvents.OnPlayerSpawn += OnPlayerSpawn;
-        UIEvents.OnPlayerHPUpdate += UpdateHpBar;
-        UIEvents.OnPlayerMaxLifeUpdate += UpdateMaxLife;
+        UIEvents.OnPlayerHPUpdate += UpdateHpBar;        
         UIEvents.OnPlayerDeath += ShowDefeatScreen;
         //UIEvents.OnPlayerDeath += 
         UIEvents.OnScoreUpdate += UpdateScore;
@@ -64,8 +62,7 @@ public class UIManager : MonoBehaviour
         UIEvents.OnRemoveInventoryWeapon -= RemoveInventoryWeapon;
         UIEvents.OnWeaponSwap -= WeaponSwap;
         UIEvents.OnPlayerSpawn -= OnPlayerSpawn;
-        UIEvents.OnPlayerHPUpdate -= UpdateHpBar;
-        UIEvents.OnPlayerMaxLifeUpdate -= UpdateMaxLife;
+        UIEvents.OnPlayerHPUpdate -= UpdateHpBar;        
         UIEvents.OnPlayerDeath -= ShowDefeatScreen;
         //UIEvents.OnPlayerDeath -= 
         UIEvents.OnScoreUpdate -= UpdateScore;
@@ -76,15 +73,10 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void UpdateHpBar(float currentLife)
+    private void UpdateHpBar(float currentLife, float maxLife)
     {
-        _healthBar.fillAmount = currentLife/_maxLife;        
-    }
-
-    private void UpdateMaxLife(float amount)
-    {
-        _maxLife = amount;
-    }
+        _healthBar.fillAmount = currentLife/maxLife;        
+    } 
 
     private void ShowDefeatScreen()
     {
