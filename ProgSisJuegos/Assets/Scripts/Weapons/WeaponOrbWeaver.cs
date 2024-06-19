@@ -70,4 +70,16 @@ public class WeaponOrbWeaver : WeaponBase
         if (_isCharging && _currentChargeTime > 0) _currentChargeTime -= deltaTime;
         if (!_isCharging) _currentChargeTime = _chargeTime;
     }
+
+    public override void Swapped()
+    {
+        if (_chargedOrb != null)
+        {
+            _spawnTransform = null;
+            _isCharging = false;
+            _currentChargeTime = 0;
+            _chargedOrb.gameObject.SetActive(false);
+            _chargedOrb = null;
+        }
+    }
 }

@@ -7,5 +7,6 @@ public interface IWeapon
     void Fire(Transform projectileOutTransform);
     void StopFire();
     void Recoil(float deltaTime);
+    void Swapped();
     void Reset();
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GameScenes
   m_EditorClassIdentifier: 
   _mainMenuScene: MainMenu
-  _testScene: AIScene
+  _testScene: UIScene
   _gamePlayScenes:
   - "pos aqui van las escenas de jugabilidad o algo as\xED"
