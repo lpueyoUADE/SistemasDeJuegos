@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private List<ShipBase> _shipList = new List<ShipBase>();
+
     // Scene references
     [SerializeField] private ShipDatabase _playerPrefab;
     [SerializeField] private PlayerCamera _playerCamera;
@@ -13,6 +15,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<ProjectileBase> _extraProjectiles = new List<ProjectileBase>();
     [SerializeField] private List<ShipDatabase> _enemyList = new List<ShipDatabase>();
 
+    // Static instances
+    private static GameManager _instance;
+    private static Pool _pool;
+    private static FactoryProjectiles _factoryProjectile;
+    private static FactoryWeapon _factoryWeapon;
+    private static ShipFactory _shipFactory;
+
+
     // Values
     private float _currentScore = 0;
 
@@ -20,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         SubEvents();
         FactoryWeapon.InitializeFactoryWeapons(_weaponsList);
+       _shipFactory = new ShipFactory(_shipList);
     }
 
     private void OnDestroy()
@@ -29,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void SubEvents()
     {
+        GameManagerEvents.createEnemyDelegate += SpawnEnemy;
         GameManagerEvents.OnEnemyDestroyed += EventOnEnemyDestroyed;
         PlayerEvents.OnPlayerSpawn += EventOnPlayerSpawned;
         PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
@@ -82,5 +94,11 @@ public class GameManager : MonoBehaviour
     {
         _currentScore += points;
         UIEvents.OnScoreUpdate(_currentScore);
+    }
+
+    private GameObject SpawnEnemy(ShipDatabase ship)
+    {
+        return _shipFactory.CreateEnemy(ship.Type);
+
     }
 }

@@ -23,6 +23,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public int ShipCurrentWeaponIndex => _weaponIndex;
     public float ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
+       
 
     private void Awake()
     {

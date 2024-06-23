@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class EnemyBase : ShipBase
 {
     protected FSMAIBase _behaviour;
+    public event Action OnDisabled;
 
     protected override void Start()
     {
@@ -19,6 +21,16 @@ public class EnemyBase : ShipBase
         //_behaviour?.FSMUpdate(delta);
     }
 
+    public override void AnyDamage(float amount)
+    {
+        _currentLife -= amount;
+        if (_currentLife <= 0)
+        {
+            OnDeath();
+        }
+    }
+
+    [ContextMenu("Destroy")]
     public override void OnDeath()
     {
         GameManagerEvents.OnEnemyDestroyed(_shipData.Points);

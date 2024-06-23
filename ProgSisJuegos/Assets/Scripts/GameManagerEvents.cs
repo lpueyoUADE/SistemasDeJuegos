@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class GameManagerEvents
 {
@@ -10,6 +11,8 @@ public static class GameManagerEvents
     // Scenes
     public static Action OnSceneChange;
 
-    // InGame evenets
+    // InGame events
+    public delegate GameObject CreateEnemy(ShipDatabase ship);
+    public static CreateEnemy createEnemyDelegate;
     public static Action<float> OnEnemyDestroyed;
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: NewEnemyWaveData
   m_EditorClassIdentifier: 
   _enemies:
-  - {fileID: 8906304283985753769, guid: fa4854045b7d4054e8e11814f33b77de, type: 3}
+  - {fileID: 7118146329150294076, guid: c0de0692da55cff4580865e9f8851149, type: 3}
