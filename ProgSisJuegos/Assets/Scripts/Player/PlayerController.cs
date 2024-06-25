@@ -27,7 +27,8 @@ public class PlayerController : ShipBase
     }
 
     protected override void Start()
-    {        
+    {
+        PlayerEvents.OnItemGrab += OnItemGrab;
         PlayerEvents.OnPlayerSpawn?.Invoke(this);
         OnWeaponChanged += WeaponSwapTest;
         base.Start();
@@ -41,6 +42,17 @@ public class PlayerController : ShipBase
         AddWeapon(WeaponType.HeatTrail);
         AddWeapon(WeaponType.OrbWeaver);
         AddWeapon(WeaponType.Gamma);
+    }
+
+    void OnDestroy()
+    {
+        PlayerEvents.OnItemGrab -= OnItemGrab;
+        OnWeaponChanged -= WeaponSwapTest;
+    }
+
+    private void OnItemGrab(ItemDatabase itemData)
+    {
+        Debug.Log($"Item grabbed: {itemData}");
     }
 
     public override void AnyDamage(float amount)
@@ -93,8 +105,7 @@ public class PlayerController : ShipBase
     }
 
 
-    //For TESTING only
-
+#if UNITY_EDITOR
     [ContextMenu("Damage")]
     public void Damage()
     {
@@ -106,4 +117,5 @@ public class PlayerController : ShipBase
     {
         Heal(2);
     }
+#endif
 }

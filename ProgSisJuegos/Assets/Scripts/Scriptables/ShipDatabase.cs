@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ShipType
 {
+    None,
     ElCapitan,
     Mosquitoe, 
     CannonFoder,

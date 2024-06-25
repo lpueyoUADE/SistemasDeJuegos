@@ -12,8 +12,8 @@ public class FactoryProjectiles : MonoBehaviour
         foreach (ProjectileBase projectile in projectiles)
             message += $"{projectile.ProjectileType}, ";
 
-        Debug.Log($"{message} Initialized {projectiles.Count} items.");
         _projectiles = projectiles;
+        Debug.Log($"{message} Initialized {_projectiles.Count} items.");
     }
 
     public static ProjectileBase GenerateProjectile(WeaponType type)
