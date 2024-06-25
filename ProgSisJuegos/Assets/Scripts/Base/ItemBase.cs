@@ -20,8 +20,8 @@ public class ItemBase : MonoBehaviour, IItem
 
     public virtual void ItemGrab()
     {
+        UIEvents.OnPlayUISound(_itemData.ItemGrabSound, 1);
         PlayerEvents.OnItemGrab.Invoke(ItemData);
         OnSleep.Invoke();
-        //this.gameObject.SetActive(false);
     }
 }

@@ -6,28 +6,38 @@ public class WeaponNone : IWeapon
 
     Sprite IWeapon.WeaponIcon => null;
 
+    public void UpdateAmmo(int ammoAmount = 0, bool replaceAmount = false)
+    {
+        Debug.LogError("Empty weapon.");
+    }
+
     public void Fire(Transform projectileOutPosition)
     {
-        Debug.Log("Empty weapon.");
+        Debug.LogError("Empty weapon.");
     }
 
     public void Recoil(float deltaTime)
     {
-        Debug.Log("Empty weapon.");
+        Debug.LogError("Empty weapon.");
     }
 
     public void Swapped()
     {
-        Debug.Log("Empty weapon.");
+        Debug.LogError("Empty weapon.");
     }
 
     public void Reset()
     {
-        Debug.Log("Empty weapon.");
+        Debug.LogError("Empty weapon.");
     }
 
     public void StopFire()
     {
-        Debug.Log("Empty weapon.");
+        Debug.LogError("Empty weapon.");
+    }
+
+    public virtual void PlaySound(AudioSource source, AudioClip clip, float volume = 1)
+    {
+        Debug.LogError("Empty weapon.");
     }
 }

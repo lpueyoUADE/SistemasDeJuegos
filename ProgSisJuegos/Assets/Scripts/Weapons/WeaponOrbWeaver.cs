@@ -65,6 +65,14 @@ public class WeaponOrbWeaver : WeaponBase
         }
     }
 
+    public override void UseAmmo()
+    {
+        base.UseAmmo();
+        PlayerEvents.OnWeaponAmmoUpdate(WeapType, _currentAmmo);
+
+        if (_currentAmmo <= 0) PlayerEvents.OnWeaponAmmoEmpty?.Invoke(this);
+    }
+
     public override void Recoil(float deltaTime)
     {
         if (_isCharging && _currentChargeTime > 0) _currentChargeTime -= deltaTime;

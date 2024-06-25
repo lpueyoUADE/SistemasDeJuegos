@@ -78,7 +78,6 @@ public class PoolGenerics
             // Create if no coincidence was found.
             var newItemConsumable = new ItemPoolEntry<T> { ItemConsumable = consumableType, ItemWeapon = WeaponType.None };
             _inUse.Add(newItemConsumable);
-            Debug.Log($"ItemPool: Consumable '{consumableType}' not found, creating one... {newItemConsumable.ItemConsumable}/{newItemConsumable.Value}/{_inUse.Count}");
             return newItemConsumable;
         }
 
@@ -101,7 +100,6 @@ public class PoolGenerics
             // Create if no coincidence was found.
             var newItemWeapon = new ItemPoolEntry<T> { ItemConsumable = ConsumableType.None, ItemWeapon = weaponType };
             _inUse.Add(newItemWeapon);
-            Debug.Log($"ItemPool: Weapon '{newItemWeapon}' not found, creating one... {newItemWeapon.ItemWeapon}/{newItemWeapon.Value}/{_inUse.Count}");
             return newItemWeapon;
         }
 

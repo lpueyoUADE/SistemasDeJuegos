@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d270839fbf42984ca0b6f3bb15ffde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundsToUse: {fileID: 11400000, guid: 10b4b41a200017b46bf9b8773c377a77, type: 2}
   _playerPrefab: {fileID: 11400000, guid: 118817d7f5e074c46b1546b574e17c44, type: 2}
   _playerCamera: {fileID: 0}
   _weaponsList:
@@ -72,8 +73,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af3e00663213a8b4a8496a30e1eabb39, type: 2}
   _enemyList:
   - {fileID: 11400000, guid: 3a9536cd520ce894b9adda75328c3f98, type: 2}
+  shipToSpawn: 0
+  projectileToSpawn: 0
   consumableItemToSpawn: 0
-  weaponItemToSpawn: 0
+  weaponItemToSpawn: 2
+  locationToSpawn: {fileID: 0}
 --- !u!114 &1181906096915222107
 MonoBehaviour:
   m_ObjectHideFlags: 0

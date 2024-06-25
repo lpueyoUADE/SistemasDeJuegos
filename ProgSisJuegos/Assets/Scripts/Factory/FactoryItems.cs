@@ -10,7 +10,7 @@ public class FactoryItems : MonoBehaviour
     {
         string message = "Factory Items: \n";
         foreach (ItemBase item in items)
-            message += $"{item.name} - {item.ItemData}, ";
+            message += $"{item.name}, ";
 
         _items = items;
         Debug.Log($"{message} Initialized {_items.Count} items.");

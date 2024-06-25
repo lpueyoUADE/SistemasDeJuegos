@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GeneralSoundsDatabase _soundsToUse;
+
     // Scene references
     [SerializeField] private ShipDatabase _playerPrefab;
     [SerializeField] private PlayerCamera _playerCamera;
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         SubEvents();
         FactoryWeapon.InitializeFactoryWeapons(_weaponsList);
+        Sounds.UpdateDatabase(_soundsToUse);
     }
 
     private void OnDestroy()
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         GameManagerEvents.OnEnemyDestroyed += EventOnEnemyDestroyed;
         PlayerEvents.OnPlayerSpawn += EventOnPlayerSpawned;
+        PlayerEvents.OnWeaponSwap += EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath += EventOnPlayerDeath;
     }
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         GameManagerEvents.OnEnemyDestroyed -= EventOnEnemyDestroyed;
         PlayerEvents.OnPlayerSpawn -= EventOnPlayerSpawned;
+        PlayerEvents.OnWeaponSwap -= EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate -= EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath -= EventOnPlayerDeath;
     }
@@ -87,6 +92,11 @@ public class GameManager : MonoBehaviour
     {
         _playerCamera._player = reference;
         UIEvents.OnPlayerSpawn.Invoke();
+    }
+
+    private void EventOnPLayerSwapWeapon(WeaponType type)
+    {
+        UIEvents.OnWeaponSwap?.Invoke(type);
     }
 
     private void EventOnPlayerHPUpdate(float currentLife, float maxLife)

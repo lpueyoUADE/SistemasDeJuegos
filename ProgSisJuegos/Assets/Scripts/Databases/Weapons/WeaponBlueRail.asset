@@ -20,3 +20,9 @@ MonoBehaviour:
   _projectilePrefab: {fileID: -2332886714929930556, guid: 64386285120186b42b413ecb2a3c7269, type: 3}
   _projectileDamage: 1
   _projectileSpeed: 3
+  _projectileLife: 5
+  _sfx1: {fileID: 8300000, guid: d79240b570286cd47b0c1780b1bf0016, type: 3}
+  _sfx2: {fileID: 0}
+  _sfx3: {fileID: 0}
+  _sfx4: {fileID: 0}
+  _sfx5: {fileID: 0}

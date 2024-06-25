@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df3cb7ee37952c48a29f64b041cff25, type: 3}
+  m_Name: GeneralSpaceSounds
+  m_EditorClassIdentifier: 
+  _projectileHitShipSounds:
+  - {fileID: 8300000, guid: 516029beade2be34c9a0b9d8ac18d23a, type: 3}
+  _shipExplosionSounds:
+  - {fileID: 8300000, guid: adf48a9ab1528f24aa11f6459488c443, type: 3}
+  - {fileID: 8300000, guid: 4e5e484b1dbd11a47a13ba5f4b5509ce, type: 3}

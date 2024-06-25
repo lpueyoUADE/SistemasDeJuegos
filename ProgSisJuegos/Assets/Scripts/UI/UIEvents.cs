@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class UIEvents
 {
-    public UIEvents() { }
+    public static Action<AudioClip, float> OnPlayUISound;
 
-    // UI Actions & Events
     public static Action<List<WeaponDatabase>> OnAllWeaponsInitialize;
-    public static Action<WeaponType> OnAddInventoryWeapon;
+    public static Action<WeaponType, int> OnAddInventoryWeapon;
     public static Action<WeaponType> OnRemoveInventoryWeapon;
     public static Action<WeaponType> OnWeaponSwap;
 

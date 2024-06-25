@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7c92b82268e874cb58a316f4805cce, type: 3}
   m_Name: WeaponGreenCrast
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 3435555938649777502, guid: eafd82438b122d74299b32ff51b6136b, type: 3}
   _weaponIcon: {fileID: 21300000, guid: acec2bd2129ff97419113ba795ddd65c, type: 3}
   _type: 4
-  _damage: 25
   _recoil: 0.25
   _hasInfiniteAmmo: 0
   _defaultAmmoAmount: 150
+  _projectilePrefab: {fileID: 3435555938649777502, guid: eafd82438b122d74299b32ff51b6136b, type: 3}
+  _projectileDamage: 1
   _projectileSpeed: 8
+  _projectileLife: 5
+  _sfx1: {fileID: 8300000, guid: eb59197ee6d6e974eb3a41c4c41b41a4, type: 3}
+  _sfx2: {fileID: 0}
+  _sfx3: {fileID: 0}
+  _sfx4: {fileID: 0}
+  _sfx5: {fileID: 0}

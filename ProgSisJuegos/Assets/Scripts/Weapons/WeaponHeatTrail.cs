@@ -9,11 +9,11 @@ public class WeaponHeatTrail : WeaponBase
         InitializeWeapon(data);
     }
 
-    public override void Fire(Transform spawnTransform)
+    public override void UseAmmo()
     {
-        if (WeaponData.WeapHasInfiniteAmmo || Ammo > 0)
-        {
-            UseAmmo();
-        }
+        base.UseAmmo();
+        PlayerEvents.OnWeaponAmmoUpdate(WeapType, _currentAmmo);
+
+        if (_currentAmmo <= 0) PlayerEvents.OnWeaponAmmoEmpty?.Invoke(this);
     }
 }

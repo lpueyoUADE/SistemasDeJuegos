@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class ShipBase : MonoBehaviour, IDamageable, IShip
 {
+    [Header("Data")]
     [SerializeField] protected ShipDatabase _shipData;
+
+    [Header("References")]
     [SerializeField] private Transform _projectileOut;
+    private AudioSource _audioSource;
 
     private Rigidbody _rBody;
     private List<IWeapon> _weaponList = new List<IWeapon>();
@@ -24,10 +28,13 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     public float ShipCurrentLife => _currentLife;
     public bool ShipIsShielded => _isShielded;
 
+    public AudioSource Audio => _audioSource;
+
     private void Awake()
     {
         _rBody = GetComponent<Rigidbody>();
         _currentLife = _shipData.Life;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -66,19 +73,35 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void Shield(float duration, Color color)
     {
-        throw new System.NotImplementedException();
+        Debug.LogWarning("Shielding not implemented.");
     }
 
-    public virtual void AddWeapon(WeaponType type)
+    public virtual void AddWeapon(WeaponType type, int ammo = 0)
     {
+        foreach (IWeapon weapon in _weaponList)
+        {
+            if (weapon.WeaponType != type) continue;
+            Debug.Log($"Adding {ammo} of ammo to {type}.");
+            weapon.UpdateAmmo(ammo);
+            return;
+        }
+
         _weaponList.Add(FactoryWeapon.CreateWeapon(type));
+    }
+
+    public virtual void RemoveWeapon(IWeapon type)
+    {
+        _currentWeapon?.Swapped();
+        _weaponIndex = 0;
+        _currentWeapon = _weaponList[_weaponIndex];
+        _weaponList.Remove(type);    
     }
 
     public virtual void SwapWeapon(bool isNext = true)
     {
         if (ShipWeapons.Count <= 1) return;
 
-        if (!isNext)
+        if (isNext)
         {
             if (_weaponIndex < _weaponList.Count - 1) _weaponIndex++;
             else _weaponIndex = 0;
@@ -123,7 +146,13 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         _currentLife -= amount;
 
-        if (_currentLife <= 0) OnDeath();
+        if (_currentLife <= 0)
+        {
+            OnDeath();
+            return;
+        }
+
+        _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShip);
     }
 
     public virtual void Heal(float amount)
