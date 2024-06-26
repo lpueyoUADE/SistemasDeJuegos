@@ -24,17 +24,17 @@ public class FactoryWeapon
         _weaponsDict.TryGetValue(type, out WeaponDatabase data);        
 
         //Debug.Log($"Factory (WEAPONS): Trying to create {type} - value {data}.");
-        UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount);
+        
 
         switch (type)
         {
             // Player type
-            case WeaponType.BlueRail: return new WeaponBlueRail(data);
-            case WeaponType.RedDiamond: return new WeaponRedDiamond(data);
-            case WeaponType.GreenCrast: return new WeaponGreenCrast(data);
-            case WeaponType.HeatTrail: return new WeaponHeatTrail(data);
-            case WeaponType.OrbWeaver: return new WeaponOrbWeaver(data);
-            case WeaponType.Gamma: return new WeaponGamma(data);
+            case WeaponType.BlueRail: UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount); return new WeaponBlueRail(data);
+            case WeaponType.RedDiamond: UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount); return new WeaponRedDiamond(data);
+            case WeaponType.GreenCrast: UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount); return new WeaponGreenCrast(data);
+            case WeaponType.HeatTrail: UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount); return new WeaponHeatTrail(data);
+            case WeaponType.OrbWeaver: UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount); return new WeaponOrbWeaver(data);
+            case WeaponType.Gamma: UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount); return new WeaponGamma(data);
 
             // Enemy type
             case WeaponType.EnemyBlueRail: return new WeaponEnemyBlueRail(data);

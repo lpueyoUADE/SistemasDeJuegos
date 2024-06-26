@@ -42,7 +42,7 @@ public class WeaponBase : IWeapon
     {
         if ((!WeaponData.WeapHasInfiniteAmmo && _currentAmmo <= 0) || _currentRecoil > 0) return;
 
-        PlayerEvents.OnWeaponPlaySound?.Invoke(SFX1, 1);
+        if (SFX1 != null) PlayerEvents.OnWeaponPlaySound?.Invoke(SFX1, 1);
         ProjectileBase projectile = Pool.CreateProjectile(WeapType);
         projectile.transform.rotation = spawnTransform.rotation;
         projectile.transform.position = spawnTransform.position;
