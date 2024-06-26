@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _currentWeapon;
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private GameObject _defeatScreen;
+    [SerializeField] private GameObject _winScreen;
 
     // Values
     private AudioSource _audio;
@@ -34,6 +35,8 @@ public class UIManager : MonoBehaviour
     {
         /*
         _healthBar.value = _healthBar.maxValue;*/
+        UIEvents.OnPlayerWin += ShowWinScreen;
+
         _createdWeaponSelector = Instantiate(_weaponSelector);
     }
 
@@ -90,6 +93,11 @@ public class UIManager : MonoBehaviour
     private void ShowDefeatScreen()
     {
         _defeatScreen.SetActive(true);
+    }
+
+    private void ShowWinScreen()
+    {
+        _winScreen.SetActive(true);
     }
 
     private void UpdateScore(float newScore)

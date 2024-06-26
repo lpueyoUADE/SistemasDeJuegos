@@ -72,6 +72,8 @@ public class EnemyManager : MonoBehaviour
         {
             //no more enemy waves, level cleared
             print("Level Cleared!");
+            UIEvents.OnPlayerWin();
+
         }
 
         print("Wave: " + (_index - 1));
