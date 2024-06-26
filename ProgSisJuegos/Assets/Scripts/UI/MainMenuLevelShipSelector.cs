@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MainMenuLevelShipSelector : MonoBehaviour
 {
     [SerializeField] private GameObject _mainMenuObject;
+    [SerializeField] private Transform _shipShowcaseTransform;
 
     [Header("Disable objects after game starting")]
     [SerializeField] private List<GameObject> _objectsList;
@@ -24,6 +25,7 @@ public class MainMenuLevelShipSelector : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _shipName;
 
     // Values
+    private List<GameObject> _spawnedShipsForShowcase = new List<GameObject>();
     private AudioSource _audio;
     private int _currentSceneIndex = 0;
     private int _currentShipIndex = 0;
@@ -41,9 +43,17 @@ public class MainMenuLevelShipSelector : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < _shipsList.Count; i++)
+        {
+            var showcaseship = Instantiate(_shipsList[i].ShowcasePrefab, _shipShowcaseTransform.position, _shipsList[i].ShowcasePrefab.transform.rotation);
+            _spawnedShipsForShowcase.Add(showcaseship);
+            showcaseship.SetActive(false);
+        }
+
         _sceneSplash.sprite = _scenesInformation[_currentSceneIndex].SplashImage;
         _sceneNameToUser.text = _scenesInformation[_currentSceneIndex].SceneNameToUser;
 
+        _spawnedShipsForShowcase[_currentShipIndex].SetActive(true);
         _shipName.text = _shipsList[_currentShipIndex].Name;
     }
 
@@ -67,6 +77,8 @@ public class MainMenuLevelShipSelector : MonoBehaviour
 
     public void ChangeShip(bool isNext)
     {
+        _spawnedShipsForShowcase[_currentShipIndex].SetActive(false);
+
         if (isNext)
         {
             if (_currentShipIndex == _shipsList.Count - 1) _currentShipIndex = 0;
@@ -79,6 +91,7 @@ public class MainMenuLevelShipSelector : MonoBehaviour
             else _currentShipIndex--;
         }
 
+        _spawnedShipsForShowcase[_currentShipIndex].SetActive(true);
         _shipName.text = _shipsList[_currentShipIndex].Name;
     }
 

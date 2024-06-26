@@ -16,11 +16,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private VerticalLayoutGroup _controlsMenu;
     [SerializeField] private VerticalLayoutGroup _optionsMenu;
 
-    [SerializeField] private SpriteRenderer _shipSprite; // remove this
-    [SerializeField] private List<ShipDatabase> _ships; // and maybe this
     private AudioSource _audio;
-
-    [SerializeField] private ScenesDatabase _scenesData;
     public AudioSource Audio => _audio;
 
     private void Awake()
@@ -36,11 +32,6 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
-    }
-
-    public void ShipChange(bool isNext)
-    {
-
     }
 
     public void ChangeMenu(int newSection)

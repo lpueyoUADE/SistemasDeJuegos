@@ -18,19 +18,21 @@ public enum ShipType
 public class ShipDatabase : ScriptableObject
 {
     [SerializeField] protected ShipType _shipType;
-    [SerializeField] protected string _shipNameToUser;
     [SerializeField] protected ShipBase _prebab;
-    [SerializeField] protected Mesh _showcaseMesh;
     [SerializeField] private int _points;
 
-    [Header("Ship Settings")]
+    [Header("Showcase")]
+    [SerializeField] protected string _shipNameToUser;
+    [SerializeField] protected GameObject _showcaseObject;
+
+    [Header("Settings")]
     [SerializeField] private float _life = 10;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _acceleration;
     [SerializeField, Range(0, 99)] protected float _damageResistance;
     [SerializeField] protected WeaponType _defaultWeapon;
 
-    [Header("Shield Settings")]
+    [Header("Shield")]
     [SerializeField, Range(0, 5)] private float _shieldDuration = 1;
     [SerializeField] private Color _shieldColor = Color.green;
 
@@ -38,7 +40,7 @@ public class ShipDatabase : ScriptableObject
     public ShipType Type => _shipType;
     public string Name => _shipNameToUser;
     public ShipBase Prefab => _prebab;
-    public Mesh Mesh => _showcaseMesh;
+    public GameObject ShowcasePrefab => _showcaseObject;
     public int Points => _points;
 
     public float Life => _life;

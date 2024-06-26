@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ShipSonic
   m_EditorClassIdentifier: 
   _shipType: 2
-  _shipNameToUser: Sonic
   _prebab: {fileID: 3102686959821975067, guid: 7b69242db64eef84b8e60ed6fde411ce, type: 3}
-  _showcaseMesh: {fileID: -5495902117074765545, guid: c1321936639981e4680abbcadb48372d, type: 3}
   _points: 0
+  _shipNameToUser: Sonic
+  _showcaseObject: {fileID: 4314333843008958046, guid: aca8568118e27ae48a323225cafd6e25, type: 3}
   _life: 15
   _maxSpeed: 12
   _acceleration: 25
