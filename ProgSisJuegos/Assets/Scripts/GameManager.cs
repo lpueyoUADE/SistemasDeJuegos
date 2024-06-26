@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
         var generatedObject = Pool.CreateShip(ship.Type);
         generatedObject.transform.position = spawnPosition;
-        generatedObject.transform.rotation = Quaternion.identity;
+        generatedObject.transform.rotation = Quaternion.Euler(0,180,0);
 
         Debug.Log($"Spawing {generatedObject.name} at {locationToSpawn.position}.");
 
