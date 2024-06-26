@@ -132,7 +132,6 @@ MonoBehaviour:
   _maskObs:
     serializedVersion: 2
     m_Bits: 2113
-  _life: 1
   _projectileType: 1
 --- !u!1001 &1810876747139674984
 PrefabInstance:

@@ -9,6 +9,7 @@ public class FactoryWeapon
 
     public static void InitializeFactoryWeapons(List<WeaponDatabase> weapons)
     {
+        _weaponsDict.Clear();
         string message = "Factory Weapons: \n";
         foreach (WeaponDatabase weapon in weapons)
         {

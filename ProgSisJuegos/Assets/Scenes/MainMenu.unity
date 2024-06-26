@@ -411,6 +411,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2001163098196239826, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
   m_PrefabInstance: {fileID: 2001163097583039157}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1781113562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2001163098472638032, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
+  m_PrefabInstance: {fileID: 2001163097583039157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2001163097583039157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -418,6 +423,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 117361969570238510, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117361969570238510, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117361969570238510, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117361969570238510, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2001163098196239826, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -466,6 +487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuObject_SpacialTheme
       objectReference: {fileID: 0}
+    - target: {fileID: 2001163098266386991, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
+      propertyPath: rotatedObject
+      value: 
+      objectReference: {fileID: 1781113562}
     - target: {fileID: 2572537431629858031, guid: bcf72ca7f8bd5bc4c865f099b7014cf3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

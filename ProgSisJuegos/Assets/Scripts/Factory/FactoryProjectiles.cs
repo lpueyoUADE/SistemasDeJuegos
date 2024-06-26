@@ -8,6 +8,7 @@ public class FactoryProjectiles : MonoBehaviour
 
     public static void UpdateAvailableProjectiles(List<ProjectileBase> projectiles)
     {
+        _projectiles.Clear();
         string message = "Factory Projectiles: \n";
         foreach (ProjectileBase projectile in projectiles)
             message += $"{projectile.ProjectileType}, ";

@@ -8,6 +8,7 @@ public class ShipFactory : MonoBehaviour
 
     public static void InitializeFactoryShips(List<ShipDatabase> ships)
     {
+        _shipsDict.Clear();
         string message = "Factory ships: \n";
         foreach (ShipDatabase ship in ships)
         {

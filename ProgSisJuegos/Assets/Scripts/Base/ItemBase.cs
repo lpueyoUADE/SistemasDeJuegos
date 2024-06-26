@@ -22,6 +22,11 @@ public class ItemBase : MonoBehaviour, IItem
     {
         UIEvents.OnPlayUISound(_itemData.ItemGrabSound, 1);
         PlayerEvents.OnItemGrab.Invoke(ItemData);
-        OnSleep.Invoke();
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        OnSleep?.Invoke();
     }
 }

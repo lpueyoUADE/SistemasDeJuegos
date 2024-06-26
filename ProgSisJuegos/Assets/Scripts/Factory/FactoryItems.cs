@@ -8,6 +8,7 @@ public class FactoryItems : MonoBehaviour
 
     public static void UpdateAvailableItems(List<ItemBase> items)
     {
+        _items.Clear();
         string message = "Factory Items: \n";
         foreach (ItemBase item in items)
             message += $"{item.name}, ";

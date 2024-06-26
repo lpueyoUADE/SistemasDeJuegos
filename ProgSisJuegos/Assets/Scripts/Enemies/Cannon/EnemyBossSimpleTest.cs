@@ -12,7 +12,7 @@ public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("PlayerProjectile")) return;
+        //if (!collision.gameObject.CompareTag("PlayerProjectile")) return;
     }
 
     public void AnyDamage(float amount)
