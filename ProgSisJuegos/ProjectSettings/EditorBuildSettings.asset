@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GroundScene.unity
     guid: b9418db72ae3d6346afcab94c4d262b8
+  - enabled: 1
+    path: Assets/Scenes/Showcase.unity
+    guid: 7482ee94cee644644942063b591e6c2e
   m_configObjects: {}
