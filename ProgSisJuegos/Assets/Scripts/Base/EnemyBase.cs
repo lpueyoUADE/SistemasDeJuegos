@@ -43,5 +43,6 @@ public class EnemyBase : ShipBase
     {
         GameManagerEvents.OnEnemyDestroyed(_shipData.Points);
         base.OnDeath();
-    }   
+    }
+    
 }

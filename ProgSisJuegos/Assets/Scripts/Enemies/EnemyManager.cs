@@ -39,6 +39,7 @@ public class EnemyManager : MonoBehaviour
     {
         LoadNextEnemyWave();
         EnableUpdate();
+        GameManagerEvents.OnEnemyDestroyed += EnemyDestroyed;
     }
     
     public void SetCenter(Vector3 pos)
@@ -57,11 +58,11 @@ public class EnemyManager : MonoBehaviour
                 if (enemy != null)
                 {
 
-                    GameObject temp = GameManagerEvents.createEnemyDelegate.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,70))); 
-                    var spawnedEnemy = temp.GetComponent<EnemyBase>();
+                    /*GameObject temp = */GameManagerEvents.createEnemyDelegate.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,70))); 
+                    //var spawnedEnemy = temp.GetComponent<EnemyBase>();
                     _enemiesOnScreen++;
                     //enemy += EnemyDestroyed;
-                    spawnedEnemy.OnDisabled += EnemyDestroyed;
+                    //spawnedEnemy.OnDisabled += EnemyDestroyed;
                     _horizontalOffset += 10f;
                 }
             }
@@ -82,7 +83,7 @@ public class EnemyManager : MonoBehaviour
         startUpdate = true;
     }
 
-    private void EnemyDestroyed()
+    private void EnemyDestroyed(float none)
     {
         _enemiesOnScreen--;
     }
