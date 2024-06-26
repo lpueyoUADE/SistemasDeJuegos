@@ -25,6 +25,13 @@ public class WeaponDatabase : ScriptableObject
     [SerializeField, Range(0, 20)] private float _projectileSpeed = 3;
     [SerializeField, Range(0, 20)] private float _projectileLife = 5;
 
+    [Header("Sound settings")]
+    [SerializeField] private AudioClip _sfx1;
+    [SerializeField] private AudioClip _sfx2;
+    [SerializeField] private AudioClip _sfx3;
+    [SerializeField] private AudioClip _sfx4;
+    [SerializeField] private AudioClip _sfx5;
+
     public Sprite WeapIcon => _weaponIcon;
     public WeaponType WeapType => _type;    
     public float WeapRecoil => _recoil;
@@ -35,4 +42,12 @@ public class WeaponDatabase : ScriptableObject
     public float WeapProjectileDamage => _projectileDamage;
     public float WeapProjectileSpeed => _projectileSpeed;
     public float WeapProjectileLife => _projectileLife;
+
+    public AudioClip WeapSFX1 => _sfx1;
+    public AudioClip WeapSFX2 => _sfx2;
+    public AudioClip WeapSFX3 => _sfx3;
+    public AudioClip WeapSFX4 => _sfx4;
+    public AudioClip WeapSFX5 => _sfx5;
+
+
 }

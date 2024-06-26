@@ -15,6 +15,7 @@ public class EnemyBase : ShipBase
     protected override void Update()
     {
         float delta = Time.deltaTime;
+        if (ShipIsShielded) UpdateShield(delta);
 
         //Fire();
         //Recoil(delta);

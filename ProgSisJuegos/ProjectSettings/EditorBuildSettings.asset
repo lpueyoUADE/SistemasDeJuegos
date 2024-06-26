@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: a064e7d506bb65647b82e112d615382e
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/OGMainMenuTest.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/SpawnTestScene.unity
     guid: a1bde5ed81c930d40ae3b9674e06ffb6
+  - enabled: 1
+    path: Assets/Scenes/SpaceScene.unity
+    guid: 61cd3e7ea5775ba49842b359293f5adc
+  - enabled: 1
+    path: Assets/Scenes/GroundScene.unity
+    guid: b9418db72ae3d6346afcab94c4d262b8
   m_configObjects: {}

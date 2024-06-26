@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour, IProjectile
@@ -13,6 +11,7 @@ public class ProjectileBase : MonoBehaviour, IProjectile
     protected float _damage = 1;
     protected float _speed = 1;
     protected Vector3 _lastPosition = Vector3.zero;
+    protected bool _startCountdown = false;
 
     public Vector3 LastPositionDirection => (_lastPosition - transform.position).normalized;
     public float LastPositionDistance => Vector3.Distance(transform.position, _lastPosition);
@@ -27,18 +26,23 @@ public class ProjectileBase : MonoBehaviour, IProjectile
 
     protected private virtual void OnEnable()
     {
+        UpdateStats();
         _rBody.velocity = Vector3.zero;
         _lastPosition = Vector3.zero;
     }
 
     protected private virtual void OnDisable()
     {
+        UpdateStats();
         _lastPosition = Vector3.zero;
+        _startCountdown = false;
         OnSleep?.Invoke();
     }
 
     protected private virtual void Update()
     {
+        if (!_startCountdown) return;
+
         _currentLife -= Time.deltaTime;
 
         if (_currentLife <= 0)
@@ -50,6 +54,8 @@ public class ProjectileBase : MonoBehaviour, IProjectile
 
     protected private virtual void FixedUpdate()
     {
+        if (!_startCountdown) return;
+
         _rBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
 
         if (transform.position != Vector3.zero)
@@ -58,6 +64,8 @@ public class ProjectileBase : MonoBehaviour, IProjectile
 
     protected private virtual void OnTriggerEnter(Collider other)
     {
+        if (!_startCountdown) return;
+
         if (!other.CompareTag(_targetTag)) return;
         other.TryGetComponent(out IDamageable damageble);
 
@@ -85,6 +93,7 @@ public class ProjectileBase : MonoBehaviour, IProjectile
         _damage = damage;
         _speed = speed;
         _rBody.AddForce(transform.forward * _speed, ForceMode.Force);
+        _startCountdown = true;
     }
 
     public virtual void UpdateStats(float damage, float speed)
@@ -93,17 +102,19 @@ public class ProjectileBase : MonoBehaviour, IProjectile
         _damage = damage;
         _speed = speed;
         _rBody.AddForce(transform.forward * _speed, ForceMode.Force);
+        _startCountdown = true;
     }
 
     public virtual void UpdateStats()
     {
         _lastPosition = transform.position;
         _rBody.AddForce(transform.forward * _speed, ForceMode.Force);
+        _startCountdown = true;
     }
 
     public virtual void ProjectileHit(IDamageable hit)
     {
-        hit.AnyDamage(_damage);
+        hit?.AnyDamage(_damage);
         _currentLife = 0;
     }
 

@@ -24,7 +24,7 @@ public class FactoryWeapon
         _weaponsDict.TryGetValue(type, out WeaponDatabase data);        
 
         //Debug.Log($"Factory (WEAPONS): Trying to create {type} - value {data}.");
-        UIEvents.OnAddInventoryWeapon.Invoke(type);
+        UIEvents.OnAddInventoryWeapon.Invoke(type, data.WeapInitialAmmoAmount);
 
         switch (type)
         {

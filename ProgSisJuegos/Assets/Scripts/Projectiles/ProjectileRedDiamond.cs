@@ -10,13 +10,13 @@ public class ProjectileRedDiamond : ProjectileBase
         Vector3 right = transform.right;
 
         ProjectileRedDiamondBall ballLeft = (ProjectileRedDiamondBall)Pool.CreateProjectile(WeaponType.RedDiamondBall);
-        ballLeft.UpdateStats();
+        //ballLeft.UpdateStats();
         ballLeft.LastDamagedEnemy(hit);
         ballLeft.transform.position = position;
         ballLeft.transform.forward = -right;
 
         ProjectileRedDiamondBall ballRight = (ProjectileRedDiamondBall)Pool.CreateProjectile(WeaponType.RedDiamondBall);
-        ballRight.UpdateStats();
+        //ballRight.UpdateStats();
         ballRight.LastDamagedEnemy(hit);
         ballRight.transform.position = position;
         ballRight.transform.forward = right;

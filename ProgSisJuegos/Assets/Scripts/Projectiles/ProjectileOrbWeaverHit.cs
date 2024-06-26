@@ -13,8 +13,8 @@ public class ProjectileOrbWeaverHit : ProjectileBase
 
     public override void UpdateStats()
     {
-        base.UpdateStats(_ballDamage, _ballSpeed, _ballLife);
         _hitsLeft = _maxHits;
+        base.UpdateStats(_ballDamage, _ballSpeed, _ballLife);
     }
 
     public override void ProjectileHit(IDamageable hit)

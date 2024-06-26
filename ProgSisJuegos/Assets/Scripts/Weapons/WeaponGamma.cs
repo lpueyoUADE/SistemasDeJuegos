@@ -13,7 +13,7 @@ public class WeaponGamma : WeaponBase
 
     public override void Fire(Transform spawnTransform)
     {
-        if ((!WeaponData.WeapHasInfiniteAmmo || _currentAmmo <= 0) && _currentRecoil > 0) return;
+        if ((!WeaponData.WeapHasInfiniteAmmo && _currentAmmo <= 0) || _currentRecoil > 0) return;
         if (_trail == null) _trail = Pool.CreateProjectile(WeapType);
 
         _trail.transform.rotation = spawnTransform.rotation;
@@ -28,6 +28,18 @@ public class WeaponGamma : WeaponBase
         {
             _trail.gameObject.SetActive(false);
             _trail = null;
+        }
+    }
+
+    public override void UseAmmo()
+    {
+        base.UseAmmo();
+        PlayerEvents.OnWeaponAmmoUpdate(WeapType, _currentAmmo);
+
+        if (_currentAmmo <= 0)
+        {
+            StopFire();
+            PlayerEvents.OnWeaponAmmoEmpty?.Invoke(this);
         }
     }
 

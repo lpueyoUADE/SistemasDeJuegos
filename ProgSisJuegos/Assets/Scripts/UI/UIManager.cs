@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
 
     private void SubEvents()
     {
+        UIEvents.OnPlayUISound += PlayUISound;
         UIEvents.OnAllWeaponsInitialize += CreateWeaponsList;
         UIEvents.OnAddInventoryWeapon += AddInventoryWeapon;
         UIEvents.OnRemoveInventoryWeapon += RemoveInventoryWeapon;
@@ -51,12 +52,14 @@ public class UIManager : MonoBehaviour
         UIEvents.OnPlayerSpawn += OnPlayerSpawn;
         UIEvents.OnPlayerHPUpdate += UpdateHpBar;        
         UIEvents.OnPlayerDeath += ShowDefeatScreen;
-        //UIEvents.OnPlayerDeath += 
         UIEvents.OnScoreUpdate += UpdateScore;
+
+        PlayerEvents.OnWeaponAmmoUpdate += UpdateWeaponAmmo;
     }
 
     private void UnsubEvents()
     {
+        UIEvents.OnPlayUISound -= PlayUISound;
         UIEvents.OnAllWeaponsInitialize -= CreateWeaponsList;
         UIEvents.OnAddInventoryWeapon -= AddInventoryWeapon;
         UIEvents.OnRemoveInventoryWeapon -= RemoveInventoryWeapon;
@@ -64,8 +67,14 @@ public class UIManager : MonoBehaviour
         UIEvents.OnPlayerSpawn -= OnPlayerSpawn;
         UIEvents.OnPlayerHPUpdate -= UpdateHpBar;        
         UIEvents.OnPlayerDeath -= ShowDefeatScreen;
-        //UIEvents.OnPlayerDeath -= 
         UIEvents.OnScoreUpdate -= UpdateScore;
+
+        PlayerEvents.OnWeaponAmmoUpdate -= UpdateWeaponAmmo;
+    }
+
+    private void PlayUISound(AudioClip clip, float volume)
+    {
+        _audio.PlayOneShot(clip, volume);
     }
 
     private void OnPlayerSpawn()
@@ -105,6 +114,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void UpdateWeaponAmmo(WeaponType type, int ammo)
+    {
+        if (!_currentWeaponsInUI.ContainsKey(type)) return;
+
+        _currentWeaponsInUI.TryGetValue(type, out var weapon);
+        weapon.GetComponentInChildren<TextMeshProUGUI>().text = ammo.ToString();
+    }
+
     private void WeaponSwap(WeaponType type)
     {
          if (!_currentWeaponsInUI.ContainsKey(type)) return;
@@ -115,16 +132,16 @@ public class UIManager : MonoBehaviour
         _audio.PlayOneShot(_soundsDatabase.UISoundChangeWeapon);
     }        
     
-    private void AddInventoryWeapon(WeaponType type)
+    private void AddInventoryWeapon(WeaponType type, int ammo)
     {
         // Check if the weapon is on the allowed list
         if (!_currentWeaponsInUI.ContainsKey(type)) return;
 
         _currentWeaponsInUI.TryGetValue(type, out var weapon);
         weapon.SetActive(true);
+        UpdateWeaponAmmo(type, ammo);
     }    
     
-    // Maybe replace this with a bool in InventoryWeapon to manage adding/removing?
     private void RemoveInventoryWeapon(WeaponType type)
     {
         // Check if the weapon is on the allowed list

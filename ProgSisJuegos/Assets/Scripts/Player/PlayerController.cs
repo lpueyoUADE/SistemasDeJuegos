@@ -7,8 +7,27 @@ public class PlayerController : ShipBase
 {
     [SerializeField] private Animator _anim;
     private Vector3 _movement;
-    public event Action<WeaponType> OnWeaponChanged; // needs to be removed
     private float _maxLife;
+
+    protected override void Start()
+    {
+        PlayerEvents.OnItemGrab += OnItemGrab;
+        PlayerEvents.OnPlayerSpawn?.Invoke(this);
+        PlayerEvents.OnWeaponPlaySound += PlayWeaponSound;
+        PlayerEvents.OnWeaponAmmoEmpty += RemoveWeapon;
+
+        base.Start();
+        SwapWeapon();
+        _maxLife = _shipData.Life;
+        IncreaseMaxLife(0);
+    }
+
+    void OnDestroy()
+    {
+        PlayerEvents.OnItemGrab -= OnItemGrab;
+        PlayerEvents.OnWeaponPlaySound -= PlayWeaponSound;
+        PlayerEvents.OnWeaponAmmoEmpty -= RemoveWeapon;
+    }
 
     protected override void Update()
     {
@@ -21,26 +40,43 @@ public class PlayerController : ShipBase
         if (Input.GetKeyDown(KeyCode.E)) SwapWeapon(true);
         if (Input.GetKeyDown(KeyCode.Q)) SwapWeapon(false);
 
+        UpdateShield(delta);
         Recoil(delta);
         _anim.SetFloat("dirX", _movement.x);
         _anim.SetFloat("dirY", _movement.z);
     }
 
-    protected override void Start()
-    {        
-        PlayerEvents.OnPlayerSpawn?.Invoke(this);
-        OnWeaponChanged += WeaponSwapTest;
-        base.Start();
-        SwapWeapon();
-        _maxLife = _shipData.Life;
-        IncreaseMaxLife(0);
+    private void FixedUpdate()
+    {
+        Move(_movement);
+    }
 
-        // Testing
-        AddWeapon(WeaponType.RedDiamond);
-        AddWeapon(WeaponType.GreenCrast);
-        AddWeapon(WeaponType.HeatTrail);
-        AddWeapon(WeaponType.OrbWeaver);
-        AddWeapon(WeaponType.Gamma);
+    private void OnItemGrab(ItemDatabase itemData)
+    {
+        if (itemData == null) return;
+
+        // Grabbing consumable
+        if (itemData.ItemType == ItemType.Consumable)
+        {
+            ItemConsumableDatabase consumable = (ItemConsumableDatabase)itemData;
+
+            switch (consumable.ItemConsumableType)
+            {
+                case ConsumableType.None: return;
+                case ConsumableType.Shield: Debug.Log($"Shielding for {itemData.ItemValue}."); break;
+                case ConsumableType.Repair: Debug.Log($"Repairing for {itemData.ItemValue}."); break;
+                case ConsumableType.ExtraLife: Debug.Log($"{itemData.ItemValue} extra life/s."); break;
+            }
+        }
+
+        // Grabbing item weapon
+        if (itemData.ItemType == ItemType.Weapon)
+        {
+            ItemWeaponDatabase weapon = (ItemWeaponDatabase)itemData;
+
+            if (weapon.ItemWeaponType == WeaponType.None) return;
+            AddWeapon(weapon.ItemWeaponType, (int)itemData.ItemValue);
+        }
     }
 
     public override void AnyDamage(float amount)
@@ -75,35 +111,35 @@ public class PlayerController : ShipBase
         PlayerEvents.OnPlayerDeath?.Invoke();
     }
 
-    // Testing UI swap indicator
-    public void WeaponSwapTest(WeaponType type)
-    {
-        UIEvents.OnWeaponSwap?.Invoke(type);
-    }
-
-    private void FixedUpdate()
-    {
-        Move(_movement);
-    }
-
     public override void SwapWeapon(bool isNext = true)
     {
-        base.SwapWeapon(isNext);
-        OnWeaponChanged?.Invoke(ShipCurrentWeapon.WeaponType);
+        base.SwapWeapon(!isNext);
+        PlayerEvents.OnWeaponSwap?.Invoke(ShipCurrentWeapon.WeaponType);
     }
 
-
-    //For TESTING only
-
-    [ContextMenu("Damage")]
-    public void Damage()
+    public override void SwapWeapon(WeaponType type)
     {
-        AnyDamage(1);
+        base.SwapWeapon(type);
+        UIEvents.OnWeaponSwap?.Invoke(ShipCurrentWeapon.WeaponType);
     }
 
+    public override void RemoveWeapon(IWeapon type)
+    {
+        UIEvents.OnRemoveInventoryWeapon?.Invoke(ShipCurrentWeapon.WeaponType);
+        base.RemoveWeapon(type);
+        UIEvents.OnWeaponSwap?.Invoke(ShipCurrentWeapon.WeaponType);
+    }
+
+    private void PlayWeaponSound(AudioClip clip, float volume)
+    {
+        Audio.PlayOneShot(clip, volume);
+    }
+
+#if UNITY_EDITOR
     [ContextMenu("Heal")]
     public void Repair()
     {
         Heal(2);
     }
+#endif
 }

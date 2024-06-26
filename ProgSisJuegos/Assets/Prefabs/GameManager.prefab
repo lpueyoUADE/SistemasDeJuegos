@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4744384303318102725}
   - component: {fileID: 2135141194773615884}
   - component: {fileID: 1181906096915222107}
+  - component: {fileID: 3057996397486007649}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d270839fbf42984ca0b6f3bb15ffde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundsToUse: {fileID: 11400000, guid: 10b4b41a200017b46bf9b8773c377a77, type: 2}
   _playerPrefab: {fileID: 11400000, guid: 118817d7f5e074c46b1546b574e17c44, type: 2}
   _playerCamera: {fileID: 0}
   _weaponsList:
@@ -59,8 +61,23 @@ MonoBehaviour:
   - {fileID: 5667236381158089664, guid: 73d4a7835d431234693ebed034a41e1b, type: 3}
   - {fileID: -6804866372505550419, guid: 62c3b979cf3be5042975a46c0fd6b98c, type: 3}
   - {fileID: -1774760262613465974, guid: 10c40411d2be43b46955bae6643373a2, type: 3}
+  _itemsList:
+  - {fileID: 11400000, guid: 5db458e624723814ea2291c50253aef0, type: 2}
+  - {fileID: 11400000, guid: c993b2b8a13360744bc7328de822faaf, type: 2}
+  - {fileID: 11400000, guid: fa3fc36f17777fd47ade10b399ad4b0a, type: 2}
+  - {fileID: 11400000, guid: 1c915b7180c5c374fb9f10baddd6a0e0, type: 2}
+  - {fileID: 11400000, guid: 3135d72782f63ce46876e7285412fd37, type: 2}
+  - {fileID: 11400000, guid: ea2fdb1d0e3cf894eb0b850c296e7db4, type: 2}
+  - {fileID: 11400000, guid: 11198f7032a478f49a2f81dbe1298dc0, type: 2}
+  - {fileID: 11400000, guid: 176daa0cf6e303141ae965a27faa0bc2, type: 2}
+  - {fileID: 11400000, guid: af3e00663213a8b4a8496a30e1eabb39, type: 2}
   _enemyList:
   - {fileID: 11400000, guid: 3a9536cd520ce894b9adda75328c3f98, type: 2}
+  shipToSpawn: 0
+  projectileToSpawn: 0
+  consumableItemToSpawn: 0
+  weaponItemToSpawn: 2
+  locationToSpawn: {fileID: 0}
 --- !u!114 &1181906096915222107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,5 +88,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dd2de0d54841ef4ab1d9208fee055ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3057996397486007649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8142239973807653536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c47b88898a3d54997ad8f275053913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

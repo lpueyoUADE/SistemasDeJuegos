@@ -4,8 +4,13 @@ using UnityEngine;
 
 public enum ShipType
 {
+    None,
     ElCapitan,
-    Mosquitoe, 
+    Sonic,
+    SkullFlower,
+    Mosquitoe,
+    Slider,
+    Tremor,
     CannonFoder,
 }
 
@@ -13,7 +18,9 @@ public enum ShipType
 public class ShipDatabase : ScriptableObject
 {
     [SerializeField] protected ShipType _shipType;
+    [SerializeField] protected string _shipNameToUser;
     [SerializeField] protected ShipBase _prebab;
+    [SerializeField] protected Mesh _showcaseMesh;
     [SerializeField] private int _points;
 
     [Header("Ship Settings")]
@@ -24,12 +31,14 @@ public class ShipDatabase : ScriptableObject
     [SerializeField] protected WeaponType _defaultWeapon;
 
     [Header("Shield Settings")]
-    [SerializeField] private float _shieldDuration = 1;
+    [SerializeField, Range(0, 5)] private float _shieldDuration = 1;
     [SerializeField] private Color _shieldColor = Color.green;
 
 
     public ShipType Type => _shipType;
+    public string Name => _shipNameToUser;
     public ShipBase Prefab => _prebab;
+    public Mesh Mesh => _showcaseMesh;
     public int Points => _points;
 
     public float Life => _life;
@@ -37,5 +46,8 @@ public class ShipDatabase : ScriptableObject
     public float Acceleration => _acceleration;
     public float DamageResistance => _damageResistance;
     public WeaponType DefaultWeapon => _defaultWeapon;
+
+    public float ShieldDuration => _shieldDuration;
+    public Color ShieldColor => _shieldColor;
 
 }

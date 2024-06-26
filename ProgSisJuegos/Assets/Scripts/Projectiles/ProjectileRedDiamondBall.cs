@@ -9,6 +9,11 @@ public class ProjectileRedDiamondBall : ProjectileBase
     [SerializeField, Range(1, 10)] private float _ballLife = 3;
     private IDamageable _lastDamagedEnemy;
 
+    private protected override void Awake()
+    {
+        base.Awake();
+    }
+
     public override void UpdateStats()
     {
         base.UpdateStats(_ballDamage, _ballSpeed, _ballLife);
