@@ -109,4 +109,48 @@ public class PoolGenerics
             _availables.Add(poolEntry);
         }
     }
+
+    //***********************************************************************
+
+    public class EnemyPoolEntry<T>
+    {
+        public ShipType Type;
+        public T Value;
+    }
+
+    public class EnemyPool<T>
+    {
+        private List<EnemyPoolEntry<T>> _availables = new List<EnemyPoolEntry<T>>();
+        private List<EnemyPoolEntry<T>> _inUse = new List<EnemyPoolEntry<T>>();
+
+        public EnemyPoolEntry<T> GetOrCreate(ShipType type)
+        {
+            // Get if the pools contains any ships.
+            if (_availables.Count > 0)
+            {
+                for (int i = 0; i < _availables.Count; i++)
+                {
+                    if (_availables[i].Type == type)
+                    {
+                        var ship = _availables[i];
+                        _availables.RemoveAt(i);
+                        _inUse.Add(ship);
+                        return ship;
+                    }
+                }
+            }
+
+            // Create if no coincidence was found.
+            var newShip = new EnemyPoolEntry<T> { Type = type };
+            _inUse.Add(newShip);
+            return newShip;
+        }
+
+        public void InUseToAvailable(EnemyPoolEntry<T> poolEntry)
+        {
+            _inUse.Remove(poolEntry);
+            _availables.Add(poolEntry);
+        }
+    }
+
 }

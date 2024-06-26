@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         PlayerEvents.OnWeaponSwap += EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath += EventOnPlayerDeath;
+        GameManagerEvents.CreateEnemy += SpawnShip; 
     }
 
     private void UnsubEvents()
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
 
         UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
         _playerCamera.enabled = true;
+        gameObject.GetComponent<EnemyManager>().SetCenter(_playerCamera.transform.position);
     }
 
     private void InitializeInstances()
@@ -83,9 +85,19 @@ public class GameManager : MonoBehaviour
         }
         FactoryItems.UpdateAvailableItems(items);
 
+        //BaseEnemies
+        List<EnemyBase> enemies = new List<EnemyBase>();
+        foreach (ShipDatabase enemy in _enemyList)
+        {
+            if (enemy.Type == ShipType.None) continue;
+            enemies.Add(enemy.Prefab.GetComponent<EnemyBase>());
+        }
+        ShipFactory.InitializeFactoryShips(_enemyList);
+
         // Initialize pools
         Pool.InitializePool(weaponProjectiles);
         Pool.InitializePool(items);
+        Pool.InitializePool(enemies);
     }
 
     private void EventOnPlayerSpawned(PlayerController reference)
@@ -123,11 +135,17 @@ public class GameManager : MonoBehaviour
     public Transform locationToSpawn;
 
     [ContextMenu("Spawn Ship")]
-    void SpawnShip()
+    private void SpawnShip(ShipDatabase ship, Vector3 spawnPosition)
     {
-        if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
+        //if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
+        //Instantiate(ship.Prefab.gameObject, spawnPosition, Quaternion.identity);
 
-        Debug.LogWarning($"Not implemented.");
+        var generatedObject = Pool.CreateShip(ship.Type);
+        generatedObject.transform.position = spawnPosition;
+        generatedObject.transform.rotation = Quaternion.identity;
+
+        Debug.Log($"Spawing {generatedObject.name} at {locationToSpawn.position}.");
+
     }
 
     [ContextMenu("Spawn Projectile")]

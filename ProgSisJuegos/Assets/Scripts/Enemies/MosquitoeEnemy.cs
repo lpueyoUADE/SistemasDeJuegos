@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MosquitoeEnemy : EnemyBase
 {
-    private Transform _targetLocation;
+    private Transform _targetLocation;   
 
     public override void Move(Vector3 direction, float speed, ForceMode type = ForceMode.Acceleration)
     {
