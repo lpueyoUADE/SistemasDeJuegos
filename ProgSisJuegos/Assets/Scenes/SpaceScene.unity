@@ -969,6 +969,10 @@ PrefabInstance:
       value: GameManager Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4620461798003291045, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
+      propertyPath: _playerCamera
+      value: 
+      objectReference: {fileID: 963194229}
+    - target: {fileID: 4620461798003291045, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
       propertyPath: locationToSpawn
       value: 
       objectReference: {fileID: 102859433}
