@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         PlayerEvents.OnWeaponSwap += EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath += EventOnPlayerDeath;
-        GameManagerEvents.createEnemyDelegate += SpawnShip; 
+        GameManagerEvents.CreateEnemy += SpawnShip; 
     }
 
     private void UnsubEvents()
@@ -125,11 +125,10 @@ public class GameManager : MonoBehaviour
     public Transform locationToSpawn;
 
     [ContextMenu("Spawn Ship")]
-    private GameObject SpawnShip(ShipDatabase ship, Vector3 spawnPosition)
+    private void SpawnShip(ShipDatabase ship, Vector3 spawnPosition)
     {
         //if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
         GameObject temp = Instantiate(ship.Prefab.gameObject, spawnPosition, Quaternion.identity);
-        return temp;
     }
 
     [ContextMenu("Spawn Projectile")]

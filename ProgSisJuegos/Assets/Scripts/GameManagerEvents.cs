@@ -12,7 +12,7 @@ public static class GameManagerEvents
     public static Action OnSceneChange;
 
     // InGame events
-    public delegate GameObject CreateEnemy(ShipDatabase ship, Vector3 Xposition);
-    public static CreateEnemy createEnemyDelegate;
+    //public delegate GameObject CreateEnemy(ShipDatabase ship, Vector3 Xposition);
+    public static Action<ShipDatabase, Vector3> CreateEnemy;
     public static Action<float> OnEnemyDestroyed;
 }
