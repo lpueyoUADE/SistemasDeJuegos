@@ -65,6 +65,7 @@ public class MainMenuLevelShipSelector : MonoBehaviour
 
         _spawnedShipsForShowcase[_currentShipIndex].SetActive(true);
         _shipName.text = _shipsList[_currentShipIndex].Name;
+        UserSettings.Instance.playership = _shipsList[_currentShipIndex].Prefab;
     }
 
     public void ChangeLevel(bool isNext)
@@ -103,6 +104,8 @@ public class MainMenuLevelShipSelector : MonoBehaviour
 
         _spawnedShipsForShowcase[_currentShipIndex].SetActive(true);
         _shipName.text = _shipsList[_currentShipIndex].Name;
+
+        UserSettings.Instance.playership = _shipsList[_currentShipIndex].Prefab;
     }
 
     public void BackToMainMenu()

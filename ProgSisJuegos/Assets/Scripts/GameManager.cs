@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitializeInstances();
-        Instantiate(_playerPrefab.Prefab);
+        Instantiate(UserSettings.Instance.playership);
 
         UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
         _playerCamera.enabled = true;
