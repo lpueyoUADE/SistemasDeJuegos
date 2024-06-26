@@ -41,11 +41,21 @@ public class MainMenuLevelShipSelector : MonoBehaviour
         _audio.Play();
     }
 
+    private void OnDisable()
+    {
+        if (_shipShowcaseTransform != null) _shipShowcaseTransform.transform.rotation = Quaternion.identity;
+    }
+
+    private void FixedUpdate()
+    {
+        _shipShowcaseTransform.transform.Rotate(Vector3.up, 100 * Time.deltaTime);
+    }
+
     private void Start()
     {
         for (int i = 0; i < _shipsList.Count; i++)
         {
-            var showcaseship = Instantiate(_shipsList[i].ShowcasePrefab, _shipShowcaseTransform.position, _shipsList[i].ShowcasePrefab.transform.rotation);
+            var showcaseship = Instantiate(_shipsList[i].ShowcasePrefab, _shipShowcaseTransform.position, _shipsList[i].ShowcasePrefab.transform.rotation, _shipShowcaseTransform);
             _spawnedShipsForShowcase.Add(showcaseship);
             showcaseship.SetActive(false);
         }

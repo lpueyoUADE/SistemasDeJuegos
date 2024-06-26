@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MainMenuLevelShipSelectorRenderShip : MonoBehaviour
+public class MainMenuLevelShipSelectorRenderShip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject rotatedObject;
+    public float rotatingSpeed = 25;
+    bool rotate = false;
+
+    private void FixedUpdate()
     {
-        
+        if (!rotate) return;
+
+        rotatedObject.transform.Rotate(Vector3.up, rotatingSpeed * Time.deltaTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        
+        rotate = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        rotate = false;
     }
 }
