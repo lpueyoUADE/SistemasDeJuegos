@@ -4,44 +4,68 @@ using UnityEngine;
 
 public class ShipFactory : MonoBehaviour
 {
-    private static List<ShipBase> _ships = new List<ShipBase>();
+    private static Dictionary<ShipType, ShipDatabase> _shipsDict = new Dictionary<ShipType, ShipDatabase>();
 
-    public ShipFactory(List<ShipBase> shipList)
+    public static void InitializeFactoryShips(List<ShipDatabase> ships)
     {
-        _ships = shipList;
-    }
-
-    public void UpdateAvailableships(List<ShipBase> ships)
-    {
-        Debug.Log($"Factory: ships initialized, {ships.Count} items.");
-        _ships = ships;
-    }
-
-    /*
-    public GameObject GenerateEnemy(EnemyType type)
-    {
-        for (int i = 0; i < _ships.Count; i++)
-            if (_ships[i].GetComponent<EnemyBase>().Data.EnemyType == type)
-                return Instantiate(_ships[i]);
-
-        Debug.Log($"Factory: No enemy of type {type} was found.");
-        return null;
-    }
-    */
-
-    public GameObject CreateEnemy(ShipType requestedEnemy)
-    {
-        GameObject result;
-        result = EnemyPool.GetEnemy(requestedEnemy);
-
-        if (result == null)
+        string message = "Factory ships: \n";
+        foreach (ShipDatabase ship in ships)
         {
-            for (int i = 0; i < _ships.Count; i++)
-                if (_ships[i].GetComponent<ShipBase>().ShipData.Type == requestedEnemy)
-                    return Instantiate(_ships[i].gameObject);
+            _shipsDict.Add(ship.Type, ship);
+            message += $"{ship.Type}, ";
         }
 
-        return result;
+        Debug.Log($"{message} Initialized {_shipsDict.Count} items.");
+    }
+   
+    public static EnemyBase CreateEnemy(ShipType requestedEnemy)
+    { 
+        _shipsDict.TryGetValue(requestedEnemy, out ShipDatabase data);
+                
+        GameObject temp =Instantiate(data.Prefab.gameObject);
+
+        return temp.GetComponent<EnemyBase>();
+        
+    }
+ 
+
+
+
+
+
+    /*
+    public static Iship Createship(ShipType type)
+    {
+        _shipsDict.TryGetValue(type, out ShipDatabase data);
+
+        //Debug.Log($"Factory (ships): Trying to create {type} - value {data}.");
+
+        switch (type)
+        {
+            // Player type
+            case ShipType.ElCapitan: return new shipBlueRail(data);
+            case ShipType.Sonic: return new shipRedDiamond(data);
+            case ShipType.SkullFlower: return new shipGreenCrast(data);
+
+            // Enemy type
+            case ShipType.Mosquitoe: return new shipEnemyBlueRail(data);
+            case ShipType.Slider: return new shipEnemyBlueRail(data);
+            case ShipType.Tremor: return new shipEnemyBlueRail(data);
+            case ShipType.CannonFoder: return new shipEnemyBlueRail(data);
+
+            // Not found
+            default: Debug.Log($"Factory (ships): ship of type {type} not found."); return new shipNone();
+        }
+
+        /*  None,
+    ElCapitan,
+    Sonic,
+    SkullFlower,
+    Mosquitoe,
+    Slider,
+    Tremor,
+    CannonFoder,     */
     }
 
-}
+
+

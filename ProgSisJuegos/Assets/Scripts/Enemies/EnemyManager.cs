@@ -58,7 +58,7 @@ public class EnemyManager : MonoBehaviour
                 if (enemy != null)
                 {
 
-                    /*GameObject temp = */GameManagerEvents.CreateEnemy.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,70))); 
+                    /*GameObject temp = */GameManagerEvents.CreateEnemy.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,70)));
                     //var spawnedEnemy = temp.GetComponent<EnemyBase>();
                     _enemiesOnScreen++;
                     //enemy += EnemyDestroyed;

@@ -85,9 +85,19 @@ public class GameManager : MonoBehaviour
         }
         FactoryItems.UpdateAvailableItems(items);
 
+        //BaseEnemies
+        List<EnemyBase> enemies = new List<EnemyBase>();
+        foreach (ShipDatabase enemy in _enemyList)
+        {
+            if (enemy.Type == ShipType.None) continue;
+            enemies.Add(enemy.Prefab.GetComponent<EnemyBase>());
+        }
+        ShipFactory.InitializeFactoryShips(_enemyList);
+
         // Initialize pools
         Pool.InitializePool(weaponProjectiles);
         Pool.InitializePool(items);
+        Pool.InitializePool(enemies);
     }
 
     private void EventOnPlayerSpawned(PlayerController reference)
@@ -128,7 +138,14 @@ public class GameManager : MonoBehaviour
     private void SpawnShip(ShipDatabase ship, Vector3 spawnPosition)
     {
         //if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
-        GameObject temp = Instantiate(ship.Prefab.gameObject, spawnPosition, Quaternion.identity);
+        //Instantiate(ship.Prefab.gameObject, spawnPosition, Quaternion.identity);
+
+        var generatedObject = Pool.CreateShip(ship.Type);
+        generatedObject.transform.position = spawnPosition;
+        generatedObject.transform.rotation = Quaternion.identity;
+
+        Debug.Log($"Spawing {generatedObject.name} at {locationToSpawn.position}.");
+
     }
 
     [ContextMenu("Spawn Projectile")]

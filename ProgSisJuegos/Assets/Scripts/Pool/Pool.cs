@@ -7,10 +7,12 @@ public class Pool
     private static Dictionary<WeaponType, ProjectileBase> _projectiles = new Dictionary<WeaponType, ProjectileBase>();
     private static Dictionary<ConsumableType, ItemBase> _consumableItems = new Dictionary<ConsumableType, ItemBase>();
     private static Dictionary<WeaponType, ItemBase> _weaponItems = new Dictionary<WeaponType, ItemBase>();
+    private static Dictionary<ShipType, EnemyBase> _enemies = new Dictionary<ShipType, EnemyBase>();
 
     // Pools
     private static ProjectilePool<ProjectileBase> _projectilesPool = new ProjectilePool<ProjectileBase>();
     private static ItemPool<ItemBase> _itemsPool = new ItemPool<ItemBase>();
+    private static EnemyPool<EnemyBase> _enemiesPool = new EnemyPool<EnemyBase>();
 
     public static void InitializePool(List<ProjectileBase> projectiles)
     {
@@ -43,6 +45,18 @@ public class Pool
         }
 
         _itemsPool = new ItemPool<ItemBase>();
+    }
+
+    //Enemy Pool------------------------------------
+    public static void InitializePool(List<EnemyBase> enemies)
+    {
+        foreach (EnemyBase ship in enemies)
+        {
+            if (_enemies.ContainsKey(ship.ShipData.Type)) continue;
+            _enemies.Add(ship.ShipData.Type, ship);
+        }
+
+        _enemiesPool = new EnemyPool<EnemyBase>();
     }
 
     public static ProjectileBase CreateProjectile(WeaponType type)
@@ -106,5 +120,27 @@ public class Pool
 
         weapon.Value.gameObject.SetActive(true);
         return weapon.Value;
+    }
+
+    //Create Enemy
+    public static EnemyBase CreateShip(ShipType type)
+    {
+        var ship = _enemiesPool.GetOrCreate(type);
+
+        // Get a new projectile & listen to sleep event
+        if (ship.Value == null)
+        {
+            ship.Value = ShipFactory.CreateEnemy(type);
+
+            ship.Value.OnDisabled += () =>
+            {
+                ship.Value.gameObject.SetActive(false);
+                _enemiesPool.InUseToAvailable(ship);
+            };
+
+        }
+
+        ship.Value.gameObject.SetActive(true);
+        return ship.Value;
     }
 }
