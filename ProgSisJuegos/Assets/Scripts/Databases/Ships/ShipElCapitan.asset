@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e8d84b1f0ddb64d8e8a669e00096f7, type: 3}
   m_Name: ShipElCapitan
   m_EditorClassIdentifier: 
-  _shipType: 0
-  _prebab: {fileID: 3102686959821975067, guid: d5208bb4505fda545a18c129a0d444cb, type: 3}
+  _shipType: 1
+  _shipNameToUser: "El Capit\xE1n"
+  _prebab: {fileID: 3102686959821975067, guid: e053bd9e6a6e7b24e9b9f273cc82bee4, type: 3}
+  _showcaseMesh: {fileID: 9210612601567445337, guid: fa0aaea2de3edfa41bad28513c75766d, type: 3}
   _points: 0
+  _life: 25
   _maxSpeed: 5
   _acceleration: 20
   _damageResistance: 25
   _defaultWeapon: 1
-  _shieldDuration: 1
+  _shieldDuration: 1.5
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}

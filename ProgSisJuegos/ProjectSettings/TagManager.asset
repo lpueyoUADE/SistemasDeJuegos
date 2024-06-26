@@ -15,8 +15,8 @@ TagManager:
   - UI
   - Enemy
   - Item
-  - 
-  - 
+  - PlayerShield
+  - EnemyShield
   - PlayerProjectile
   - EnemyProjectile
   - 

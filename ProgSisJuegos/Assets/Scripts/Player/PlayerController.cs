@@ -40,6 +40,7 @@ public class PlayerController : ShipBase
         if (Input.GetKeyDown(KeyCode.E)) SwapWeapon(true);
         if (Input.GetKeyDown(KeyCode.Q)) SwapWeapon(false);
 
+        UpdateShield(delta);
         Recoil(delta);
         _anim.SetFloat("dirX", _movement.x);
         _anim.SetFloat("dirY", _movement.z);
@@ -112,7 +113,7 @@ public class PlayerController : ShipBase
 
     public override void SwapWeapon(bool isNext = true)
     {
-        base.SwapWeapon(isNext);
+        base.SwapWeapon(!isNext);
         PlayerEvents.OnWeaponSwap?.Invoke(ShipCurrentWeapon.WeaponType);
     }
 
@@ -135,12 +136,6 @@ public class PlayerController : ShipBase
     }
 
 #if UNITY_EDITOR
-    [ContextMenu("Damage")]
-    public void Damage()
-    {
-        AnyDamage(1);
-    }
-
     [ContextMenu("Heal")]
     public void Repair()
     {

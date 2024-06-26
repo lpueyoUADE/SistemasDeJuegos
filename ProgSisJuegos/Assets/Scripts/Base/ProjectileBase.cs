@@ -114,7 +114,7 @@ public class ProjectileBase : MonoBehaviour, IProjectile
 
     public virtual void ProjectileHit(IDamageable hit)
     {
-        hit.AnyDamage(_damage);
+        hit?.AnyDamage(_damage);
         _currentLife = 0;
     }
 

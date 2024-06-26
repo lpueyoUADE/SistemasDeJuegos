@@ -16,7 +16,7 @@ MonoBehaviour:
   _type: 2
   _recoil: 1.25
   _hasInfiniteAmmo: 0
-  _defaultAmmoAmount: 2
+  _defaultAmmoAmount: 50
   _projectilePrefab: {fileID: 5895988416739716884, guid: f6f4ade9ac6353e4f8633c8f2a49c372, type: 3}
   _projectileDamage: 1
   _projectileSpeed: 3

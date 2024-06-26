@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0f6a9693c35f35f46bfce3d7a1e3dfeb, type: 3}
+    - target: {fileID: 1144362144, guid: 5c0dde8d9cbb17743b207fb7879aca42, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.4000244
+      objectReference: {fileID: 0}
     - target: {fileID: 1144362145, guid: 5c0dde8d9cbb17743b207fb7879aca42, type: 3}
       propertyPath: m_text
       value: NAVECITAS

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e8d84b1f0ddb64d8e8a669e00096f7, type: 3}
+  m_Name: ShipSlider
+  m_EditorClassIdentifier: 
+  _shipType: 5
+  _prebab: {fileID: 4413666431233550698, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+  _points: 5
+  _life: 5
+  _maxSpeed: 5
+  _acceleration: 2
+  _damageResistance: 10
+  _defaultWeapon: 10
+  _shieldDuration: 1
+  _shieldColor: {r: 1, g: 0, b: 0, a: 1}

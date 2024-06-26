@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,24 +7,30 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     [SerializeField] protected ShipDatabase _shipData;
 
     [Header("References")]
+    [SerializeField] private ShieldBase _shieldObject; 
     [SerializeField] private Transform _projectileOut;
-    private AudioSource _audioSource;
 
+    // References
+    private AudioSource _audioSource;
     private Rigidbody _rBody;
+
+    // Values
     private List<IWeapon> _weaponList = new List<IWeapon>();
     private IWeapon _currentWeapon;
     private int _weaponIndex;
-
     protected float _currentLife = 1;
-    private bool _isShielded = false;
+    private float _shieldTimeLeft = 0;
 
+    // Public values
     public ShipDatabase ShipData => _shipData;
     public List<IWeapon> ShipWeapons => _weaponList;
     public IWeapon ShipCurrentWeapon => _currentWeapon;
     public Transform ShipProyectileOut => _projectileOut;
     public int ShipCurrentWeaponIndex => _weaponIndex;
     public float ShipCurrentLife => _currentLife;
-    public bool ShipIsShielded => _isShielded;
+    public float ShipShieldDuration => _shipData.ShieldDuration;
+    public Color ShipShieldColor => _shipData.ShieldColor;
+    public bool ShipIsShielded => _shieldTimeLeft > 0;
 
     public AudioSource Audio => _audioSource;
 
@@ -37,20 +41,28 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         _currentLife = _shipData.Life;
         _currentWeapon?.Reset();
     }
 
+    protected virtual void OnDisable()
+    {
+        _currentLife = _shipData.Life;
+        _shieldTimeLeft = 0;
+    }
+
     protected virtual void Start()
     {
+        _shieldObject.gameObject.SetActive(false);
         InitializeWeapons();
     }
 
     protected virtual void Update()
     {
         float delta = Time.deltaTime;
+        UpdateShield(delta);
         Recoil(delta);
     }
 
@@ -71,9 +83,17 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _rBody.AddForce(direction * speed, type);
     }
 
+    public void UpdateShield(float delta)
+    {
+        if (ShipIsShielded) _shieldTimeLeft -= delta;
+
+        if (!ShipIsShielded && _shieldObject.gameObject.activeSelf) _shieldObject.gameObject.SetActive(false);
+    }
+
     public virtual void Shield(float duration, Color color)
     {
-        Debug.LogWarning("Shielding not implemented.");
+        _shieldTimeLeft = duration;
+        _shieldObject.gameObject.SetActive(true);
     }
 
     public virtual void AddWeapon(WeaponType type, int ammo = 0)
@@ -144,6 +164,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void AnyDamage(float amount)
     {
+        if (ShipIsShielded) return;
         _currentLife -= amount;
 
         if (_currentLife <= 0)
@@ -152,6 +173,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
             return;
         }
 
+        Shield(ShipShieldDuration, ShipShieldColor);
         _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShip);
     }
 
@@ -173,4 +195,12 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         print($"{this.name} is dead.");
         this.gameObject.SetActive(false);
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("Damage by 1")]
+    void DamageShip()
+    {
+        AnyDamage(1);
+    }
+#endif
 }
