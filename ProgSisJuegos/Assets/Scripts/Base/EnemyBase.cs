@@ -5,11 +5,14 @@ public class EnemyBase : ShipBase
 {
     protected FSMAIBase _behaviour;
     public event Action OnDisabled;
+    private float _destination;
 
     protected override void Start()
     {
         TryGetComponent(out _behaviour);
         InitializeWeapons();
+
+        _destination = transform.position.z - 37;
     }
 
     protected override void Update()
@@ -17,6 +20,10 @@ public class EnemyBase : ShipBase
         float delta = Time.deltaTime;
         if (ShipIsShielded) UpdateShield(delta);
 
+        if (transform.position.y > 0)
+        {
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, 0, _destination), 0.5f);
+        }
         //Fire();
         //Recoil(delta);
         //_behaviour?.FSMUpdate(delta);
@@ -36,5 +43,5 @@ public class EnemyBase : ShipBase
     {
         GameManagerEvents.OnEnemyDestroyed(_shipData.Points);
         base.OnDeath();
-    }
+    }   
 }

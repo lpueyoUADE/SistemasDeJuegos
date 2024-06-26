@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         PlayerEvents.OnWeaponSwap += EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath += EventOnPlayerDeath;
+        GameManagerEvents.createEnemyDelegate += SpawnShip; 
     }
 
     private void UnsubEvents()
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
 
         UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
         _playerCamera.enabled = true;
+        gameObject.GetComponent<EnemyManager>().SetCenter(_playerCamera.transform.position);
     }
 
     private void InitializeInstances()
@@ -123,11 +125,11 @@ public class GameManager : MonoBehaviour
     public Transform locationToSpawn;
 
     [ContextMenu("Spawn Ship")]
-    void SpawnShip()
+    private GameObject SpawnShip(ShipDatabase ship, Vector3 spawnPosition)
     {
-        if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
-
-        Debug.LogWarning($"Not implemented.");
+        //if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
+        GameObject temp = Instantiate(ship.Prefab.gameObject, spawnPosition, Quaternion.identity);
+        return temp;
     }
 
     [ContextMenu("Spawn Projectile")]

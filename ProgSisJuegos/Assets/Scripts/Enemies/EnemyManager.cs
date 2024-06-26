@@ -8,9 +8,11 @@ public class EnemyManager : MonoBehaviour
     private int _enemiesOnScreen = 0;
     [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
     private bool startUpdate = false;
+    private Vector3 _horizontalCenter;
+    
 
     private float totalWaitTime = 2;
-    private float currentWaitTime;
+    private float currentWaitTime;   
 
     private void Update()
     {
@@ -38,21 +40,29 @@ public class EnemyManager : MonoBehaviour
         LoadNextEnemyWave();
         EnableUpdate();
     }
+    
+    public void SetCenter(Vector3 pos)
+    {
+        _horizontalCenter = pos;
+    }
 
     private void LoadNextEnemyWave()
     {
         if (_index < _enemyWaves.Count)
         {
+            //int enemiesInWave = _enemyWaves[_index].Enemies.Length;
+            float _horizontalOffset = -10f;
             foreach (EnemyBase enemy in _enemyWaves[_index].Enemies)
             {
                 if (enemy != null)
                 {
 
-                    GameObject temp = GameManagerEvents.createEnemyDelegate.Invoke(enemy.ShipData);
+                    GameObject temp = GameManagerEvents.createEnemyDelegate.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,70))); 
                     var spawnedEnemy = temp.GetComponent<EnemyBase>();
                     _enemiesOnScreen++;
                     //enemy += EnemyDestroyed;
                     spawnedEnemy.OnDisabled += EnemyDestroyed;
+                    _horizontalOffset += 10f;
                 }
             }
             _index++;
