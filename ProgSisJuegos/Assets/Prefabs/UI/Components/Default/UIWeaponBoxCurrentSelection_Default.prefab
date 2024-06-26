@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7693737540501956082}
   - component: {fileID: 7693737540501956092}
   m_Layer: 5
-  m_Name: UIWeaponBoxCurrentSelection
+  m_Name: UIWeaponBoxCurrentSelection_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

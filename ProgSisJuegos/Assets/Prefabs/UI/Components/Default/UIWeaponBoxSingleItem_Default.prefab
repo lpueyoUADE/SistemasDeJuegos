@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 649848159055799254}
   - component: {fileID: 649848159055799253}
   m_Layer: 5
-  m_Name: UIWeaponBoxSingleItem
+  m_Name: UIWeaponBoxSingleItem_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
