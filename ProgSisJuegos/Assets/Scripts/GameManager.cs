@@ -127,6 +127,16 @@ public class GameManager : MonoBehaviour
         UIEvents.OnScoreUpdate(_currentScore);
     }
 
+    private void SpawnShip(ShipDatabase ship, Vector3 spawnPosition)
+    {
+        //if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
+        //Instantiate(ship.Prefab.gameObject, spawnPosition, Quaternion.identity);
+
+        var generatedObject = Pool.CreateShip(ship.Type);
+        generatedObject.transform.position = spawnPosition;
+        generatedObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+
 # if UNITY_EDITOR
     public ShipType shipToSpawn = ShipType.None;
     public WeaponType projectileToSpawn = WeaponType.None;
@@ -135,7 +145,7 @@ public class GameManager : MonoBehaviour
     public Transform locationToSpawn;
 
     [ContextMenu("Spawn Ship")]
-    private void SpawnShip(ShipDatabase ship, Vector3 spawnPosition)
+    private void SpawnShipDevelop(ShipDatabase ship, Vector3 spawnPosition)
     {
         //if (shipToSpawn == ShipType.None || locationToSpawn == null) return;
         //Instantiate(ship.Prefab.gameObject, spawnPosition, Quaternion.identity);
