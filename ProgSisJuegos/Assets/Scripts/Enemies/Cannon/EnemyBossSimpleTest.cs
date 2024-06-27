@@ -17,13 +17,22 @@ public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
 
     public void AnyDamage(float amount)
     {
-        life -= amount;
-        lifetext.text = $"{life}";
+        if (life > 0)
+        {
+            life -= amount;
+            lifetext.text = $"{life}";
+        }
+        else
+        {
+            OnDeath();
+        }
+        
     }
 
     public void OnDeath()
     {
-        throw new System.NotImplementedException();
+        UIEvents.OnPlayerWin();
+        Destroy(this.gameObject);
     }
 
     // Start is called before the first frame update
