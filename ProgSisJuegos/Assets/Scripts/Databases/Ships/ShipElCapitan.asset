@@ -18,9 +18,12 @@ MonoBehaviour:
   _shipNameToUser: "El Capit\xE1n"
   _showcaseObject: {fileID: 4314333843008958046, guid: 08180a72ae342ee4c91904a67caeb266, type: 3}
   _life: 25
-  _maxSpeed: 5
+  _maxSpeed: 8
   _acceleration: 20
   _damageResistance: 25
   _defaultWeapon: 1
-  _shieldDuration: 1.5
+  _shieldDuration: 2.5
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}
+  _highIntegrity: {r: 0, g: 1, b: 0.9301295, a: 1}
+  _midIntegrity: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _lowIntegrity: {r: 1, g: 0, b: 0, a: 1}

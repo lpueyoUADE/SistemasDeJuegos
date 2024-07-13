@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<ShipDatabase> _enemyList = new List<ShipDatabase>();
 
     // Values
+    private bool _isGamePaused = false;
     private float _currentScore = 0;
 
     private void Awake()
@@ -34,20 +35,26 @@ public class GameManager : MonoBehaviour
     private void SubEvents()
     {
         GameManagerEvents.OnEnemyDestroyed += EventOnEnemyDestroyed;
+        GameManagerEvents.CreateEnemy += SpawnShip;
+        GameManagerEvents.OnGameResume += PauseUnpaseGame;
+
         PlayerEvents.OnPlayerSpawn += EventOnPlayerSpawned;
         PlayerEvents.OnWeaponSwap += EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate += EventOnPlayerHPUpdate;
         PlayerEvents.OnPlayerDeath += EventOnPlayerDeath;
-        GameManagerEvents.CreateEnemy += SpawnShip; 
+
     }
 
     private void UnsubEvents()
     {
         GameManagerEvents.OnEnemyDestroyed -= EventOnEnemyDestroyed;
+        GameManagerEvents.CreateEnemy -= SpawnShip;
+        GameManagerEvents.OnGameResume -= PauseUnpaseGame;
+
         PlayerEvents.OnPlayerSpawn -= EventOnPlayerSpawned;
         PlayerEvents.OnWeaponSwap -= EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate -= EventOnPlayerHPUpdate;
-        PlayerEvents.OnPlayerDeath -= EventOnPlayerDeath;
+        PlayerEvents.OnPlayerDeath -= EventOnPlayerDeath;    
     }
 
     private void Start()
@@ -58,6 +65,21 @@ public class GameManager : MonoBehaviour
         UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
         _playerCamera.enabled = true;
         gameObject.GetComponent<EnemyManager>().SetCenter(_playerCamera.transform.position);
+    }
+
+    private void Update()
+    {
+        // TODO: add some conditions to pause the game
+        if (Input.GetButtonDown("Cancel")) PauseUnpaseGame();
+    }
+
+    private void PauseUnpaseGame()
+    {
+        _isGamePaused = !_isGamePaused;
+
+        UIEvents.OnGamePaused.Invoke(_isGamePaused);
+        if (_isGamePaused) Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
 
     private void InitializeInstances()
@@ -118,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     private void EventOnPlayerDeath()
     {
-        UIEvents.OnPlayerDeath.Invoke();
+        UIEvents.OnGameEnded.Invoke(false);
     }
 
     private void EventOnEnemyDestroyed(float points)

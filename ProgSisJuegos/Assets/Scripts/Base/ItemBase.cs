@@ -1,11 +1,11 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemBase : MonoBehaviour, IItem
 {
     [SerializeField] private ItemDatabase _itemData;
-    
+    [SerializeField] private float _rotationSpeed = 2;
+
     public ItemDatabase ItemData => _itemData;
     public ItemConsumableDatabase ItemConsumableData => (ItemConsumableDatabase)_itemData;
     public ItemWeaponDatabase ItemWeaponData => (ItemWeaponDatabase)_itemData;
@@ -28,5 +28,10 @@ public class ItemBase : MonoBehaviour, IItem
     private void OnDisable()
     {
         OnSleep?.Invoke();
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(transform.up * _rotationSpeed);
     }
 }

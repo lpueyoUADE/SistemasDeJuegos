@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a596f49614bf442a00c397beba602d, type: 3}
   m_Name: ItemEmpty
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 8542612539427875870, guid: eb929d384b067114c9a9cae465ca2be3, type: 3}
+  _prefab: {fileID: 6036956793981657658, guid: eb929d384b067114c9a9cae465ca2be3, type: 3}
   _type: 0
   _value: 0
-  _grabSound: {fileID: 8300000, guid: 68dc29298c4730041a94c054787a363b, type: 3}
+  _grabSound: {fileID: 8300000, guid: 6fc515f450b73ad4588f78de76ef1e6a, type: 3}

@@ -11,14 +11,6 @@ PrefabInstance:
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
-      propertyPath: _playerPrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: e3d867e72b4c20141a51a3fb6e416532, type: 2}
-    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
-      propertyPath: locationToSpawn
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4744384303318102725, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: m_RootOrder
       value: 0

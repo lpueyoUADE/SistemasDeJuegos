@@ -11,7 +11,11 @@ public class FactoryItems : MonoBehaviour
         _items.Clear();
         string message = "Factory Items: \n";
         foreach (ItemBase item in items)
+
+        {
+            Debug.Log(item);
             message += $"{item.name}, ";
+        }
 
         _items = items;
         Debug.Log($"{message} Initialized {_items.Count} items.");

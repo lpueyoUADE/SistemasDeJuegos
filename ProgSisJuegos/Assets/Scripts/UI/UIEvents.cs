@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIEvents
 {
     public static Action<AudioClip, float> OnPlayUISound;
+    public static Action<bool> OnGamePaused;
 
     public static Action<List<WeaponDatabase>> OnAllWeaponsInitialize;
     public static Action<WeaponType, int> OnAddInventoryWeapon;
@@ -13,8 +14,8 @@ public class UIEvents
 
     public static Action OnPlayerSpawn;
     public static Action<float, float> OnPlayerHPUpdate;
-    public static Action OnPlayerDeath;
-    public static Action OnPlayerWin;
+    public static Action<bool> OnGameEnded;
+
 
     public static Action<float> OnScoreUpdate;
 }

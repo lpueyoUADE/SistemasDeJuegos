@@ -15,9 +15,13 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image _healthBar;
     [SerializeField] private Image _currentWeapon;
+    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _endScreen;
     [SerializeField] private TextMeshProUGUI _scoreText;
-    [SerializeField] private GameObject _defeatScreen;
-    [SerializeField] private GameObject _winScreen;
+    [SerializeField] private TextMeshProUGUI _endScreenText;
+
+    // Buttons
+    [SerializeField] private Button _resumeGameButton;
 
     // Values
     private AudioSource _audio;
@@ -28,14 +32,13 @@ public class UIManager : MonoBehaviour
     {
         _audio = GetComponent<AudioSource>();
         SubEvents();
-        _defeatScreen.SetActive(false);
     }
 
     void Start()
     {
         /*
         _healthBar.value = _healthBar.maxValue;*/
-        UIEvents.OnPlayerWin += ShowWinScreen;
+        UIEvents.OnGameEnded += ShowEndScreen;
 
         _createdWeaponSelector = Instantiate(_weaponSelector);
     }
@@ -54,8 +57,9 @@ public class UIManager : MonoBehaviour
         UIEvents.OnWeaponSwap += WeaponSwap;
         UIEvents.OnPlayerSpawn += OnPlayerSpawn;
         UIEvents.OnPlayerHPUpdate += UpdateHpBar;        
-        UIEvents.OnPlayerDeath += ShowDefeatScreen;
+        UIEvents.OnGameEnded += ShowEndScreen;
         UIEvents.OnScoreUpdate += UpdateScore;
+        UIEvents.OnGamePaused += PauseGame;
 
         PlayerEvents.OnWeaponAmmoUpdate += UpdateWeaponAmmo;
     }
@@ -69,13 +73,14 @@ public class UIManager : MonoBehaviour
         UIEvents.OnWeaponSwap -= WeaponSwap;
         UIEvents.OnPlayerSpawn -= OnPlayerSpawn;
         UIEvents.OnPlayerHPUpdate -= UpdateHpBar;        
-        UIEvents.OnPlayerDeath -= ShowDefeatScreen;
+        UIEvents.OnGameEnded -= ShowEndScreen;
         UIEvents.OnScoreUpdate -= UpdateScore;
+        UIEvents.OnGamePaused -= PauseGame;
 
         PlayerEvents.OnWeaponAmmoUpdate -= UpdateWeaponAmmo;
     }
 
-    private void PlayUISound(AudioClip clip, float volume)
+    private void PlayUISound(AudioClip clip, float volume = 1)
     {
         _audio.PlayOneShot(clip, volume);
     }
@@ -87,17 +92,13 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHpBar(float currentLife, float maxLife)
     {
-        _healthBar.fillAmount = currentLife/maxLife;        
+        _healthBar.fillAmount = currentLife/maxLife;
     } 
 
-    private void ShowDefeatScreen()
+    private void ShowEndScreen(bool win)
     {
-        _defeatScreen.SetActive(true);
-    }
-
-    private void ShowWinScreen()
-    {
-        _winScreen.SetActive(true);
+        _endScreen.SetActive(true);
+        if (win) _endScreenText.text = "Level Completed!";
     }
 
     private void UpdateScore(float newScore)
@@ -117,7 +118,7 @@ public class UIManager : MonoBehaviour
             weapImage.sprite = weapon.WeapIcon;
             _currentWeaponsInUI.Add(weapon.WeapType, newWeaponItem);
 
-            newWeaponItem.transform.SetParent(_UIWeaponsBox.transform, false);
+            //newWeaponItem.transform.SetParent(_UIWeaponsBox.transform, false);
             newWeaponItem.SetActive(false);
         }
     }
@@ -148,6 +149,7 @@ public class UIManager : MonoBehaviour
         _currentWeaponsInUI.TryGetValue(type, out var weapon);
         weapon.SetActive(true);
         UpdateWeaponAmmo(type, ammo);
+        weapon.transform.SetParent(_UIWeaponsBox.transform, false);
     }    
     
     private void RemoveInventoryWeapon(WeaponType type)
@@ -159,8 +161,20 @@ public class UIManager : MonoBehaviour
         weapon.SetActive(false);
     }
 
+    private void PauseGame(bool isPaused)
+    {
+        _pauseMenu.SetActive(isPaused);
+        PlayUISound(_soundsDatabase.UISoundPause);
+    }
+
+    public void ResumeGame()
+    {
+        GameManagerEvents.OnGameResume?.Invoke();
+    }
+
     public void ToMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

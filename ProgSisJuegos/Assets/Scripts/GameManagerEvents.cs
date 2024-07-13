@@ -13,7 +13,7 @@ public static class GameManagerEvents
 
     // General game events
     public static Action OnGameInitialized;
-    public static Action OnGamePaused;
+    public static Action OnGameResume;
     public static Action OnGameEnded;
 
     // Scenes

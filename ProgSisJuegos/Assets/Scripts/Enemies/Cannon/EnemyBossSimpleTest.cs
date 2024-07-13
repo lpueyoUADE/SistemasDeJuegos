@@ -31,7 +31,7 @@ public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
 
     public void OnDeath()
     {
-        UIEvents.OnPlayerWin();
+        UIEvents.OnGameEnded(true);
         Destroy(this.gameObject);
     }
 

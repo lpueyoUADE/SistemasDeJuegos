@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneNameToUser: Earth
   _sceneName: GroundScene
-  _splashImage: {fileID: 21300000, guid: b3ab887b4532d284f933df1bd137b799, type: 3}
+  _splashImage: {fileID: 21300000, guid: 5a5356dbc8054494f9917e367fb06a75, type: 3}

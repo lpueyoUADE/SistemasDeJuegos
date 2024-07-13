@@ -19,7 +19,6 @@ public class PlayerController : ShipBase
         base.Start();
         SwapWeapon();
         _maxLife = _shipData.Life;
-        IncreaseMaxLife(0);
     }
 
     void OnDestroy()
@@ -63,8 +62,8 @@ public class PlayerController : ShipBase
             switch (consumable.ItemConsumableType)
             {
                 case ConsumableType.None: return;
-                case ConsumableType.Shield: Debug.Log($"Shielding for {itemData.ItemValue}."); break;
-                case ConsumableType.Repair: Debug.Log($"Repairing for {itemData.ItemValue}."); break;
+                case ConsumableType.Shield: Shield(itemData.ItemValue, ShipShieldColor); Debug.Log($"Shielding for {itemData.ItemValue}."); break;
+                case ConsumableType.Repair: ShipRepair(itemData.ItemValue); Debug.Log($"Repairing for {itemData.ItemValue}."); break;
                 case ConsumableType.ExtraLife: Debug.Log($"{itemData.ItemValue} extra life/s."); break;
             }
         }
@@ -85,17 +84,9 @@ public class PlayerController : ShipBase
         PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, _maxLife);
     }
 
-    public override void Heal(float amount)
+    public override void ShipRepair(float amount)
     {
-        if((_currentLife + amount) < _maxLife)
-        {
-            _currentLife += amount;            
-        }
-        else
-        {
-            _currentLife = _maxLife;
-        }
-
+        base.ShipRepair(amount);
         PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, _maxLife);
     }
 
@@ -139,7 +130,7 @@ public class PlayerController : ShipBase
     [ContextMenu("Heal")]
     public void Repair()
     {
-        Heal(2);
+        ShipRepair(2);
     }
 #endif
 }

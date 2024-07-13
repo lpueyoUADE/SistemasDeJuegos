@@ -13,6 +13,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     // References
     private AudioSource _audioSource;
     private Rigidbody _rBody;
+    private ShieldBase _shieldScript;
 
     // Values
     private List<IWeapon> _weaponList = new List<IWeapon>();
@@ -39,6 +40,12 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _rBody = GetComponent<Rigidbody>();
         _currentLife = _shipData.Life;
         _audioSource = GetComponent<AudioSource>();
+
+        if (_shieldObject != null)
+        {
+            _shieldObject.TryGetComponent(out ShieldBase shieldScript);
+            if (shieldScript != null) _shieldScript = shieldScript;
+        }
     }
 
     protected virtual void OnEnable()
@@ -85,7 +92,11 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public void UpdateShield(float delta)
     {
-        if (ShipIsShielded) _shieldTimeLeft -= delta;
+        if (ShipIsShielded)
+        {
+            _shieldTimeLeft -= delta;
+            if (_shieldScript != null) _shieldScript.UpdateShieldTime(_shieldTimeLeft);
+        }
 
         if (!ShipIsShielded && _shieldObject.gameObject.activeSelf) _shieldObject.gameObject.SetActive(false);
     }
@@ -94,6 +105,19 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         _shieldTimeLeft = duration;
         _shieldObject.gameObject.SetActive(true);
+
+        if (_shieldScript != null)
+        {
+            float integrity = (_currentLife / _shipData.Life) * 1;
+            Color result = Color.green;
+
+            if (integrity <= 0.25) result = _shipData.ShieldLowIntegrity;
+            if (integrity > 0.25) result = _shipData.ShieldMidIntegrity;
+            if (integrity > 0.75) result = _shipData.ShieldHighIntegrity;
+
+            _shieldScript.UpdateShieldColorIntegrity(result);
+            _shieldScript.UpdateShieldStats(ShipData.ShieldColor, ShipData.ShieldColorSpeed, duration);
+        }
     }
 
     public virtual void AddWeapon(WeaponType type, int ammo = 0)
@@ -164,7 +188,11 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void AnyDamage(float amount)
     {
-        if (ShipIsShielded) return;
+        if (ShipIsShielded)
+        {
+            if (_audioSource.time <= 0.25f) _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShield);
+            return;
+        }
         _currentLife -= amount;
 
         if (_currentLife <= 0)
@@ -177,17 +205,10 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShip);
     }
 
-    public virtual void Heal(float amount)
+    public virtual void ShipRepair(float amount)
     {
-        if ((_currentLife + amount) < ShipData.Life)
-        {
-            _currentLife += amount;
-        }
-        else
-        {
-            _currentLife = ShipData.Life;
-        }
-        
+        if ((_currentLife + amount) < ShipData.Life) _currentLife += amount;
+        else _currentLife = ShipData.Life;
     }
 
     public virtual void OnDeath()

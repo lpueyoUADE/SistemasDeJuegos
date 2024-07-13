@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50511c166e377fc42a08732152c5497b, type: 3}
   m_Name: ItemExtraLife
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 3229897895386599394, guid: 24de03e87e5db8b44bb72e467426fb81, type: 3}
+  _prefab: {fileID: 691311226898203078, guid: 24de03e87e5db8b44bb72e467426fb81, type: 3}
   _type: 2
   _value: 1
-  _grabSound: {fileID: 8300000, guid: 68dc29298c4730041a94c054787a363b, type: 3}
+  _grabSound: {fileID: 8300000, guid: 782fd66543c7d354a80aebfebb4eb1ca, type: 3}
   _consumableType: 3

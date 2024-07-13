@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a6a9e5eb259814caa2be55d24c3efd, type: 3}
   m_Name: UISoundsSpace
   m_EditorClassIdentifier: 
-  _pause: {fileID: 8300000, guid: a84f15bf9440fc44f8bacfaf2cbf0276, type: 3}
-  _genericButtonClick: {fileID: 8300000, guid: 510be40bf6020c54191e7179bef3ef56, type: 3}
-  _changeWeapon: {fileID: 8300000, guid: 1eb41eaeb20e96b44b39fb86381c8b03, type: 3}
+  _pause: {fileID: 8300000, guid: 5de28cbe3fc1075458466f231368bf14, type: 3}
+  _genericButtonClick: {fileID: 8300000, guid: a9e5e87b4d45a3b4b8fb17528a98e3d2, type: 3}
+  _changeWeapon: {fileID: 8300000, guid: ef2e507b02baad24b8c5340912e60d1b, type: 3}
