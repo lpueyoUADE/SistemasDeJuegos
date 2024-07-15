@@ -7,6 +7,8 @@ public class EnemyManager : MonoBehaviour
     private int _index = 0;
     private int _enemiesOnScreen = 0;
     [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
+    [SerializeField] private GameObject _levelBoss;
+    private bool bossSpawned = false;
     private bool startUpdate = false;
     private Vector3 _horizontalCenter;
     
@@ -18,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (startUpdate)
         {
-            if (_enemiesOnScreen == 0)
+            if (_enemiesOnScreen == 0 && bossSpawned == false)
             {
                 LoadNextEnemyWave();
             }
@@ -73,6 +75,7 @@ public class EnemyManager : MonoBehaviour
             //no more enemy waves, level cleared
             print("Level Cleared!");
             //UIEvents.OnPlayerWin();
+            SpawnBoss();            
 
         }
 
@@ -88,5 +91,11 @@ public class EnemyManager : MonoBehaviour
     private void EnemyDestroyed(float none)
     {
         _enemiesOnScreen--;
+    }
+
+    private void SpawnBoss()
+    {
+        Instantiate(_levelBoss, _horizontalCenter + new Vector3(0, 30, 50), Quaternion.identity);
+        bossSpawned = true;
     }
 }
