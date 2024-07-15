@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private UISoundsDatabase _soundsDatabase;
 
-    // References
+    [Header("References")]
     [SerializeField] private HorizontalLayoutGroup _UIWeaponsBox;
     [SerializeField] private GameObject _weaponSingleItem;
     [SerializeField] private GameObject _weaponSelector;
@@ -20,8 +20,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _endScreenText;
 
-    // Buttons
+    [Header("Buttons")]
     [SerializeField] private Button _resumeGameButton;
+    [SerializeField] private Button _audioSettingsButton;
+
+    [Header("Objects")]
+    [SerializeField] private GameObject _mainButtonsObject;
+    [SerializeField] private GameObject _audioMenuObject;
+    [SerializeField] private GameObject _pauseText;
+
+    [Header("Audio Sliders")]
+    [SerializeField] private Slider _masterSlider;
+    [SerializeField] private Slider _effectsSlider;
+    [SerializeField] private Slider _uiSlider;
+    [SerializeField] private Slider _musicSlider;
 
     // Values
     private AudioSource _audio;
@@ -170,6 +182,46 @@ public class UIManager : MonoBehaviour
     public void ResumeGame()
     {
         GameManagerEvents.OnGameResume?.Invoke();
+    }
+
+    public void AudioSettings()
+    {
+        _mainButtonsObject.SetActive(false);
+        _pauseText.SetActive(false);
+        _audioMenuObject.SetActive(true);
+
+        List<float> mixerValues = UserSettings.Instance.AudioMixerValues();
+        _masterSlider.value = mixerValues[0];
+        _effectsSlider.value = mixerValues[1];
+        _uiSlider.value = mixerValues[2];
+        _musicSlider.value = mixerValues[3];
+    }
+
+    public void AudioMixerMaster()
+    {
+        UserSettings.Instance.AudioMixerMaster(_masterSlider.value);
+    }
+
+    public void AudioMixerEffects()
+    {
+        UserSettings.Instance.AudioMixerEffects(_effectsSlider.value);
+    }
+
+    public void AudioMixerUI()
+    {
+        UserSettings.Instance.AudioMixerUI(_uiSlider.value);
+    }
+
+    public void AudioMixerMusic()
+    {
+        UserSettings.Instance.AudioMixerMusic(_musicSlider.value);
+    }
+
+    public void BackToPauseMenu()
+    {
+        _audioMenuObject.SetActive(false);
+        _mainButtonsObject.SetActive(true);
+        _pauseText.SetActive(true);
     }
 
     public void ToMainMenu()

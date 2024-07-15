@@ -12,6 +12,7 @@ public enum ShipType
     Slider,
     Tremor,
     CannonFoder,
+    Chopperino,
 }
 
 [CreateAssetMenu(fileName = "NewShipData", menuName = "Databases/Ship")]
@@ -62,6 +63,4 @@ public class ShipDatabase : ScriptableObject
     public Color ShieldHighIntegrity => _highIntegrity;
     public Color ShieldMidIntegrity => _midIntegrity;
     public Color ShieldLowIntegrity => _lowIntegrity;
-
-
 }

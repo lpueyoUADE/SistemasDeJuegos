@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitializeInstances();
-        Instantiate(UserSettings.Instance.playership);
+        Instantiate(UserSettings.Instance.PlayerShip);
 
         UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
         _playerCamera.enabled = true;
@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour
     private void InitializeInstances()
     {
         // Initialize Factories
-
         // Base projectiles
         List<ProjectileBase> weaponProjectiles = new List<ProjectileBase>();
         foreach (WeaponDatabase weapon in _weaponsList)

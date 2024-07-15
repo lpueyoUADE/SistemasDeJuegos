@@ -22,5 +22,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 382ca98f93475124a87a3e3ed12963e6, type: 3}
   - {fileID: 8300000, guid: 2b99c61d9b8936045ab872cfcf762da3, type: 3}
   _shipExplosionSounds:
-  - {fileID: 8300000, guid: adf48a9ab1528f24aa11f6459488c443, type: 3}
   - {fileID: 8300000, guid: 4e5e484b1dbd11a47a13ba5f4b5509ce, type: 3}

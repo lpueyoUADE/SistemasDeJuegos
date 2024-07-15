@@ -81,13 +81,13 @@ public class PlayerController : ShipBase
     public override void AnyDamage(float amount)
     {
         base.AnyDamage(amount);
-        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, _maxLife);
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, ShipData.Life);
     }
 
     public override void ShipRepair(float amount)
     {
         base.ShipRepair(amount);
-        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, _maxLife);
+        PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, ShipData.Life);
     }
 
     private void IncreaseMaxLife(float amount)

@@ -9,13 +9,10 @@ public class MainMenuLevelShipSelector : MonoBehaviour
 {
     [SerializeField] private GameObject _mainMenuObject;
     [SerializeField] private Transform _shipShowcaseTransform;
+    [SerializeField] private List<SceneInformationDatabase> _scenesInformation;
 
     [Header("Disable objects after game starting")]
-    [SerializeField] private List<GameObject> _objectsList;
-
-    [Header("Scenes/Ship Data")]
-    [SerializeField] private List<ShipDatabase> _shipsList;
-    [SerializeField] private List<SceneInformationDatabase> _scenesInformation;
+    [SerializeField] private List<GameObject> _objectsList;   
 
     [Header("Textures")]
     [SerializeField] private Image _sceneSplash;
@@ -25,10 +22,12 @@ public class MainMenuLevelShipSelector : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _shipName;
 
     // Values
-    private List<GameObject> _spawnedShipsForShowcase = new List<GameObject>();
+    private Dictionary<ShipType, GameObject> _showcaseShips = new Dictionary<ShipType, GameObject>();
     private AudioSource _audio;
-    private int _currentSceneIndex = 0;
-    private int _currentShipIndex = 0;
+    public int _currentSceneIndex = 0;
+
+    public ShipType _currentShipType = ShipType.None;
+    public int _currentShipIndex = 0;
 
     private void Awake()
     {
@@ -53,19 +52,24 @@ public class MainMenuLevelShipSelector : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < _shipsList.Count; i++)
+        for (int i = 0; i < _scenesInformation.Count; i++)
         {
-            var showcaseship = Instantiate(_shipsList[i].ShowcasePrefab, _shipShowcaseTransform.position, _shipsList[i].ShowcasePrefab.transform.rotation, _shipShowcaseTransform);
-            _spawnedShipsForShowcase.Add(showcaseship);
-            showcaseship.SetActive(false);
+            foreach (ShipDatabase shipData in _scenesInformation[i].SceneShips)
+            {
+                var showcaseShip = Instantiate(shipData.ShowcasePrefab, _shipShowcaseTransform.position, shipData.ShowcasePrefab.transform.rotation, _shipShowcaseTransform);
+                _showcaseShips.Add(shipData.Type, showcaseShip);
+                showcaseShip.SetActive(false);
+            }
         }
 
-        _sceneSplash.sprite = _scenesInformation[_currentSceneIndex].SplashImage;
-        _sceneNameToUser.text = _scenesInformation[_currentSceneIndex].SceneNameToUser;
+        ShipDatabase ship = _scenesInformation[_currentSceneIndex].SceneShips[0];
+        _shipName.text = ship.Name;
+        _currentShipType = ship.Type;
+        _showcaseShips[_currentShipType].SetActive(true);
+        UserSettings.UpdatePlayerShip(ship.Prefab);
 
-        _spawnedShipsForShowcase[_currentShipIndex].SetActive(true);
-        _shipName.text = _shipsList[_currentShipIndex].Name;
-        UserSettings.Instance.playership = _shipsList[_currentShipIndex].Prefab;
+        _sceneSplash.sprite = _scenesInformation[_currentSceneIndex].SceneSplashImage;
+        _sceneNameToUser.text = _scenesInformation[_currentSceneIndex].SceneNameToUser;        
     }
 
     public void ChangeLevel(bool isNext)
@@ -82,30 +86,45 @@ public class MainMenuLevelShipSelector : MonoBehaviour
             else _currentSceneIndex--;
         }
 
-        _sceneSplash.sprite = _scenesInformation[_currentSceneIndex].SplashImage;
+        _sceneSplash.sprite = _scenesInformation[_currentSceneIndex].SceneSplashImage;
         _sceneNameToUser.text = _scenesInformation[_currentSceneIndex].SceneNameToUser;
+        _showcaseShips[_currentShipType].SetActive(false);
+        ResetSelectedShip();
+    }
+
+    private void ResetSelectedShip()
+    {
+        _showcaseShips[_currentShipType].SetActive(false);
+        _currentShipIndex = 0;
+        ExecShipChanges();
     }
 
     public void ChangeShip(bool isNext)
     {
-        _spawnedShipsForShowcase[_currentShipIndex].SetActive(false);
+        _showcaseShips[_currentShipType].SetActive(false);
 
         if (isNext)
         {
-            if (_currentShipIndex == _shipsList.Count - 1) _currentShipIndex = 0;
+            if (_currentShipIndex == _scenesInformation[_currentSceneIndex].SceneShips.Count - 1) _currentShipIndex = 0;
             else _currentShipIndex++;
         }
 
         else
         {
-            if (_currentShipIndex == 0) _currentShipIndex = _shipsList.Count - 1;
+            if (_currentShipIndex == 0) _currentShipIndex = _scenesInformation[_currentSceneIndex].SceneShips.Count - 1;
             else _currentShipIndex--;
         }
 
-        _spawnedShipsForShowcase[_currentShipIndex].SetActive(true);
-        _shipName.text = _shipsList[_currentShipIndex].Name;
+        ExecShipChanges();
+    }
 
-        UserSettings.Instance.playership = _shipsList[_currentShipIndex].Prefab;
+    private void ExecShipChanges()
+    {
+        ShipDatabase ship = _scenesInformation[_currentSceneIndex].SceneShips[_currentShipIndex];
+        _currentShipType = ship.Type;
+        _shipName.text = ship.Name;
+        _showcaseShips[_currentShipType].SetActive(true);
+        UserSettings.UpdatePlayerShip(ship.Prefab);
     }
 
     public void BackToMainMenu()
@@ -119,6 +138,7 @@ public class MainMenuLevelShipSelector : MonoBehaviour
         for (int i = 0; i < _objectsList.Count; i++)
             _objectsList[i].SetActive(false);
 
+        ScenarioPersistentData.Instance.UpdateScenarioData(_scenesInformation[_currentSceneIndex]);
         StartCoroutine(OpenScene(_scenesInformation[_currentSceneIndex].SceneName));
     }
 

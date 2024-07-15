@@ -190,7 +190,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         if (ShipIsShielded)
         {
-            if (_audioSource.time <= 0.25f) _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShield);
+            if (_audioSource.time <= 0.25f) _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShield, 0.45f);
             return;
         }
         _currentLife -= amount;

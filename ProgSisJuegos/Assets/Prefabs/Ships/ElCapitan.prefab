@@ -165,8 +165,6 @@ MonoBehaviour:
   _shipData: {fileID: 11400000, guid: 118817d7f5e074c46b1546b574e17c44, type: 2}
   _shieldObject: {fileID: 4153031966611788954}
   _projectileOut: {fileID: 3102686958487351125}
-  _shipShield: {fileID: 9055116960579939923}
-  _shipShieldShader: {fileID: 0}
   _anim: {fileID: 2615706535185395002}
 --- !u!82 &7648005330498316510
 AudioSource:
@@ -177,7 +175,7 @@ AudioSource:
   m_GameObject: {fileID: 3102686959821975062}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -89852055969428241, guid: e2b40b9c2d27f904c8be54be79d4d3f2, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
