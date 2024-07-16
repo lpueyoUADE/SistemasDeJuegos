@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,17 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
     private bool startUpdate = false;
     private Vector3 _horizontalCenter;
-    
+
+    public Action noEnemiesOnScreen;
+    public Action enemiesSpawned;
 
     private float totalWaitTime = 2;
-    private float currentWaitTime;   
+    private float currentWaitTime;
+
+    [SerializeField] float minWaitTime;
+    [SerializeField] float maxWaitTime;
+    public float timeToNextWave = 0;
+    private float currentTimeToNextWave = 0;
 
     private void Update()
     {
@@ -20,8 +28,19 @@ public class EnemyManager : MonoBehaviour
         {
             if (_enemiesOnScreen == 0)
             {
-                LoadNextEnemyWave();
+                if (currentTimeToNextWave >= timeToNextWave)
+                {
+                    LoadNextEnemyWave();
+                    timeToNextWave = UnityEngine.Random.Range(minWaitTime, maxWaitTime);
+                    currentTimeToNextWave = 0;
+                }
+                else
+                {
+                    currentTimeToNextWave += Time.deltaTime;
+                }
             }
+            
+
         }
         else
         {
@@ -49,6 +68,7 @@ public class EnemyManager : MonoBehaviour
 
     private void LoadNextEnemyWave()
     {
+        enemiesSpawned();
         if (_index < _enemyWaves.Count)
         {
             //int enemiesInWave = _enemyWaves[_index].Enemies.Length;
@@ -88,5 +108,9 @@ public class EnemyManager : MonoBehaviour
     private void EnemyDestroyed(float none)
     {
         _enemiesOnScreen--;
+        if (_enemiesOnScreen == 0)
+        {
+            noEnemiesOnScreen();
+        }
     }
 }
