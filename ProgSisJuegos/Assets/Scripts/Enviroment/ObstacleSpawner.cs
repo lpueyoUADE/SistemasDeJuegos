@@ -8,7 +8,8 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
     [SerializeField] private float noEnemiesModifier;
-
+    [SerializeField] EnemyManager enemyManager;
+    private bool modifierOn = false;
 
     [SerializeField] AsteroidPool _pool;
     private float _currentTime = 0;
@@ -16,7 +17,8 @@ public class ObstacleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyManager.noEnemiesOnScreen += ApplyModifier;
+        enemyManager.enemiesSpawned += RemoveModifier;
     }
 
     // Update is called once per frame
@@ -26,11 +28,16 @@ public class ObstacleSpawner : MonoBehaviour
         {
             _chosenSpawnTime = Random.Range(_minSpawnInterval, _maxSpawnInterval);
         }
-        if(_currentTime < _chosenSpawnTime)
+
+        if(_currentTime < _chosenSpawnTime && modifierOn)
         {
             _currentTime += Time.deltaTime + noEnemiesModifier;
         }
-        else
+        else if (_currentTime < _chosenSpawnTime)
+        {
+            _currentTime += Time.deltaTime;
+        }
+        else if (_currentTime >= _chosenSpawnTime)
         {
 
             SpawnAsteroid();
@@ -55,6 +62,16 @@ public class ObstacleSpawner : MonoBehaviour
             asteroid.GetComponent<ObstacleScript>().AssignPool(_pool);
         }       
         
+    }
+
+    private void ApplyModifier()
+    {
+        modifierOn = true;
+    }
+
+    private void RemoveModifier()
+    {
+        modifierOn = false;
     }
     
 }
