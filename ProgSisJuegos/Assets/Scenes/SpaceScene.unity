@@ -401,6 +401,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca43c404a6e38d0469defdc99d0e684a, type: 3}
+--- !u!114 &39650872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8632479101318106652, guid: ca43c404a6e38d0469defdc99d0e684a, type: 3}
+  m_PrefabInstance: {fileID: 39650871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ee65606c1f37940833cfb030489995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &102859427 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3261074527022343177, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
@@ -593,6 +604,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2524276138674579997, guid: 7f3d1c680ba119648817b7fe5df1d44a, type: 3}
+      propertyPath: _pool
+      value: 
+      objectReference: {fileID: 39650872}
     - target: {fileID: 2524276138674579997, guid: 7f3d1c680ba119648817b7fe5df1d44a, type: 3}
       propertyPath: enemyManager
       value: 
@@ -1526,6 +1541,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2524276138674579997, guid: 7f3d1c680ba119648817b7fe5df1d44a, type: 3}
+      propertyPath: _pool
+      value: 
+      objectReference: {fileID: 39650872}
     - target: {fileID: 2524276138674579997, guid: 7f3d1c680ba119648817b7fe5df1d44a, type: 3}
       propertyPath: enemyManager
       value: 
@@ -3753,6 +3772,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2524276138674579997, guid: 7f3d1c680ba119648817b7fe5df1d44a, type: 3}
+      propertyPath: _pool
+      value: 
+      objectReference: {fileID: 39650872}
     - target: {fileID: 2524276138674579997, guid: 7f3d1c680ba119648817b7fe5df1d44a, type: 3}
       propertyPath: enemyManager
       value: 

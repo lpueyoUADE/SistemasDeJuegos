@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AsteroidPool : MonoBehaviour
 {
-    private List<GameObject> asteroids = new List<GameObject>();
+    private List<GameObject> asteroids;
+
+    private void Awake()
+    {
+        asteroids = new List<GameObject>();
+    }
 
     public void AddToPool(ObstacleScript asteroid)
     {
