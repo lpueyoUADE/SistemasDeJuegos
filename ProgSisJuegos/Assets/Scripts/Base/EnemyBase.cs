@@ -11,7 +11,6 @@ public class EnemyBase : ShipBase
     {
         TryGetComponent(out _behaviour);
         InitializeWeapons();
-
         _destination = transform.position.z - 37;
     }
 
@@ -20,26 +19,7 @@ public class EnemyBase : ShipBase
         float delta = Time.deltaTime;
         Recoil(delta);
         _behaviour?.FSMUpdate(delta);
-
         if (ShipIsShielded) UpdateShield(delta);
-
-        /*
-        if (transform.position.y > 0)
-        {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, 0, _destination), 0.5f);
-        }*/
-        //Fire();
-        
-        //
-    }
-
-    public override void AnyDamage(float amount)
-    {
-        _currentLife -= amount;
-        if (_currentLife <= 0)
-        {
-            OnDeath();
-        }
     }
 
     public override void OnDeath()

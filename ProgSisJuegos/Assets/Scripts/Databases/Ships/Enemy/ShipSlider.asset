@@ -14,11 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipType: 5
   _prebab: {fileID: 4413666431233550698, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
-  _points: 5
-  _life: 5
+  _points: 12
+  _shipNameToUser: 
+  _showcaseObject: {fileID: 0}
+  _life: 120
   _maxSpeed: 5
-  _acceleration: 2
-  _damageResistance: 10
+  _acceleration: 20
+  _damageResistance: 30
   _defaultWeapon: 10
-  _shieldDuration: 1
-  _shieldColor: {r: 1, g: 0, b: 0, a: 1}
+  _shieldDuration: 0.5
+  _shieldColor: {r: 0, g: 1, b: 0.046749115, a: 1}
+  _shieldColorSpeed: 20
+  _highIntegrity: {r: 1, g: 0, b: 0.9964247, a: 1}
+  _midIntegrity: {r: 0.15044165, g: 0, b: 1, a: 1}
+  _lowIntegrity: {r: 0, g: 1, b: 0.9202757, a: 1}

@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class FactoryItems : MonoBehaviour
 {
@@ -11,13 +9,7 @@ public class FactoryItems : MonoBehaviour
     {
         _items.Clear();
         string message = "Factory Items: \n";
-        foreach (ItemBase item in items)
-
-        {
-            Debug.Log(item);
-            message += $"{item.name}, ";
-        }
-
+        foreach (ItemBase item in items) message += $"{item.name}, ";
         _items = items;
         Debug.Log($"{message} Initialized {_items.Count} items.");
     }

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51e8d84b1f0ddb64d8e8a669e00096f7, type: 3}
-  m_Name: ShipSpecialTremor
+  m_Name: ShipSpecialMosquitoe
   m_EditorClassIdentifier: 
-  _shipType: 11
-  _prebab: {fileID: 2104125275109425018, guid: 6f39791381edd1e4f9b020fb218e5110, type: 3}
-  _points: 5
+  _shipType: 9
+  _prebab: {fileID: 5750745876213030487, guid: 1b01fb0ac572a2b409cc085bd6a2444e, type: 3}
+  _points: 10
   _shipNameToUser: 
   _showcaseObject: {fileID: 0}
-  _life: 5
+  _life: 100
   _maxSpeed: 5
-  _acceleration: 2
-  _damageResistance: 10
+  _acceleration: 18
+  _damageResistance: 20
   _defaultWeapon: 10
-  _shieldDuration: 1
-  _shieldColor: {r: 1, g: 0, b: 0, a: 1}
+  _shieldDuration: 0.5
+  _shieldColor: {r: 0, g: 1, b: 0.012712002, a: 1}
   _shieldColorSpeed: 20
-  _highIntegrity: {r: 0, g: 1, b: 0, a: 1}
-  _midIntegrity: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _lowIntegrity: {r: 1, g: 0, b: 0, a: 1}
+  _highIntegrity: {r: 1, g: 0, b: 0.9964247, a: 1}
+  _midIntegrity: {r: 0.15044165, g: 0, b: 1, a: 1}
+  _lowIntegrity: {r: 0, g: 1, b: 0.9202757, a: 1}

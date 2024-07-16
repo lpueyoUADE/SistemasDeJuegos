@@ -13,6 +13,7 @@ public class Pool
     private static ProjectilePool<ProjectileBase> _projectilesPool = new ProjectilePool<ProjectileBase>();
     private static ItemPool<ItemBase> _itemsPool = new ItemPool<ItemBase>();
     private static EnemyPool<EnemyBase> _enemiesPool = new EnemyPool<EnemyBase>();
+    private static UniversalPooleableObjectPool<UniversalPooleableObject> _univPooleableObject = new UniversalPooleableObjectPool<UniversalPooleableObject>();
 
     public static void InitializePool(List<ProjectileBase> projectiles)
     {
@@ -142,5 +143,24 @@ public class Pool
 
         ship.Value.gameObject.SetActive(true);
         return ship.Value;
+    }
+
+    // Create universal pooleable object
+    public static UniversalPooleableObject CreateUniversalObject(UniversalPoolObjectType type)
+    {
+        var theObject = _univPooleableObject.GetOrCreate(type);
+
+        if (theObject.Value == null)
+        {
+            theObject.Value = FactoryUniversalObjects.GeneratePooleableObject(type);
+            theObject.Value.OnDisabled += () =>
+            {
+                theObject.Value.gameObject.SetActive(false);
+                _univPooleableObject.InUseToAvailable(theObject);
+            };
+        }
+
+        theObject.Value.gameObject.SetActive(true);
+        return theObject.Value;
     }
 }
