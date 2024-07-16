@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _mainMenuButtons;
     [SerializeField] private GameObject _optionsMenuButtons;
     [SerializeField] private GameObject _optionsSoundSettings;
+    [SerializeField] private GameObject _controls;
 
     [Header("Individual options components")]
     [SerializeField] private GameObject _optionsAudioButton;
@@ -29,6 +30,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Slider _uiSlider;
     [SerializeField] private Slider _musicSlider;
 
+    [Header("Audio sources for sliders")]
     [SerializeField] private AudioSource _effectsAudio;
     [SerializeField] private AudioSource _uiAudio;
     [SerializeField] private AudioSource _musicAudio;
@@ -55,12 +57,21 @@ public class MainMenu : MonoBehaviour
     {
         _mainMenuButtons.SetActive(true);
         _optionsMenuButtons.SetActive(false);
+        _controls.SetActive(false);
     }
 
     public void MenuOptions()
     {
         _mainMenuButtons.SetActive(false);
         _optionsMenuButtons.SetActive(true);
+        _controls.SetActive(false);
+    }
+
+    public void MenuControls()
+    {
+        _mainMenuButtons.SetActive(false);
+        _optionsMenuButtons.SetActive(false);
+        _controls.SetActive(true);
     }
 
     public void MenuAudioMixer()

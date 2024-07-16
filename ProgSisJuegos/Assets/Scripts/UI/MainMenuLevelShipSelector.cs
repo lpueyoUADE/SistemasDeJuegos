@@ -24,10 +24,10 @@ public class MainMenuLevelShipSelector : MonoBehaviour
     // Values
     private Dictionary<ShipType, GameObject> _showcaseShips = new Dictionary<ShipType, GameObject>();
     private AudioSource _audio;
-    public int _currentSceneIndex = 0;
+    private int _currentSceneIndex = 0;
 
-    public ShipType _currentShipType = ShipType.None;
-    public int _currentShipIndex = 0;
+    private ShipType _currentShipType = ShipType.None;
+    private int _currentShipIndex = 0;
 
     private void Awake()
     {

@@ -130,9 +130,85 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 417030234034425088, guid: a8addd8e24c577141b559d919017b1be, type: 3}
-      propertyPath: m_Name
-      value: PlayPauseMusic
+    - target: {fileID: 280369638, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280369638, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488037463, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488037463, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488037463, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 583405274, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 583405274, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834113242, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 834113242, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 852272296, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 852272296, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125531, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125531, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125531, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711580924, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711580924, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711580924, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918541159, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918541159, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918541159, guid: a8addd8e24c577141b559d919017b1be, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5603120380446013856, guid: a8addd8e24c577141b559d919017b1be, type: 3}
       propertyPath: m_Name
@@ -181,14 +257,6 @@ PrefabInstance:
     - target: {fileID: 5603120380446013857, guid: a8addd8e24c577141b559d919017b1be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6602476714803998832, guid: a8addd8e24c577141b559d919017b1be, type: 3}
-      propertyPath: m_Name
-      value: PlayPauseSFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600898154450552622, guid: a8addd8e24c577141b559d919017b1be, type: 3}
-      propertyPath: m_Name
-      value: PlayPauseUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8addd8e24c577141b559d919017b1be, type: 3}

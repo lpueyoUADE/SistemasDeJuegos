@@ -17,6 +17,11 @@ public class MosquitoeEnemy : EnemyBase
         _targetLocation = newTargetLocation;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+    }
+
     // 
 
 

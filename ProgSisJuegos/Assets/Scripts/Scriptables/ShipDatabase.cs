@@ -13,6 +13,9 @@ public enum ShipType
     Tremor,
     CannonFoder,
     Chopperino,
+    SpecialMosquitoe,
+    SpecialSlider,
+    SpecialTremor,
 }
 
 [CreateAssetMenu(fileName = "NewShipData", menuName = "Databases/Ship")]

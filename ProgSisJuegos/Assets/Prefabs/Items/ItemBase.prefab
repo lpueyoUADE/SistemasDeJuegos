@@ -161,3 +161,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 66566e8b033e8474a993814d332f0076, type: 2}
   _rotationSpeed: 2
+  _movementSpeed: 0.25

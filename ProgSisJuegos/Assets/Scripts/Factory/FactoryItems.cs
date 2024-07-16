@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class FactoryItems : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class FactoryItems : MonoBehaviour
 
         _items = items;
         Debug.Log($"{message} Initialized {_items.Count} items.");
+    }
+
+    public static ItemBase GenerateItem(ItemDatabase itemData)
+    {
+        return Instantiate(itemData.ItemPrefab);
     }
 
     public static ItemBase GenerateItem(ConsumableType type)

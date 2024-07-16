@@ -223,5 +223,11 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         AnyDamage(1);
     }
+
+    [ContextMenu("Destroy ship")]
+    void DestroyShip()
+    {
+        AnyDamage(99999);
+    }
 #endif
 }
