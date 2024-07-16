@@ -47,5 +47,7 @@ MonoBehaviour:
   ObstaclePrefab: {fileID: 1720276595124934632, guid: fb6e20b191c7328448d6142e151734be, type: 3}
   _minSpawnInterval: 5
   _maxSpawnInterval: 10
-  noEnemiesModifier: 0
+  _spawnIntervalModifier: 10
+  noEnemiesModifier: 0.1
+  enemyManager: {fileID: 0}
   _pool: {fileID: 8632479101318106652, guid: ca43c404a6e38d0469defdc99d0e684a, type: 3}

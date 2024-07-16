@@ -7,6 +7,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private GameObject ObstaclePrefab;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
+    [SerializeField] private float _spawnIntervalModifier;
     [SerializeField] private float noEnemiesModifier;
     [SerializeField] EnemyManager enemyManager;
     private bool modifierOn = false;
@@ -66,12 +67,22 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void ApplyModifier()
     {
-        modifierOn = true;
+        if (modifierOn == false)
+        {
+            _minSpawnInterval += _spawnIntervalModifier;
+            _maxSpawnInterval += _spawnIntervalModifier;
+        }
+        modifierOn = true;        
     }
 
     private void RemoveModifier()
     {
-        modifierOn = false;
+        if (modifierOn)
+        {
+            _minSpawnInterval -= _spawnIntervalModifier;
+            _maxSpawnInterval -= _spawnIntervalModifier;
+        }
+        modifierOn = false;        
     }
     
 }
