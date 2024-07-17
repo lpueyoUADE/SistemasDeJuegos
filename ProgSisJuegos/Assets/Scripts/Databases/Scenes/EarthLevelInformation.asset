@@ -17,5 +17,6 @@ MonoBehaviour:
   _splashImage: {fileID: 21300000, guid: 5a5356dbc8054494f9917e367fb06a75, type: 3}
   _availableShips:
   - {fileID: 11400000, guid: 2a26141b3817a5740944ea79dc065642, type: 2}
+  - {fileID: 11400000, guid: b275f35c1ba2d634ead0fc1477e55638, type: 2}
   _obstacles: {fileID: 11400000, guid: a4605d2b14efefd4abdbdcdc555d1f7e, type: 2}
   _music: {fileID: 8300000, guid: fd2aba16174de034eb51f892231fd857, type: 3}

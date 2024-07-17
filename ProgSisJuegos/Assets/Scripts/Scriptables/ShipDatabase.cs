@@ -13,6 +13,7 @@ public enum ShipType
     Tremor,
     CannonFoder,
     Chopperino,
+    F18,
     SpecialMosquitoe,
     SpecialSlider,
     SpecialTremor,

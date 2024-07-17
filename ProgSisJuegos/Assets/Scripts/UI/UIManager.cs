@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     private AudioSource _audio;
     private GameObject _createdWeaponSelector;
     private Dictionary<WeaponType, GameObject> _currentWeaponsInUI = new Dictionary<WeaponType, GameObject>();
+    private bool gameEnded;
 
     private void Awake()
     {
@@ -107,6 +108,7 @@ public class UIManager : MonoBehaviour
     {
         _endScreen.SetActive(true);
         if (win) _endScreenText.text = "Level Completed!";
+        gameEnded = true;
     }
 
     private void UpdateScore(float newScore)
@@ -171,13 +173,19 @@ public class UIManager : MonoBehaviour
 
     private void PauseGame(bool isPaused)
     {
-        _pauseMenu.SetActive(isPaused);
-        PlayUISound(_soundsDatabase.UISoundPause);
+        if (gameEnded == false)
+        {
+            _pauseMenu.SetActive(isPaused);
+            PlayUISound(_soundsDatabase.UISoundPause);
+        }        
     }
 
     public void ResumeGame()
     {
-        GameManagerEvents.OnGameResume?.Invoke();
+        if (gameEnded == false)
+        {
+            GameManagerEvents.OnGameResume?.Invoke();
+        }        
     }
 
     public void AudioSettings()
@@ -224,5 +232,5 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-    }
+    }  
 }
