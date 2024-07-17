@@ -95,9 +95,10 @@ public class EnemyManager : MonoBehaviour
         else if (_index == _enemyWaves.Count)
         {
             //no more enemy waves, level cleared
-            print("Level Cleared!");
+            
             //UIEvents.OnPlayerWin();
-            SpawnBoss();            
+            SpawnBoss();
+            print("Boss Spawned");
 
         }
 
@@ -121,7 +122,7 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnBoss()
     {
-        Instantiate(_levelBoss, _horizontalCenter + new Vector3(0, 30, 50), Quaternion.identity);
+        Instantiate(_levelBoss, _horizontalCenter + new Vector3(0, 30, spawnDistanceFromPlayer), Quaternion.identity);
         bossSpawned = true;
     }
 }

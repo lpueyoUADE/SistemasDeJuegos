@@ -1168,6 +1168,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1690403284096835764, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
+      propertyPath: _levelBoss
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690403284096835764, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
       propertyPath: maxWaitTime
       value: 30
       objectReference: {fileID: 0}
