@@ -17,13 +17,14 @@ MonoBehaviour:
   _points: 0
   _shipNameToUser: Sonic
   _showcaseObject: {fileID: 4314333843008958046, guid: aca8568118e27ae48a323225cafd6e25, type: 3}
-  _life: 15
+  _life: 30
   _maxSpeed: 12
   _acceleration: 25
   _damageResistance: 10
   _defaultWeapon: 1
   _shieldDuration: 2
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}
+  _shieldColorSpeed: 20
   _highIntegrity: {r: 0, g: 1, b: 0.9301295, a: 1}
   _midIntegrity: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _lowIntegrity: {r: 1, g: 0, b: 0, a: 1}

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2135141194773615884}
   - component: {fileID: 1181906096915222107}
   - component: {fileID: 3057996397486007649}
+  - component: {fileID: 4433194537325980135}
+  - component: {fileID: 1145246052917148026}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -78,7 +80,7 @@ MonoBehaviour:
   shipToSpawn: 0
   projectileToSpawn: 0
   consumableItemToSpawn: 0
-  weaponItemToSpawn: 2
+  weaponItemToSpawn: 1
   locationToSpawn: {fileID: 4744384303318102725}
 --- !u!114 &1181906096915222107
 MonoBehaviour:
@@ -104,3 +106,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c47b88898a3d54997ad8f275053913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4433194537325980135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8142239973807653536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23bdaa7dd38942a458c4aec754e4e4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1145246052917148026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8142239973807653536}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0e5a05693d4e4280149676a0e8f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyWaves: []
+  minWaitTime: 0
+  maxWaitTime: 0
+  timeToNextWave: 0
