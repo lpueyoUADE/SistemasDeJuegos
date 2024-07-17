@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Showcase : MonoBehaviour
 {
-    public TextMeshProUGUI uitext;
-    public List<GameObject> objectsList = new List<GameObject>();
-    public List<string> namesList = new List<string>();
-    public List<Vector3> offsets = new List<Vector3>();
-    public int index = 0;
+    [SerializeField] private TextMeshProUGUI uitext;
+    [SerializeField] private List<GameObject> objectsList = new List<GameObject>();
+    [SerializeField] private List<string> namesList = new List<string>();
+    [SerializeField] private List<Vector3> offsets = new List<Vector3>();
+    [SerializeField] private int index = 0;
 
+    [SerializeField] private AudioClip _changeObjectCue;
+
+    private AudioSource _audio;
     private Vector3 _direction;
 
     public float axis => Input.GetAxisRaw("Horizontal");
+
+    private void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -26,12 +34,14 @@ public class Showcase : MonoBehaviour
         {
             if (index == 0) index = objectsList.Count - 1;
             else index--;
+            _audio.PlayOneShot(_changeObjectCue);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
             if (index >= objectsList.Count - 1) index = 0;
             else index++;
+            _audio.PlayOneShot(_changeObjectCue);
         }
 
         uitext.text = namesList[index];
