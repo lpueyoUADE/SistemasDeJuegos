@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Axis
+{
+    X, Y, Z
+}
+
 public class RotateController : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] Axis axis;
-    public enum Axis
-    {
-        X,
-        Y,
-        Z
-    }
-
     private Vector3 selectedAxis;
-    // Start is called before the first frame update
+
     void Start()
     {
         switch (axis){
@@ -29,8 +27,7 @@ public class RotateController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         this.transform.RotateAround(this.transform.position, selectedAxis, speed * Time.deltaTime);
     }
