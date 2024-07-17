@@ -72,7 +72,7 @@ public class EnemyManager : MonoBehaviour
 
     private void LoadNextEnemyWave()
     {
-        enemiesSpawned();
+        //enemiesSpawned();
         if (_index < _enemyWaves.Count)
         {
             //int enemiesInWave = _enemyWaves[_index].Enemies.Length;
@@ -116,7 +116,7 @@ public class EnemyManager : MonoBehaviour
         _enemiesOnScreen--;
         if (_enemiesOnScreen == 0)
         {
-            noEnemiesOnScreen();
+            //noEnemiesOnScreen();
         }
     }
 

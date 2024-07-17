@@ -190,6 +190,8 @@ MonoBehaviour:
   _shipData: {fileID: 11400000, guid: 3a9536cd520ce894b9adda75328c3f98, type: 2}
   _shieldObject: {fileID: 8188568879099247399}
   _projectileOut: {fileID: 5105378504716304470}
+  lifeSpan: 15
+  spawnSpeed: 5
 --- !u!82 &8200630955797953878
 AudioSource:
   m_ObjectHideFlags: 0
@@ -298,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8897a0f1f7b37b64c849d8ac2e0cf579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _behaviourData: {fileID: 0}
+  _behaviourData: {fileID: 11400000, guid: 8bbd7e76a0086544792516b3184bb1ef, type: 2}
 --- !u!1 &5105378504716304471
 GameObject:
   m_ObjectHideFlags: 0

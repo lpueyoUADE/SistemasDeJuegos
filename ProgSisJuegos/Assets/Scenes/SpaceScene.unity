@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3985,10 +3985,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _levelBoss
+      value: 
+      objectReference: {fileID: 7906049659366341727, guid: 450963890408a4541beb7209f1c66fc4, type: 3}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: maxWaitTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyWaves.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: spawnDistanceFromPlayer
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyWaves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ffc1f50baa484724dacb88738c60ca87, type: 2}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyWaves.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 96503151693a12e4cb83e1968e060929, type: 2}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyWaves.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: dc824ca6e603ff04d9dcdccd0aa20807, type: 2}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyWaves.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 053ab0759060c6b4fbbeebe684ea9d65, type: 2}
+    - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyWaves.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c41c0c1f453e5c4cb9d490d238790f0, type: 2}
     - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 963194229}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: d99822ee2be3e7542a4389f32c2a3ff8, type: 2}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b5f51043cefc4e459c7bed156f7b474, type: 2}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _enemyList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d9fa2a5bd3b7d94e919aad31f68ee8e, type: 2}
     - target: {fileID: 4744384303318102725, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: m_RootOrder
       value: 10
