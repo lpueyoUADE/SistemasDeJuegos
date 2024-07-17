@@ -8,8 +8,11 @@ public class EnemyManager : MonoBehaviour
     private int _index = 0;
     private int _enemiesOnScreen = 0;
     [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
+    [SerializeField] private GameObject _levelBoss;
+    private bool bossSpawned = false;
     private bool startUpdate = false;
     private Vector3 _horizontalCenter;
+    [SerializeField] float spawnDistanceFromPlayer;
 
     public Action noEnemiesOnScreen;
     public Action enemiesSpawned;
@@ -19,14 +22,14 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] float minWaitTime;
     [SerializeField] float maxWaitTime;
-    public float timeToNextWave = 0;
+    private float timeToNextWave = 0;
     private float currentTimeToNextWave = 0;
 
     private void Update()
     {
         if (startUpdate)
         {
-            if (_enemiesOnScreen == 0)
+            if (_enemiesOnScreen == 0 && bossSpawned == false)
             {
                 if (currentTimeToNextWave >= timeToNextWave)
                 {
@@ -59,6 +62,7 @@ public class EnemyManager : MonoBehaviour
         LoadNextEnemyWave();
         EnableUpdate();
         GameManagerEvents.OnEnemyDestroyed += EnemyDestroyed;
+        print("EnemyManager Initialized");
     }
     
     public void SetCenter(Vector3 pos)
@@ -68,7 +72,7 @@ public class EnemyManager : MonoBehaviour
 
     private void LoadNextEnemyWave()
     {
-        enemiesSpawned();
+        //enemiesSpawned();
         if (_index < _enemyWaves.Count)
         {
             //int enemiesInWave = _enemyWaves[_index].Enemies.Length;
@@ -78,7 +82,7 @@ public class EnemyManager : MonoBehaviour
                 if (enemy != null)
                 {
 
-                    /*GameObject temp = */GameManagerEvents.CreateEnemy.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,50)));
+                    /*GameObject temp = */GameManagerEvents.CreateEnemy.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,spawnDistanceFromPlayer)));
                     //var spawnedEnemy = temp.GetComponent<EnemyBase>();
                     _enemiesOnScreen++;
                     //enemy += EnemyDestroyed;
@@ -91,8 +95,10 @@ public class EnemyManager : MonoBehaviour
         else if (_index == _enemyWaves.Count)
         {
             //no more enemy waves, level cleared
-            print("Level Cleared!");
+            
             //UIEvents.OnPlayerWin();
+            SpawnBoss();
+            print("Boss Spawned");
 
         }
 
@@ -110,7 +116,13 @@ public class EnemyManager : MonoBehaviour
         _enemiesOnScreen--;
         if (_enemiesOnScreen == 0)
         {
-            noEnemiesOnScreen();
+            //noEnemiesOnScreen();
         }
+    }
+
+    private void SpawnBoss()
+    {
+        Instantiate(_levelBoss, _horizontalCenter + new Vector3(0, 30, spawnDistanceFromPlayer), Quaternion.identity);
+        bossSpawned = true;
     }
 }

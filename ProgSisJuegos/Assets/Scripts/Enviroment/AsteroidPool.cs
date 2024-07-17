@@ -13,7 +13,12 @@ public class AsteroidPool : MonoBehaviour
 
     public void AddToPool(ObstacleScript asteroid)
     {
+        if (asteroids == null)
+        {
+            asteroids = new List<GameObject>();
+        }
         asteroids.Add(asteroid.gameObject);
+
     }
 
     public GameObject GetFromPool()
