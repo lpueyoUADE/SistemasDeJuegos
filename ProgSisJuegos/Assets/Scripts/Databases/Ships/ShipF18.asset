@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e8d84b1f0ddb64d8e8a669e00096f7, type: 3}
+  m_Name: ShipF18
+  m_EditorClassIdentifier: 
+  _shipType: 9
+  _prebab: {fileID: 3102686959821975067, guid: bb8befa335376e54dbe77f4750623bf1, type: 3}
+  _points: 0
+  _shipNameToUser: F18
+  _showcaseObject: {fileID: 4314333843008958046, guid: 119671310b3b9734f9f35270d9a70c72, type: 3}
+  _life: 30
+  _maxSpeed: 20
+  _acceleration: 30
+  _damageResistance: 10
+  _defaultWeapon: 11
+  _shieldDuration: 10
+  _shieldColor: {r: 0, g: 1, b: 0, a: 1}
+  _shieldColorSpeed: 20
+  _highIntegrity: {r: 0, g: 1, b: 0, a: 1}
+  _midIntegrity: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _lowIntegrity: {r: 1, g: 0, b: 0, a: 1}
