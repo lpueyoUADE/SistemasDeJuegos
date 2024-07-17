@@ -191,7 +191,7 @@ MonoBehaviour:
   _shieldObject: {fileID: 3436830045932306335}
   _projectileOut: {fileID: 5105378504716304470}
   lifeSpan: 30
-  spawnSpeed: 3
+  spawnSpeed: 10
 --- !u!82 &7857266022697286813
 AudioSource:
   m_ObjectHideFlags: 0
