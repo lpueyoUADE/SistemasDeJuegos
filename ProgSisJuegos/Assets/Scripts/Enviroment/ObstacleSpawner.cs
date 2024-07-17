@@ -10,7 +10,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float _maxSpawnInterval;
     [SerializeField] private float _spawnIntervalModifier;
     [SerializeField] private float noEnemiesModifier;
-    [SerializeField] EnemyManager enemyManager;
+    //[SerializeField] EnemyManager enemyManager;
     private bool modifierOn = false;
 
     [SerializeField] AsteroidPool _pool;
@@ -19,8 +19,8 @@ public class ObstacleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyManager.noEnemiesOnScreen += ApplyModifier;
-        enemyManager.enemiesSpawned += RemoveModifier;
+        //enemyManager.noEnemiesOnScreen += ApplyModifier;
+        //enemyManager.enemiesSpawned += RemoveModifier;
     }
 
     // Update is called once per frame

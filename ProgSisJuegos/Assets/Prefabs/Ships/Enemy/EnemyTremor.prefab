@@ -190,8 +190,8 @@ MonoBehaviour:
   _shipData: {fileID: 11400000, guid: dc65ddc771ac8db4d83ba99d0c6deea1, type: 2}
   _shieldObject: {fileID: 3436830045932306335}
   _projectileOut: {fileID: 5105378504716304470}
-  lifeSpan: 20
-  spawnSpeed: 5
+  lifeSpan: 30
+  spawnSpeed: 3
 --- !u!82 &7857266022697286813
 AudioSource:
   m_ObjectHideFlags: 0
