@@ -28,43 +28,23 @@ public class EnemyBase : ShipBase
         Recoil(delta);
         _behaviour?.FSMUpdate(delta);
 
-        if (ShipIsShielded) UpdateShield(delta);
+        if (ShipIsShielded) 
+            UpdateShield(delta);
 
-        
-        if (transform.position.y > 0 && positioned == false)
-        {
+        if (transform.position.y > 0 && positioned == false) 
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, 0, _destination), spawnSpeed*Time.deltaTime);
-        }
-        else if(transform.position.y == 0 && positioned == false)
-        {
-            positioned = true;
-        }
-        if (currentLifeSpan >= lifeSpan)
-        {
-            Disable();
-        }
-        else
-        {
-            currentLifeSpan += Time.deltaTime;
-        }
-        //Fire();
-        
-        //
-    }
 
-    public override void AnyDamage(float amount)
-    {
-        _currentLife -= amount;
-        if (_currentLife <= 0)
-        {
-            OnDeath();
-        }
+        else if(transform.position.y == 0 && positioned == false) 
+            positioned = true;
+
+        if (currentLifeSpan >= lifeSpan) 
+            Disable();
+
+        else currentLifeSpan += Time.deltaTime;
     }
 
     public override void OnDeath()
     {
-        currentLifeSpan = 0;
-        positioned = false;
         GameManagerEvents.OnEnemyDestroyed(_shipData.Points);
         OnDisabled?.Invoke();
         base.OnDeath();

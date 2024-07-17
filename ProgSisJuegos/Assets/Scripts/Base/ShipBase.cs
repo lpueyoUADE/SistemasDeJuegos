@@ -56,6 +56,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     protected virtual void OnDisable()
     {
+        _shieldObject.gameObject.SetActive(false);
         _currentLife = _shipData.Life;
         _shieldTimeLeft = 0;
     }
