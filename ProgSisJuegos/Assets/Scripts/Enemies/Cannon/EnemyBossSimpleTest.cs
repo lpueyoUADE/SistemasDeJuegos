@@ -44,16 +44,16 @@ public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
     void Start()
     {
         currentLife = life;
-        lifetext.text = $"{life}";       
+        //lifetext.text = $"{life}";       
         _destination = transform.position.z - 20;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > -2)
+        if (transform.position.y > 0)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, -2, _destination), 0.5f);
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, 0, _destination), 0.5f);
         }
     }
    

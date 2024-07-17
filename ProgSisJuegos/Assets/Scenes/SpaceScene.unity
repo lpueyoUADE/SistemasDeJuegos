@@ -3931,14 +3931,14 @@ PrefabInstance:
     - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: _levelBoss
       value: 
-      objectReference: {fileID: 7906049659366341727, guid: 450963890408a4541beb7209f1c66fc4, type: 3}
+      objectReference: {fileID: 7906049659366341727, guid: accc7730e6ec40e4d98fad2e92e9cbae, type: 3}
     - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: maxWaitTime
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: _enemyWaves.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: spawnDistanceFromPlayer

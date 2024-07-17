@@ -33,7 +33,7 @@ public class EnemyCannonAimSimple : MonoBehaviour
         if (exec)
         {
             currentWeapon?.Fire(projectileOut);
-            Vector3 finalDir = new Vector3(-target.x, 0, -target.z);
+            Vector3 finalDir = new Vector3(-target.x, -target.y, -target.z);
             rotatingCannon.transform.rotation = Quaternion.SlerpUnclamped(rotatingCannon.transform.rotation, Quaternion.LookRotation(finalDir), delta * rotatingspeed);
             exec = false;
         }
