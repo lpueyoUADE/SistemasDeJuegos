@@ -86,7 +86,7 @@ MonoBehaviour:
   _targetTag: Enemy
   _maskObs:
     serializedVersion: 2
-    m_Bits: 2112
+    m_Bits: 10304
   _projectileType: 8
   _ballDamage: 10
   _ballLife: 1

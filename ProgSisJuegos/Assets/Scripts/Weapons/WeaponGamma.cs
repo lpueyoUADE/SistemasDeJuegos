@@ -6,11 +6,6 @@ public class WeaponGamma : WeaponBase
 {
     [SerializeField] private ProjectileBase _trail;
 
-    public WeaponGamma(WeaponDatabase data)
-    {
-        InitializeWeapon(data);
-    }
-
     public override void Fire(Transform spawnTransform)
     {
         if ((!WeaponData.WeapHasInfiniteAmmo && _currentAmmo <= 0) || _currentRecoil > 0) return;

@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class WeaponBlueRail : WeaponBase
 {
-    public WeaponBlueRail(WeaponDatabase data) 
-    {
-        InitializeWeapon(data);
-    }
+
 }

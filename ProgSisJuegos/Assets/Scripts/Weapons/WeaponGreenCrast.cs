@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class WeaponGreenCrast : WeaponBase
 {
-    public WeaponGreenCrast(WeaponDatabase data)
-    {
-        InitializeWeapon(data);
-    }
-
     public override void UseAmmo()
     {
         base.UseAmmo();

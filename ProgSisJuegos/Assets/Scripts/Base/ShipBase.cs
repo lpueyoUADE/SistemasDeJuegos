@@ -130,7 +130,9 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
             return;
         }
 
-        _weaponList.Add(FactoryWeapon.CreateWeapon(type));
+        IWeapon newWeap = FactoryWeapon.CreateWeapon(type);
+        newWeap.InitializeWeapon(FactoryWeapon.GetWeaponData(type));
+        _weaponList.Add(newWeap);
     }
 
     public virtual void RemoveWeapon(IWeapon type)

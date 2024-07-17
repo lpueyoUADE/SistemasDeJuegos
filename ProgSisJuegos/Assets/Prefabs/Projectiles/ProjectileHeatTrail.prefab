@@ -131,8 +131,7 @@ MonoBehaviour:
   _targetTag: Enemy
   _maskObs:
     serializedVersion: 2
-    m_Bits: 2113
-  _life: 1
+    m_Bits: 10305
   _projectileType: 5
 --- !u!1 &6503677493305782699
 GameObject:

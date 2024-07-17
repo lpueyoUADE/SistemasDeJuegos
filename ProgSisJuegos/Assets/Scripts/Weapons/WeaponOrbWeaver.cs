@@ -11,11 +11,6 @@ public class WeaponOrbWeaver : WeaponBase
     private float _currentChargeTime = 0;
     private bool _isCharging = false;
 
-    public WeaponOrbWeaver(WeaponDatabase data)
-    {
-        InitializeWeapon(data);
-    }
-
     public override void Fire(Transform spawnTransform)
     {
         if (!_isCharging)

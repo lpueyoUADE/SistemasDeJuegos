@@ -131,11 +131,9 @@ MonoBehaviour:
   _targetTag: Enemy
   _maskObs:
     serializedVersion: 2
-    m_Bits: 2113
-  _life: 1
+    m_Bits: 10305
   _projectileType: 4
   _maxHits: 3
-  _currentMaxHits: 0
 --- !u!1001 &3858518011754762735
 PrefabInstance:
   m_ObjectHideFlags: 0

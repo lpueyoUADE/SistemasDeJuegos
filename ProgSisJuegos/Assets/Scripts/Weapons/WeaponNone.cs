@@ -40,4 +40,9 @@ public class WeaponNone : IWeapon
     {
         Debug.LogError("Empty weapon.");
     }
+
+    public void InitializeWeapon(WeaponDatabase data)
+    {
+        Debug.LogError("Empty weapon.");
+    }
 }
