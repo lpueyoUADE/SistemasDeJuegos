@@ -24,3 +24,6 @@ MonoBehaviour:
   _defaultWeapon: 1
   _shieldDuration: 2
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}
+  _highIntegrity: {r: 0, g: 1, b: 0.9301295, a: 1}
+  _midIntegrity: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _lowIntegrity: {r: 1, g: 0, b: 0, a: 1}

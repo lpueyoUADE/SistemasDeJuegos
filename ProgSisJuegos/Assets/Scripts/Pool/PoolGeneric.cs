@@ -153,4 +153,43 @@ public class PoolGenerics
         }
     }
 
+    // Various simple universal objects pool
+    public class UniversalPoolObjectEntry<T>
+    {
+        public UniversalPoolObjectType Type;
+        public T Value;
+    }
+
+    public class UniversalPooleableObjectPool<T>
+    {
+        private List<UniversalPoolObjectEntry<T>> _availables = new List<UniversalPoolObjectEntry<T>>();
+        private List<UniversalPoolObjectEntry<T>> _inUse = new List<UniversalPoolObjectEntry<T>>();
+
+        public UniversalPoolObjectEntry<T> GetOrCreate(UniversalPoolObjectType type)
+        {
+            if (_availables.Count > 0)
+            {
+                for (int i = 0; i < _availables.Count; i++)
+                {
+                    if (_availables[i].Type == type)
+                    {
+                        var theObject = _availables[i];
+                        _availables.RemoveAt(i);
+                        _inUse.Add(theObject);
+                        return theObject;
+                    }
+                }
+            }
+
+            var newObject = new UniversalPoolObjectEntry<T> { Type = type };
+            _availables.Add(newObject);
+            return newObject;
+        }
+
+        public void InUseToAvailable(UniversalPoolObjectEntry<T> poolEntry)
+        {
+            _inUse.Remove(poolEntry);
+            _availables.Add(poolEntry);
+        }
+    }
 }

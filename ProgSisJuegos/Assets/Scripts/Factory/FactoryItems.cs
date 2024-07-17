@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +9,14 @@ public class FactoryItems : MonoBehaviour
     {
         _items.Clear();
         string message = "Factory Items: \n";
-        foreach (ItemBase item in items)
-            message += $"{item.name}, ";
-
+        foreach (ItemBase item in items) message += $"{item.name}, ";
         _items = items;
         Debug.Log($"{message} Initialized {_items.Count} items.");
+    }
+
+    public static ItemBase GenerateItem(ItemDatabase itemData)
+    {
+        return Instantiate(itemData.ItemPrefab);
     }
 
     public static ItemBase GenerateItem(ConsumableType type)

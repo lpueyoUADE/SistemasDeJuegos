@@ -15,7 +15,8 @@ public enum StatesEnum
     Chase,
     Dead,
     Patrol,
-    Steering
+    Steering,
+    RunAndShoot,
 }
 
 public class FiniteStateMachine<T>

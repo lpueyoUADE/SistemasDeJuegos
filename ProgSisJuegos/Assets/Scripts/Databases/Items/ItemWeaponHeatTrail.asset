@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b191542c20881f8429f2302659c7ca30, type: 3}
   m_Name: ItemWeaponHeatTrail
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5207129811235326148, guid: 9845068c6c65f9e4da329387de47c42a, type: 3}
+  _prefab: {fileID: 7856969464351966944, guid: 9845068c6c65f9e4da329387de47c42a, type: 3}
   _type: 1
   _value: 250
-  _grabSound: {fileID: 8300000, guid: 68dc29298c4730041a94c054787a363b, type: 3}
+  _grabSound: {fileID: 8300000, guid: 6fc515f450b73ad4588f78de76ef1e6a, type: 3}
   _weaponType: 5

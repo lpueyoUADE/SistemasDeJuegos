@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd39bb502c192947b47fb486b9a01af, type: 3}
+  m_Name: GenericPooleableObjects
+  m_EditorClassIdentifier: 
+  _pooleableSoundPrefab: {fileID: 188929086, guid: 7f793ae5dd8ef114f9227e60a0ef8982, type: 3}

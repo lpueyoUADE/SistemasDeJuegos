@@ -11,8 +11,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: ece76ef097184e643b40485254d20adc, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -62,13 +62,22 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FoamDistance: 0.5
+    - _FoamFallof: 1
+    - _FoamOffset: 0
+    - _FresnelPower: 10
+    - _FresnelScale: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _IntegrityIndicatorSpeed: 5
+    - _IntegrityIndicatorWidth: 0.5
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Opacity: 0.1
     - _Parallax: 0.02
+    - _ShieldLerpBorder: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 15.18
@@ -79,5 +88,12 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShieldColor: {r: 1, g: 0, b: 0.124061584, a: 0}
+    - _ShieldBorde: {r: 0.9299337, g: 1, b: 0, a: 0}
+    - _ShieldBorder: {r: 0, g: 1, b: 0, a: 0}
+    - _ShieldBorderEnd: {r: 1, g: 0, b: 0, a: 0}
+    - _ShieldBorderStart: {r: 0, g: 1, b: 0, a: 0}
+    - _ShieldColor: {r: 1, g: 1, b: 1, a: 0}
+    - _ShipIntegrityColor: {r: 0, g: 1, b: 0, a: 0}
+    - _shieldcolor: {r: 0, g: 1, b: 0, a: 0}
+    - _shieldcolor1: {r: 0.39622638, g: 0.11796207, b: 0, a: 0}
   m_BuildTextureStacks: []

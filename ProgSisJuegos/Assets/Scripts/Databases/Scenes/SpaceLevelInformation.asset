@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneNameToUser: Space
   _sceneName: SpaceScene
-  _splashImage: {fileID: 21300000, guid: b3ab887b4532d284f933df1bd137b799, type: 3}
+  _splashImage: {fileID: 21300000, guid: 9497017a9cb0e694e9c054c917ee4937, type: 3}
+  _availableShips:
+  - {fileID: 11400000, guid: 118817d7f5e074c46b1546b574e17c44, type: 2}
+  - {fileID: 11400000, guid: e3d867e72b4c20141a51a3fb6e416532, type: 2}
+  - {fileID: 11400000, guid: 37cc4019bbc07cb44a5c4b985293badc, type: 2}
+  _music: {fileID: 8300000, guid: c30dac9ba87b76a4eb2cf3ca75be417b, type: 3}

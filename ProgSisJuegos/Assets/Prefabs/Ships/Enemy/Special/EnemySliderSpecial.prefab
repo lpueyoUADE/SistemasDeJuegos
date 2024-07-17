@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7236457356721743549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4413666431233550684, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_Name
+      value: EnemySliderSpecial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550695, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413666431233550698, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: _shipData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b5f51043cefc4e459c7bed156f7b474, type: 2}
+    - target: {fileID: 5146518157942259678, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 24d08f228f33e1a45ab76acb5fc27fe3, type: 2}
+    - target: {fileID: 5146518157942259678, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2672ed6827bb24f43a3f001278add395, type: 2}
+    - target: {fileID: 5146518157942259678, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2672ed6827bb24f43a3f001278add395, type: 2}
+    - target: {fileID: 5146518157942259678, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2672ed6827bb24f43a3f001278add395, type: 2}
+    - target: {fileID: 5146518157942259678, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: b36fe56fd7e74064fba032463e84f3ce, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+--- !u!1 &6425917158912724961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4413666431233550684, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+  m_PrefabInstance: {fileID: 7236457356721743549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4118241654231192545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425917158912724961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b25f2e4741f904488e2165d7c9100d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemToSpawn: {fileID: 11400000, guid: 5db458e624723814ea2291c50253aef0, type: 2}

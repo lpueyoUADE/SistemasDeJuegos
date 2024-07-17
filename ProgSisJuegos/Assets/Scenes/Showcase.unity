@@ -1042,6 +1042,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2300093136706257530, guid: b4b8fc35bd3ad9c4fa88deb70e04d936, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5207129811235326150, guid: b4b8fc35bd3ad9c4fa88deb70e04d936, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4153,6 +4157,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 432737787126411780, guid: 7acad50f31d753e4da6f75c3452852e4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300093136706257530, guid: 7acad50f31d753e4da6f75c3452852e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5207129811235326150, guid: 7acad50f31d753e4da6f75c3452852e4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4201,6 +4213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemWeaponOrbWeaver
       objectReference: {fileID: 0}
+    - target: {fileID: 7856969464351966944, guid: 7acad50f31d753e4da6f75c3452852e4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7acad50f31d753e4da6f75c3452852e4, type: 3}
 --- !u!4 &1063588455 stripped
@@ -4234,6 +4250,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2300093136706257530, guid: 9845068c6c65f9e4da329387de47c42a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5207129811235326150, guid: 9845068c6c65f9e4da329387de47c42a, type: 3}
       propertyPath: m_RootOrder
       value: 3

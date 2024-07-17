@@ -12,6 +12,10 @@ public enum ShipType
     Slider,
     Tremor,
     CannonFoder,
+    Chopperino,
+    SpecialMosquitoe,
+    SpecialSlider,
+    SpecialTremor,
 }
 
 [CreateAssetMenu(fileName = "NewShipData", menuName = "Databases/Ship")]
@@ -33,8 +37,14 @@ public class ShipDatabase : ScriptableObject
     [SerializeField] protected WeaponType _defaultWeapon;
 
     [Header("Shield")]
-    [SerializeField, Range(0, 5)] private float _shieldDuration = 1;
+    [SerializeField, Range(0, 10)] private float _shieldDuration = 1;
     [SerializeField] private Color _shieldColor = Color.green;
+    [SerializeField] private float _shieldColorSpeed = 20;
+
+    [Header("Shield Integrity Colors")]
+    [SerializeField] private Color _highIntegrity = Color.green;
+    [SerializeField] private Color _midIntegrity = Color.yellow;
+    [SerializeField] private Color _lowIntegrity = Color.red;
 
 
     public ShipType Type => _shipType;
@@ -51,5 +61,9 @@ public class ShipDatabase : ScriptableObject
 
     public float ShieldDuration => _shieldDuration;
     public Color ShieldColor => _shieldColor;
+    public float ShieldColorSpeed => _shieldColorSpeed;
 
+    public Color ShieldHighIntegrity => _highIntegrity;
+    public Color ShieldMidIntegrity => _midIntegrity;
+    public Color ShieldLowIntegrity => _lowIntegrity;
 }

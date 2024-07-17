@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b191542c20881f8429f2302659c7ca30, type: 3}
   m_Name: ItemWeaponOrbWeaver
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5207129811235326148, guid: 7acad50f31d753e4da6f75c3452852e4, type: 3}
+  _prefab: {fileID: 7856969464351966944, guid: 7acad50f31d753e4da6f75c3452852e4, type: 3}
   _type: 1
   _value: 10
-  _grabSound: {fileID: 8300000, guid: 68dc29298c4730041a94c054787a363b, type: 3}
+  _grabSound: {fileID: 8300000, guid: 6fc515f450b73ad4588f78de76ef1e6a, type: 3}
   _weaponType: 6

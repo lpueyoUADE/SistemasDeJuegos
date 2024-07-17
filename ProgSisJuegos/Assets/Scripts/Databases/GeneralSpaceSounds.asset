@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: GeneralSpaceSounds
   m_EditorClassIdentifier: 
   _projectileHitShipSounds:
-  - {fileID: 8300000, guid: 516029beade2be34c9a0b9d8ac18d23a, type: 3}
+  - {fileID: 8300000, guid: c0d3c59ce66396d469d51fcc00b485ba, type: 3}
+  - {fileID: 8300000, guid: b36899c4f54ee684593eeccb5c82ff74, type: 3}
+  _projectileHitShieldSounds:
+  - {fileID: 8300000, guid: 314926a49f9e8204bad73a2f9adecf57, type: 3}
+  - {fileID: 8300000, guid: f9821f162f217454893a743fea1562b3, type: 3}
+  - {fileID: 8300000, guid: f4a340989b335064298fef2022bd4780, type: 3}
+  - {fileID: 8300000, guid: 382ca98f93475124a87a3e3ed12963e6, type: 3}
+  - {fileID: 8300000, guid: 2b99c61d9b8936045ab872cfcf762da3, type: 3}
   _shipExplosionSounds:
-  - {fileID: 8300000, guid: adf48a9ab1528f24aa11f6459488c443, type: 3}
   - {fileID: 8300000, guid: 4e5e484b1dbd11a47a13ba5f4b5509ce, type: 3}
