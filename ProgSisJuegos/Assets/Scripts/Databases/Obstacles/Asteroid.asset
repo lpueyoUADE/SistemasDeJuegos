@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Asteroid
   m_EditorClassIdentifier: 
   speed: 0.05
-  lifetime: 4
+  lifetime: 7
   damage: 3
