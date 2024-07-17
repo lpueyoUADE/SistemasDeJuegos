@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 1773909189190886457}
   - component: {fileID: 8727887244181325058}
   - component: {fileID: 1231916387410174979}
+  - component: {fileID: 1662628822684670150}
   m_Layer: 6
   m_Name: EnemySlider
   m_TagString: Enemy
@@ -313,6 +314,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9638221, y: 2.8179412, z: 5.151417}
   m_Center: {x: -1.465206, y: 0.0678336, z: -1.0989037}
+--- !u!114 &1662628822684670150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4413666431233550684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8897a0f1f7b37b64c849d8ac2e0cf579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviourData: {fileID: 0}
 --- !u!1 &5105378504716304471
 GameObject:
   m_ObjectHideFlags: 0

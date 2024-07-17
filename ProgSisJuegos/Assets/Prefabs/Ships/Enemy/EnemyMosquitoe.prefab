@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 4413666431233550692}
   - component: {fileID: 7118146329150294076}
   - component: {fileID: 8200630955797953878}
+  - component: {fileID: 4709816133934936613}
   m_Layer: 6
   m_Name: EnemyMosquitoe
   m_TagString: Enemy
@@ -285,6 +286,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4709816133934936613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4413666431233550684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8897a0f1f7b37b64c849d8ac2e0cf579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviourData: {fileID: 0}
 --- !u!1 &5105378504716304471
 GameObject:
   m_ObjectHideFlags: 0
