@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e7c92b82268e874cb58a316f4805cce, type: 3}
-  m_Name: WeaponHeavyMachine
+  m_Name: WeaponEnemyHeavyMachine
   m_EditorClassIdentifier: 
   _weaponIcon: {fileID: 21300000, guid: 8b9d11a9f807bf04e90185bd2dbe1e33, type: 3}
-  _type: 12
-  _recoil: 0.15
+  _type: 11
+  _recoil: 1.8
   _hasInfiniteAmmo: 1
   _defaultAmmoAmount: 0
   _projectilePrefab: {fileID: 8263002280387982021, guid: 39a42c1399088f14fa47f93a66b85988, type: 3}
-  _projectileDamage: 4
-  _projectileSpeed: 10
-  _projectileLife: 1
-  _sfx1: {fileID: 8300000, guid: 66a6e117a07a5264e9ff67d273f645a0, type: 3}
-  _sfx2: {fileID: 8300000, guid: 299656850ca4b354b8d9c4436a80d77f, type: 3}
-  _sfx3: {fileID: 8300000, guid: 6b25969d1c683bf48943117885b6395f, type: 3}
+  _projectileDamage: 2.5
+  _projectileSpeed: 0.25
+  _projectileLife: 8
+  _sfx1: {fileID: 0}
+  _sfx2: {fileID: 0}
+  _sfx3: {fileID: 0}
   _sfx4: {fileID: 0}
   _sfx5: {fileID: 0}

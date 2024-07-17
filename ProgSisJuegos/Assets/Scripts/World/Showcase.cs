@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Showcase : MonoBehaviour
 {
@@ -30,6 +32,8 @@ public class Showcase : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) { BackToMM(); }
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (index == 0) index = objectsList.Count - 1;
@@ -52,5 +56,16 @@ public class Showcase : MonoBehaviour
     {
         Vector3 direction = Vector3.MoveTowards(transform.position, _direction, 1);
         transform.position = direction;
+    }
+
+    public void BackToMM()
+    {
+        StartCoroutine(OpenScene("MainMenu"));
+    }
+
+    IEnumerator OpenScene(string scene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        while (!asyncLoad.isDone) yield return null;
     }
 }
