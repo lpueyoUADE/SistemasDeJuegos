@@ -14,6 +14,7 @@ public enum ShipType
     CannonFoder,
     Chopperino,
     F18,
+    WarDrone,
     SpecialMosquitoe,
     SpecialSlider,
     SpecialTremor,

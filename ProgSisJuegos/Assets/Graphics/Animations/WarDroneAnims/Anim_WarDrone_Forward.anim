@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Anim_Mosquitoe_Idle
+  m_Name: Anim_WarDrone_Forward
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
