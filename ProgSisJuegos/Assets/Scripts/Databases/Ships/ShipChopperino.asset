@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: ShipChopperino
   m_EditorClassIdentifier: 
   _shipType: 8
-  _prebab: {fileID: 3102686959821975067, guid: e053bd9e6a6e7b24e9b9f273cc82bee4, type: 3}
+  _prebab: {fileID: 3102686959821975067, guid: d7ba3c164c3bfce418078c7ccb392338, type: 3}
   _points: 0
   _shipNameToUser: Chopperino
   _showcaseObject: {fileID: 4314333843008958046, guid: 2d101fa1a7cc9c84197c6830e59fbb1b, type: 3}
-  _life: 25
+  _life: 45
   _maxSpeed: 8
-  _acceleration: 20
+  _acceleration: 18
   _damageResistance: 25
   _defaultWeapon: 1
   _shieldDuration: 2.5

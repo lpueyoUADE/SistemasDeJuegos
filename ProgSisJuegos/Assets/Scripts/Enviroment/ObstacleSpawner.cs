@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject ObstaclePrefab;
+    [SerializeField] private List<GameObject> ObstaclePrefabList;
+    [SerializeField] private int randomYAmplitude;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
     [SerializeField] private float _spawnIntervalModifier;
@@ -59,7 +60,12 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else
         {
-            GameObject asteroid = Instantiate(ObstaclePrefab, transform.position, Quaternion.identity);
+            int index = Random.Range(0, ObstaclePrefabList.Count);
+            GameObject newObstacle = ObstaclePrefabList[index];
+
+            Vector3 randomY = new (0, Random.Range(-randomYAmplitude, randomYAmplitude), 0);
+
+            GameObject asteroid = Instantiate(newObstacle, transform.position + randomY, Quaternion.identity);
             asteroid.GetComponent<ObstacleScript>().AssignPool(_pool);
         }       
         

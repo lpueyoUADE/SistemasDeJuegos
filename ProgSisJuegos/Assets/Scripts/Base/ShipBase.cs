@@ -190,6 +190,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     {
         if (ShipIsShielded)
         {
+            _shieldTimeLeft -= _shieldTimeLeft * 0.1f;
             if (_audioSource.time <= 0.25f) _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShield, 0.45f);
             return;
         }
@@ -213,6 +214,10 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
 
     public virtual void OnDeath()
     {
+        UniversalPooleableObject explosionSound = Pool.CreateUniversalObject(UniversalPoolObjectType.Audio);
+        explosionSound.transform.position = transform.position;
+        explosionSound.UpdateAudioAndPlay(Sounds.SoundsDatabase.ShipExplosions);
+
         print($"{this.name} is dead.");
         this.gameObject.SetActive(false);
     }

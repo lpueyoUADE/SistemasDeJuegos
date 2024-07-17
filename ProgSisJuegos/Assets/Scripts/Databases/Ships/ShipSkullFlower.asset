@@ -17,13 +17,14 @@ MonoBehaviour:
   _points: 0
   _shipNameToUser: Skullflower
   _showcaseObject: {fileID: 4314333843008958046, guid: e0366631d64f81c47ac28a94b444a3d9, type: 3}
-  _life: 38
+  _life: 80
   _maxSpeed: 5
   _acceleration: 15
   _damageResistance: 40
   _defaultWeapon: 1
   _shieldDuration: 1.5
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}
+  _shieldColorSpeed: 20
   _highIntegrity: {r: 0, g: 1, b: 0.9301295, a: 1}
   _midIntegrity: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _lowIntegrity: {r: 1, g: 0, b: 0, a: 1}

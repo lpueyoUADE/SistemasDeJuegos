@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074cffb272fdacd42bc8ed8126c7437f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _genericPooleableObjects: {fileID: 11400000, guid: 23e5f0a710076e342a0b076727ef6e34, type: 2}

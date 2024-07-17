@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
         UIEvents.OnAllWeaponsInitialize.Invoke(_weaponsList);
         _playerCamera.enabled = true;
-        gameObject.GetComponent<EnemyManager>().SetCenter(_playerCamera.transform.position);
+        GetComponent<EnemyManager>().SetCenter(_playerCamera.transform.position);
     }
 
     private void Update()

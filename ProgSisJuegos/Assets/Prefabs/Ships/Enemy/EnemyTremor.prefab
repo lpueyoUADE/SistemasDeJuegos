@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4413666431233550692}
   - component: {fileID: 4413666431233550698}
   - component: {fileID: 7857266022697286813}
-  - component: {fileID: -8965125019625999294}
+  - component: {fileID: 5276986192035874328}
   m_Layer: 6
   m_Name: EnemyTremor
   m_TagString: Enemy
@@ -190,8 +190,6 @@ MonoBehaviour:
   _shipData: {fileID: 11400000, guid: dc65ddc771ac8db4d83ba99d0c6deea1, type: 2}
   _shieldObject: {fileID: 3436830045932306335}
   _projectileOut: {fileID: 5105378504716304470}
-  lifeSpan: 100
-  spawnSpeed: 5
 --- !u!82 &7857266022697286813
 AudioSource:
   m_ObjectHideFlags: 0
@@ -288,7 +286,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-8965125019625999294
+--- !u!114 &5276986192035874328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8897a0f1f7b37b64c849d8ac2e0cf579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _behaviourData: {fileID: 11400000, guid: 8bbd7e76a0086544792516b3184bb1ef, type: 2}
+  _behaviourData: {fileID: 0}
 --- !u!1 &5105378504716304471
 GameObject:
   m_ObjectHideFlags: 0
