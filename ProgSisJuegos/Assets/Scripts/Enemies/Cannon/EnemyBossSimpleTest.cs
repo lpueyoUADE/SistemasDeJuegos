@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float life = 100;
-    private float currentLife;
-    [SerializeField] TextMeshPro lifetext;
+    [SerializeField] private float _life = 100;
+    [SerializeField] private UnityEngine.UI.Image _healthBar;
+
+    private float _currentLife;
     private float _destination;
-    [SerializeField] private UnityEngine.UI.Image healthBar;
-
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -20,12 +18,10 @@ public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
 
     public void AnyDamage(float amount)
     {
-        if (currentLife > 0)
+        if (_currentLife > 0)
         {
-            currentLife -= amount;
-            healthBar.fillAmount = currentLife / life;
-            
-            lifetext.text = $"{currentLife}";            
+            _currentLife -= amount;
+            _healthBar.fillAmount = _currentLife / _life;
         }
         else
         {
@@ -40,15 +36,12 @@ public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
         Destroy(this.gameObject);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        currentLife = life;
-        //lifetext.text = $"{life}";       
+        _currentLife = _life;   
         _destination = transform.position.z - 20;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (transform.position.y > 0)
