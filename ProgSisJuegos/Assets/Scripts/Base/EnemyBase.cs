@@ -59,4 +59,13 @@ public class EnemyBase : ShipBase
         base.OnDeath();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().AnyDamage(ShipData.CollisionDamage);
+            Disable();
+        }
+    }
+
 }
