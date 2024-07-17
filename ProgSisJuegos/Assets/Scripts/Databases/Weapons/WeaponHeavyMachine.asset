@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponHeavyMachine
   m_EditorClassIdentifier: 
   _weaponIcon: {fileID: 21300000, guid: 8b9d11a9f807bf04e90185bd2dbe1e33, type: 3}
-  _type: 11
+  _type: 12
   _recoil: 0.15
   _hasInfiniteAmmo: 1
   _defaultAmmoAmount: 0
