@@ -6,7 +6,9 @@ using UnityEngine;
 public class ObstacleObject : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _damage = 10;
+    [SerializeField] private float _maxSpeed = 20;
     private float _speed;
+    
     private Vector3 _forward;
     private Vector3 _boundaries;
     private Rigidbody _rBody;
@@ -38,15 +40,27 @@ public class ObstacleObject : MonoBehaviour, IDamageable
         _boundaries = newPosition;
     }
 
-    public void UpdateSpeed(float newSpeed)
+    public void UpdateSpeeds(float newSpeed, float newMaxSpeed)
     {
         _speed = newSpeed;
+        _maxSpeed = newMaxSpeed;
     }
 
 
     private void FixedUpdate()
     {
-        _rBody.AddForce(_forward * _speed, ForceMode.Impulse);
+        float speed = Vector3.Magnitude(_rBody.velocity);
+        if (speed > _maxSpeed)
+        {
+            float brakeSpeed = speed - _maxSpeed;
+            Vector3 normalisedVelocity = _rBody.velocity.normalized;
+            Vector3 brakeVelocity = normalisedVelocity * brakeSpeed;
+            _rBody.AddForce(-brakeVelocity);
+        }
+
+        else
+            _rBody.AddForce(_forward * _speed, ForceMode.Impulse);
+
         if (transform.position.z <= _boundaries.z) OnObstacleDisable?.Invoke(this);
     }
 

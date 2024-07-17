@@ -5,20 +5,7 @@ using UnityEngine;
 public class ObstaclesManager : MonoBehaviour
 {
     [SerializeField] private Transform _boundaries;
-
-    [Header("Obstacle objects")]
-    [SerializeField] private ObstaclesDatabase _obstacleList;
-    [SerializeField, Range(0, 250)] private int _maxObstacles = 150;
-    [SerializeField, Range(0, 100)] private int _maxActiveObstacles = 60;
-
-    [Header("Obstacle position")]
     [SerializeField] private List<Transform> _spawnPositions = new List<Transform>();
-    [SerializeField] private Vector3 _minRandomOffset;
-    [SerializeField] private Vector3 _maxRandomOffset;
-
-    [Header("Obstacle speed")]
-    [SerializeField] private float _minRandomSpeed = 3;
-    [SerializeField] private float _maxRandomSpeed = 3;
 
     private List<ObstacleObject> _spawnableList = new List<ObstacleObject>();
     private List<ObstacleObject> _currentObstacles = new List<ObstacleObject>();
@@ -26,33 +13,34 @@ public class ObstaclesManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (ObstacleObject obstacle in _obstacleList.Obstacles) _spawnableList.Add(obstacle);
+        foreach (ObstacleObject obstacle in ScenarioPersistentData.SceneData.SceneObstacles.Obstacles) _spawnableList.Add(obstacle);
 
-        for (int i = 0; i < _maxObstacles; i++)
+        for (int i = 0; i < ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxAmount; i++)
         {
             var spawnedObstacle = Instantiate(_spawnableList[Random.Range(0, _spawnableList.Count)]);
 
             spawnedObstacle.UpdateBoundaries(_boundaries.position);
             spawnedObstacle.UpdateForward(_boundaries.forward);
 
+            spawnedObstacle.transform.SetParent(this.gameObject.transform);
             spawnedObstacle.gameObject.SetActive(false);
             spawnedObstacle.OnObstacleDisable += ObstacleBoundReached;
             _currentObstacles.Add(spawnedObstacle);
         }
 
-        for (int i = 0; i < _maxActiveObstacles; i++) ExecuteObstacle();
+        for (int i = 0; i < ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxActiveAmount; i++) ExecuteObstacle();
     }
 
     private void ExecuteObstacle()
     {
-        if (_activeObstacles.Count >= _maxActiveObstacles) return;
+        if (_activeObstacles.Count >= ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxActiveAmount) return;
 
         var obstacle = _currentObstacles[Random.Range(0, _currentObstacles.Count)];
         Vector3 randPosition = _spawnPositions[Random.Range(0, _spawnPositions.Count)].position;
         randPosition += new Vector3(
-            Random.Range(-_minRandomOffset.x, _maxRandomOffset.x),
-            Random.Range(-_minRandomOffset.y, _maxRandomOffset.y),
-            Random.Range(-_minRandomOffset.z, _maxRandomOffset.z));
+            Random.Range(-ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMinRandomOffset.x, ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxRandomOffset.x),
+            Random.Range(-ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMinRandomOffset.y, ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxRandomOffset.y),
+            Random.Range(-ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMinRandomOffset.z, ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxRandomOffset.z));
 
         obstacle.transform.position = randPosition;
 
@@ -60,7 +48,10 @@ public class ObstaclesManager : MonoBehaviour
         _activeObstacles.Add(obstacle);
 
         obstacle.gameObject.SetActive(true);
-        obstacle.UpdateSpeed(Random.Range(_minRandomSpeed, _maxRandomSpeed));
+        obstacle.UpdateSpeeds(
+            Random.Range(ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMinRandomSpeed, ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxRandomSpeed),
+            Random.Range(ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMinRandomMaxSpeed, ScenarioPersistentData.SceneData.SceneObstacles.ObstacleMaxRandomMaxSpeed)
+            );
     }
 
     private void OnDestroy()

@@ -16,3 +16,11 @@ MonoBehaviour:
   - {fileID: -4002331296108143739, guid: 3a4ca6f359748244092eba444d6f4ca1, type: 3}
   - {fileID: -6970652605338510048, guid: 570fb099d39c07d40a329fdc351f1e24, type: 3}
   - {fileID: 3096185349165170643, guid: e3d4ba40bf919ef4eac00844bbe9c0f1, type: 3}
+  _maxObstacles: 200
+  _maxActiveObstacles: 80
+  _minRandomOffset: {x: 50, y: 50, z: 50}
+  _maxRandomOffset: {x: 50, y: 50, z: 50}
+  _minRandomSpeed: 1
+  _maxRandomSpeed: 10
+  _minRandomMaxSpeed: 20
+  _maxRandomMaxSpeed: 100

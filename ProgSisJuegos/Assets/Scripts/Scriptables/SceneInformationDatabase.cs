@@ -9,11 +9,15 @@ public class SceneInformationDatabase : ScriptableObject
     [SerializeField] private string _sceneName;
     [SerializeField] private Sprite _splashImage;
     [SerializeField] private List<ShipDatabase> _availableShips = new List<ShipDatabase>();
+    [SerializeField] private ObstaclesDatabase _obstacles;
+
     [SerializeField] private AudioClip _music;
 
     public string SceneNameToUser => _sceneNameToUser;
     public string SceneName => _sceneName;
     public Sprite SceneSplashImage => _splashImage;
     public List<ShipDatabase> SceneShips => _availableShips;
+    public ObstaclesDatabase SceneObstacles => _obstacles;
+
     public AudioClip SceneMusic => _music;
 }
