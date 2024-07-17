@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 1773909189190886457}
   - component: {fileID: 8727887244181325058}
   - component: {fileID: 1231916387410174979}
+  - component: {fileID: 627537336586999254}
   m_Layer: 6
   m_Name: EnemySlider
   m_TagString: Enemy
@@ -178,6 +179,8 @@ MonoBehaviour:
   _shipData: {fileID: 11400000, guid: 14dd93480fd7a1543a353c0472b93495, type: 2}
   _shieldObject: {fileID: 3092016936344388562}
   _projectileOut: {fileID: 5105378504716304470}
+  lifeSpan: 100
+  spawnSpeed: 5
 --- !u!82 &407975062956500224
 AudioSource:
   m_ObjectHideFlags: 0
@@ -313,6 +316,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9638221, y: 2.8179412, z: 5.151417}
   m_Center: {x: -1.465206, y: 0.0678336, z: -1.0989037}
+--- !u!114 &627537336586999254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4413666431233550684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8897a0f1f7b37b64c849d8ac2e0cf579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviourData: {fileID: 11400000, guid: 8bbd7e76a0086544792516b3184bb1ef, type: 2}
 --- !u!1 &5105378504716304471
 GameObject:
   m_ObjectHideFlags: 0

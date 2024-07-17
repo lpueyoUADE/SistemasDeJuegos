@@ -1173,7 +1173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690403284096835764, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
       propertyPath: _enemyWaves.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1690403284096835764, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
       propertyPath: spawnDistanceFromPlayer
@@ -1191,6 +1191,18 @@ PrefabInstance:
       propertyPath: _enemyWaves.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: dc824ca6e603ff04d9dcdccd0aa20807, type: 2}
+    - target: {fileID: 1690403284096835764, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
+      propertyPath: _enemyWaves.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c41c0c1f453e5c4cb9d490d238790f0, type: 2}
+    - target: {fileID: 1690403284096835764, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
+      propertyPath: _enemyWaves.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 053ab0759060c6b4fbbeebe684ea9d65, type: 2}
+    - target: {fileID: 1690403284096835764, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
+      propertyPath: _enemyWaves.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: ffc1f50baa484724dacb88738c60ca87, type: 2}
     - target: {fileID: 2047403350168802412, guid: 5d90343ca7ce81c4d93296be09bf9a68, type: 3}
       propertyPath: m_RootOrder
       value: 4

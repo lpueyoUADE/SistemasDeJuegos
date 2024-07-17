@@ -7,6 +7,13 @@ public class EnemyBase : ShipBase
     public event Action OnDisabled;
     private float _destination;
 
+    [SerializeField] float lifeSpan;
+    private float currentLifeSpan;
+
+    [SerializeField] private float spawnSpeed;
+    private bool positioned = false;
+
+
     protected override void Start()
     {
         TryGetComponent(out _behaviour);
@@ -23,11 +30,23 @@ public class EnemyBase : ShipBase
 
         if (ShipIsShielded) UpdateShield(delta);
 
-        /*
-        if (transform.position.y > 0)
+        
+        if (transform.position.y > 0 && positioned == false)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, 0, _destination), 0.5f);
-        }*/
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, 0, _destination), spawnSpeed*Time.deltaTime);
+        }
+        else if(transform.position.y == 0 && positioned == false)
+        {
+            positioned = true;
+        }
+        if (currentLifeSpan >= lifeSpan)
+        {
+            Disable();
+        }
+        else
+        {
+            currentLifeSpan += Time.deltaTime;
+        }
         //Fire();
         
         //
@@ -44,9 +63,20 @@ public class EnemyBase : ShipBase
 
     public override void OnDeath()
     {
+        currentLifeSpan = 0;
+        positioned = false;
         GameManagerEvents.OnEnemyDestroyed(_shipData.Points);
         OnDisabled?.Invoke();
         base.OnDeath();
     }
-    
+
+    private void Disable()
+    {
+        currentLifeSpan = 0;
+        positioned = false;
+        GameManagerEvents.OnEnemyDestroyed(0);
+        OnDisabled?.Invoke();
+        base.OnDeath();
+    }
+
 }

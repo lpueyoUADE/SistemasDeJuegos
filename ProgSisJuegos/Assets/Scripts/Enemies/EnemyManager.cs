@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private List<EnemyWaveDataBase> _enemyWaves;
     private bool startUpdate = false;
     private Vector3 _horizontalCenter;
+    [SerializeField] float spawnDistanceFromPlayer;
 
     public Action noEnemiesOnScreen;
     public Action enemiesSpawned;
@@ -19,7 +20,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] float minWaitTime;
     [SerializeField] float maxWaitTime;
-    public float timeToNextWave = 0;
+    private float timeToNextWave = 0;
     private float currentTimeToNextWave = 0;
 
     private void Update()
@@ -59,6 +60,7 @@ public class EnemyManager : MonoBehaviour
         LoadNextEnemyWave();
         EnableUpdate();
         GameManagerEvents.OnEnemyDestroyed += EnemyDestroyed;
+        print("EnemyManager Initialized");
     }
     
     public void SetCenter(Vector3 pos)
@@ -78,7 +80,7 @@ public class EnemyManager : MonoBehaviour
                 if (enemy != null)
                 {
 
-                    /*GameObject temp = */GameManagerEvents.CreateEnemy.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,50)));
+                    /*GameObject temp = */GameManagerEvents.CreateEnemy.Invoke(enemy.ShipData, (_horizontalCenter + new Vector3(_horizontalOffset,30,spawnDistanceFromPlayer)));
                     //var spawnedEnemy = temp.GetComponent<EnemyBase>();
                     _enemiesOnScreen++;
                     //enemy += EnemyDestroyed;
