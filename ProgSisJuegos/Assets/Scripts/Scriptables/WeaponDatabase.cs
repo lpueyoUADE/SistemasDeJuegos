@@ -6,7 +6,7 @@ public enum WeaponType
 {
     None,
     BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, OrbWeaverCharger, OrbWeaverHit, Gamma,
-    EnemyBlueRail,
+    EnemyBlueRail, Bossweapon,
 
     HeavyMachine,
 }
