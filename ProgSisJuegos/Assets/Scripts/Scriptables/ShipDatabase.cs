@@ -36,6 +36,7 @@ public class ShipDatabase : ScriptableObject
     [SerializeField] private float _acceleration;
     [SerializeField, Range(0, 99)] protected float _damageResistance;
     [SerializeField] protected WeaponType _defaultWeapon;
+    [SerializeField] private float _collisionDamage;
 
     [Header("Shield")]
     [SerializeField, Range(0, 10)] private float _shieldDuration = 1;
@@ -59,6 +60,7 @@ public class ShipDatabase : ScriptableObject
     public float Acceleration => _acceleration;
     public float DamageResistance => _damageResistance;
     public WeaponType DefaultWeapon => _defaultWeapon;
+    public float CollisionDamage => _collisionDamage;
 
     public float ShieldDuration => _shieldDuration;
     public Color ShieldColor => _shieldColor;
