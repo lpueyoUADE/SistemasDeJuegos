@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: ShipWarDrone
   m_EditorClassIdentifier: 
   _shipType: 10
-  _prebab: {fileID: 7118146329150294076, guid: 164a53e2cc3b0fc4e8e3bd1c29fd92f7, type: 3}
+  _prebab: {fileID: 446335862789580917, guid: 164a53e2cc3b0fc4e8e3bd1c29fd92f7, type: 3}
   _points: 20
   _shipNameToUser: 
   _showcaseObject: {fileID: 0}
-  _life: 200
+  _life: 50
   _maxSpeed: 5
   _acceleration: 12
   _damageResistance: 60
-  _defaultWeapon: 11
+  _defaultWeapon: 10
   _collisionDamage: 5
-  _shieldDuration: 1
+  _shieldDuration: 0.1
   _shieldColor: {r: 0, g: 1, b: 0.046749115, a: 1}
   _shieldColorSpeed: 20
   _highIntegrity: {r: 1, g: 0, b: 0.9964247, a: 1}

@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4413666431233550688}
   - component: {fileID: 4413666431233550690}
   - component: {fileID: 4413666431233550692}
-  - component: {fileID: 7118146329150294076}
+  - component: {fileID: 446335862789580917}
   - component: {fileID: 8200630955797953878}
   - component: {fileID: 4709816133934936613}
   m_Layer: 6
@@ -127,8 +127,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4413666431233550684}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 11.16}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -137,7 +137,7 @@ Transform:
   - {fileID: 2535873204211274652}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4413666431233550688
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 1
---- !u!114 &7118146329150294076
+--- !u!114 &446335862789580917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,13 +184,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4413666431233550684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53b2c617adf22e4d9bacc087d3104f9, type: 3}
+  m_Script: {fileID: 11500000, guid: a6ece3ada490cf64b87fc56a9312d0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shipData: {fileID: 11400000, guid: dc65ddc771ac8db4d83ba99d0c6deea1, type: 2}
+  _shipData: {fileID: 11400000, guid: c7744f65e0d415e45a4e2bce9da22e23, type: 2}
   _shieldObject: {fileID: 8188568879099247399}
   _projectileOut: {fileID: 5105378504716304470}
-  lifeSpan: 20
+  lifeSpan: 30
   spawnSpeed: 5
 --- !u!82 &8200630955797953878
 AudioSource:
@@ -473,7 +473,7 @@ Animator:
   m_GameObject: {fileID: 2916902724308142374}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 58f493830a35ea94683cb655128321d0, type: 2}
+  m_Controller: {fileID: 9100000, guid: a2f54deeb6c77b445a9d92d6403add7f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
