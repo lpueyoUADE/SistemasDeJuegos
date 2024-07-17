@@ -23,3 +23,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2b99c61d9b8936045ab872cfcf762da3, type: 3}
   _shipExplosionSounds:
   - {fileID: 8300000, guid: 4e5e484b1dbd11a47a13ba5f4b5509ce, type: 3}
+  _generalObstacleHitSounds:
+  - {fileID: 8300000, guid: 9da057df82e5628468c73ce86fcf5337, type: 3}
+  - {fileID: 8300000, guid: 9da057df82e5628468c73ce86fcf5337, type: 3}

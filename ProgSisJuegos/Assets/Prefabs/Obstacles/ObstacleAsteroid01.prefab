@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 2079904907828030790}
   - component: {fileID: 3130729528257766115}
   - component: {fileID: 907020826135598633}
-  - component: {fileID: 2062643928782226045}
   - component: {fileID: -2859255678156554802}
   - component: {fileID: -4002331296108143739}
   - component: {fileID: 7941906533452575524}
-  m_Layer: 0
+  - component: {fileID: 6535743007498439117}
+  - component: {fileID: -427130885103887641}
+  m_Layer: 13
   m_Name: ObstacleAsteroid01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699720538305214460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.59702, y: 0, z: 0.7068901}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2062643928782226045
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699720538305214460}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5053925668127403250, guid: cf044a98332374e4f803d3349aab1912, type: 3}
 --- !u!114 &-2859255678156554802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378a724b88f2e1144b4ba0cfa5ab09e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
 --- !u!54 &7941906533452575524
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,3 +133,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!135 &6535743007498439117
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699720538305214460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.010691622
+  m_Center: {x: 0.00022609392, y: 0.0024420917, z: -0.00056891795}
+--- !u!135 &-427130885103887641
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699720538305214460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.010691622
+  m_Center: {x: 0.00022609392, y: 0.0024420917, z: -0.00056891795}

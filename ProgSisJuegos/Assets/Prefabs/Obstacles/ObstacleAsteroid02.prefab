@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 8551523602180598037}
   - component: {fileID: 4684525355608368816}
   - component: {fileID: 7414668486351786618}
-  - component: {fileID: 7845595559720893360}
   - component: {fileID: 7213526567768264053}
   - component: {fileID: -6970652605338510048}
   - component: {fileID: -7645398573195949151}
-  m_Layer: 0
+  - component: {fileID: 902834367753845128}
+  - component: {fileID: 551091889031748152}
+  m_Layer: 13
   m_Name: ObstacleAsteroid02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9072164741600228271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.32, y: 0, z: -0.5042932}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7845595559720893360
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9072164741600228271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2212009239438826721, guid: e7259b2cf36515e45adc05c8de44d6f4, type: 3}
 --- !u!114 &7213526567768264053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378a724b88f2e1144b4ba0cfa5ab09e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
 --- !u!54 &-7645398573195949151
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,3 +133,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!135 &902834367753845128
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072164741600228271}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.014549957
+  m_Center: {x: -0.0018443726, y: 0.0022266149, z: 0.010429413}
+--- !u!135 &551091889031748152
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072164741600228271}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.014549957
+  m_Center: {x: -0.0018443726, y: 0.0022266149, z: 0.010429413}

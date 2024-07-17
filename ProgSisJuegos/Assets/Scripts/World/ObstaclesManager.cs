@@ -36,7 +36,7 @@ public class ObstaclesManager : MonoBehaviour
             spawnedObstacle.UpdateForward(_boundaries.forward);
 
             spawnedObstacle.gameObject.SetActive(false);
-            spawnedObstacle.OnBoundReached += ObstacleBoundReached;
+            spawnedObstacle.OnObstacleDisable += ObstacleBoundReached;
             _currentObstacles.Add(spawnedObstacle);
         }
 
@@ -48,7 +48,6 @@ public class ObstaclesManager : MonoBehaviour
         if (_activeObstacles.Count >= _maxActiveObstacles) return;
 
         var obstacle = _currentObstacles[Random.Range(0, _currentObstacles.Count)];
-
         Vector3 randPosition = _spawnPositions[Random.Range(0, _spawnPositions.Count)].position;
         randPosition += new Vector3(
             Random.Range(-_minRandomOffset.x, _maxRandomOffset.x),
@@ -67,20 +66,17 @@ public class ObstaclesManager : MonoBehaviour
     private void OnDestroy()
     {
         for (int i = 0; i < _currentObstacles.Count; i++) 
-            _currentObstacles[i].OnBoundReached -= ObstacleBoundReached;
+            _currentObstacles[i].OnObstacleDisable -= ObstacleBoundReached;
+
+        for (int i = 0; i < _activeObstacles.Count; i++)
+            _activeObstacles[i].OnObstacleDisable -= ObstacleBoundReached;
     }
 
     private void ObstacleBoundReached(ObstacleObject obsObject)
     {
+        _activeObstacles.Remove(obsObject);
         obsObject.gameObject.SetActive(false);
-
-        if (_activeObstacles.Contains(obsObject))
-        {
-            _currentObstacles.Add(obsObject);
-            _activeObstacles.Remove(obsObject);
-        }
-
+        _currentObstacles.Add(obsObject);
         ExecuteObstacle();
     }
-
 }

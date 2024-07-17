@@ -4531,12 +4531,28 @@ PrefabInstance:
       value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 6986739753978062399, guid: 4612f8a84612384449a8696d16624176, type: 3}
-      propertyPath: _maxObstacles
-      value: 200
+      propertyPath: _maxRandomOffset.x
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6986739753978062399, guid: 4612f8a84612384449a8696d16624176, type: 3}
-      propertyPath: _maxActiveObstacles
-      value: 80
+      propertyPath: _maxRandomOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986739753978062399, guid: 4612f8a84612384449a8696d16624176, type: 3}
+      propertyPath: _maxRandomOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986739753978062399, guid: 4612f8a84612384449a8696d16624176, type: 3}
+      propertyPath: _minRandomOffset.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986739753978062399, guid: 4612f8a84612384449a8696d16624176, type: 3}
+      propertyPath: _minRandomOffset.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986739753978062399, guid: 4612f8a84612384449a8696d16624176, type: 3}
+      propertyPath: _minRandomOffset.z
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4612f8a84612384449a8696d16624176, type: 3}

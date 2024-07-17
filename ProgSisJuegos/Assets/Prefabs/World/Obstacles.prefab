@@ -110,11 +110,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boundaries: {fileID: 6986739752858149310}
   _obstacleList: {fileID: 11400000, guid: a4605d2b14efefd4abdbdcdc555d1f7e, type: 2}
-  _maxObstacles: 50
-  _maxActiveObstacles: 45
+  _maxObstacles: 200
+  _maxActiveObstacles: 80
   _spawnPositions:
   - {fileID: 6986739752590394744}
   _minRandomOffset: {x: 100, y: 100, z: 100}
   _maxRandomOffset: {x: 100, y: 100, z: 100}
   _minRandomSpeed: 0.1
-  _maxRandomSpeed: 10
+  _maxRandomSpeed: 2
