@@ -48,10 +48,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        /*
-        _healthBar.value = _healthBar.maxValue;*/
-        UIEvents.OnGameEnded += ShowEndScreen;
-
         _createdWeaponSelector = Instantiate(_weaponSelector);
     }
 

@@ -17,7 +17,7 @@ public class UserSettings : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(instance);
+            Destroy(instance.gameObject);
             instance = this;
         }
 

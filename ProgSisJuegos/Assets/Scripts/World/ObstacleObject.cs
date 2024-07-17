@@ -53,6 +53,7 @@ public class ObstacleObject : MonoBehaviour, IDamageable
     private void OnCollisionEnter(Collision collision)
     {
         collision.gameObject.TryGetComponent(out IDamageable damageable);
+        if (collision == null) return;
         damageable?.AnyDamage(_damage);
         AsteroidHit();
     }

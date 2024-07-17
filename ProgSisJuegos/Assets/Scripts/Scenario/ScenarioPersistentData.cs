@@ -15,7 +15,7 @@ public class ScenarioPersistentData : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(_instance);
+            Destroy(_instance.gameObject);
             _instance = this;
         }
 

@@ -203,7 +203,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         }
 
         Shield(ShipShieldDuration, ShipShieldColor);
-        _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShip);
+        if (this.gameObject.activeSelf) _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShip);
     }
 
     public virtual void ShipRepair(float amount)
