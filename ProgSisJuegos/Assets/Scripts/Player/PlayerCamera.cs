@@ -16,6 +16,6 @@ public class PlayerCamera : MonoBehaviour
         transform.position = Vector3.LerpUnclamped(
             transform.position, 
             _player.transform.position + offset, 
-            Time.deltaTime);
+            Time.deltaTime * followSpeed);
     }
 }

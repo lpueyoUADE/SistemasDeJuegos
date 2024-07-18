@@ -516,6 +516,7 @@ MonoBehaviour:
   rotatingspeed: 50
   rotatingCannon: {fileID: 168489863437852886}
   projectileOut: {fileID: 1935032282}
+  weapon: 10
 --- !u!4 &952301899758918228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8284993723486960781, guid: ed0fc9e7437e29944bcbde582f024b28, type: 3}
@@ -561,6 +562,7 @@ MonoBehaviour:
   rotatingspeed: 50
   rotatingCannon: {fileID: 3688414899835251829}
   projectileOut: {fileID: 1138043558}
+  weapon: 11
 --- !u!1 &5341620212047671166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3885563201486408103, guid: ed0fc9e7437e29944bcbde582f024b28, type: 3}
@@ -596,6 +598,7 @@ MonoBehaviour:
   rotatingspeed: 50
   rotatingCannon: {fileID: 5341620212047671166}
   projectileOut: {fileID: 365802370}
+  weapon: 10
 --- !u!4 &5418314879503628820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5405220319645508403, guid: ed0fc9e7437e29944bcbde582f024b28, type: 3}
@@ -636,6 +639,7 @@ MonoBehaviour:
   rotatingspeed: 50
   rotatingCannon: {fileID: 8528751103398785772}
   projectileOut: {fileID: 636729742}
+  weapon: 11
 --- !u!4 &8667121478488408370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed0fc9e7437e29944bcbde582f024b28, type: 3}

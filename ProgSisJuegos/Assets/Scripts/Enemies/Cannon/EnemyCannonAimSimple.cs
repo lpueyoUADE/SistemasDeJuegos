@@ -9,11 +9,11 @@ public class EnemyCannonAimSimple : MonoBehaviour
     [SerializeField] private float rotatingspeed = 4;
     [SerializeField] private GameObject rotatingCannon;
     [SerializeField] private GameObject projectileOut;
+    [SerializeField] private WeaponType weapon = WeaponType.EnemyBlueRail;
 
     private Vector3 target;
     private bool exec = false;
-    private IWeapon currentWeapon;
-    private WeaponType weapon = WeaponType.EnemyBlueRail;
+    private IWeapon currentWeapon;    
     private List<IWeapon> _weaponList = new List<IWeapon>();
 
     Vector3 Origin => transform.position;

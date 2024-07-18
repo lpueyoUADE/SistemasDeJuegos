@@ -191,6 +191,14 @@ PrefabInstance:
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 1792160146}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _weaponsList.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _weaponsList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 33a7392272eccdb4a8eea8a1283060aa, type: 2}
     - target: {fileID: 4744384303318102725, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -291,10 +299,6 @@ PrefabInstance:
     - target: {fileID: 7906049659366341724, guid: 4906952f1cab3d843b65fea5fd1e11fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7906049659366341725, guid: 4906952f1cab3d843b65fea5fd1e11fd, type: 3}
-      propertyPath: _life
-      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 7906049659366341727, guid: 4906952f1cab3d843b65fea5fd1e11fd, type: 3}
       propertyPath: m_Name

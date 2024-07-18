@@ -8,7 +8,7 @@ public enum WeaponType
     BlueRail, RedDiamond, RedDiamondBall, GreenCrast, HeatTrail, OrbWeaver, OrbWeaverCharger, OrbWeaverHit, Gamma,
     EnemyBlueRail, Bossweapon,
 
-    HeavyMachine,
+    HeavyMachine
 }
 
 [CreateAssetMenu(fileName = "NewWeaponData", menuName = "Databases/Weapon")]
