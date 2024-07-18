@@ -3934,7 +3934,7 @@ PrefabInstance:
       objectReference: {fileID: 7906049659366341727, guid: 4906952f1cab3d843b65fea5fd1e11fd, type: 3}
     - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: maxWaitTime
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1145246052917148026, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: _enemyWaves.Array.size

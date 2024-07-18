@@ -17,7 +17,7 @@ MonoBehaviour:
   _points: 12
   _shipNameToUser: 
   _showcaseObject: {fileID: 0}
-  _life: 120
+  _life: 55
   _maxSpeed: 5
   _acceleration: 20
   _damageResistance: 30
