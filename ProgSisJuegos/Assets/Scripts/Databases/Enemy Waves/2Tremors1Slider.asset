@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 2Tremors1Slider
   m_EditorClassIdentifier: 
   _enemies:
-  - {fileID: 4413666431233550698, guid: f755f17708ad759438af50685f98b574, type: 3}
+  - {fileID: 2104125275109425018, guid: 6f39791381edd1e4f9b020fb218e5110, type: 3}
   - {fileID: 4413666431233550698, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
-  - {fileID: 4413666431233550698, guid: f755f17708ad759438af50685f98b574, type: 3}
+  - {fileID: 2104125275109425018, guid: 6f39791381edd1e4f9b020fb218e5110, type: 3}
