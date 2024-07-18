@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 446335862789580917}
   - component: {fileID: 8200630955797953878}
   - component: {fileID: 4709816133934936613}
+  - component: {fileID: 8446752189361846083}
   m_Layer: 6
   m_Name: EnemyWarDrone
   m_TagString: Enemy
@@ -301,6 +302,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _behaviourData: {fileID: 11400000, guid: 8bbd7e76a0086544792516b3184bb1ef, type: 2}
+--- !u!114 &8446752189361846083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4413666431233550684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b25f2e4741f904488e2165d7c9100d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemToSpawn: {fileID: 11400000, guid: ea2fdb1d0e3cf894eb0b850c296e7db4, type: 2}
 --- !u!1 &5105378504716304471
 GameObject:
   m_ObjectHideFlags: 0

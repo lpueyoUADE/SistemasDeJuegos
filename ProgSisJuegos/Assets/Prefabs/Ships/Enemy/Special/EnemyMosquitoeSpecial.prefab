@@ -130,4 +130,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b25f2e4741f904488e2165d7c9100d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemToSpawn: {fileID: 0}
+  _itemToSpawn: {fileID: 11400000, guid: ea2fdb1d0e3cf894eb0b850c296e7db4, type: 2}
