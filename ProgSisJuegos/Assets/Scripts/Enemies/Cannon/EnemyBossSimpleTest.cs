@@ -32,7 +32,7 @@ public class EnemyBossSimpleTest : MonoBehaviour, IDamageable
 
     public void OnDeath()
     {
-        UIEvents.OnGameEnded(true);
+        GameManagerEvents.OnGameEnded();
         Destroy(this.gameObject);
     }
 

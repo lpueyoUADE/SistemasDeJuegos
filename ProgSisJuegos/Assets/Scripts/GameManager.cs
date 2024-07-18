@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         SubEvents();
         FactoryWeapon.InitializeFactoryWeapons(_weaponsList);
         Sounds.UpdateDatabase(_soundsToUse);
+        Time.timeScale = 1;
     }
 
     private void OnDestroy()
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         GameManagerEvents.OnEnemyDestroyed += EventOnEnemyDestroyed;
         GameManagerEvents.CreateEnemy += SpawnShip;
         GameManagerEvents.OnGameResume += PauseUnpaseGame;
+        GameManagerEvents.OnGameEnded += EventOnGameEnded;
 
         PlayerEvents.OnPlayerSpawn += EventOnPlayerSpawned;
         PlayerEvents.OnWeaponSwap += EventOnPLayerSwapWeapon;
@@ -50,11 +52,12 @@ public class GameManager : MonoBehaviour
         GameManagerEvents.OnEnemyDestroyed -= EventOnEnemyDestroyed;
         GameManagerEvents.CreateEnemy -= SpawnShip;
         GameManagerEvents.OnGameResume -= PauseUnpaseGame;
+        GameManagerEvents.OnGameEnded += EventOnGameEnded;
 
         PlayerEvents.OnPlayerSpawn -= EventOnPlayerSpawned;
         PlayerEvents.OnWeaponSwap -= EventOnPLayerSwapWeapon;
         PlayerEvents.OnPlayerHPUpdate -= EventOnPlayerHPUpdate;
-        PlayerEvents.OnPlayerDeath -= EventOnPlayerDeath;    
+        PlayerEvents.OnPlayerDeath -= EventOnPlayerDeath;
     }
 
     private void Start()
@@ -140,6 +143,11 @@ public class GameManager : MonoBehaviour
     private void EventOnPlayerDeath()
     {
         UIEvents.OnGameEnded.Invoke(false);
+    }
+
+    private void EventOnGameEnded()
+    {
+        UIEvents.OnGameEnded.Invoke(true);
     }
 
     private void EventOnEnemyDestroyed(float points)

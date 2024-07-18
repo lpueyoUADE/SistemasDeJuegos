@@ -41,6 +41,7 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();
+        Time.timeScale = 1;
     }
 
     private void OnEnable()

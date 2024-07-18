@@ -109,6 +109,7 @@ public class UIManager : MonoBehaviour
         _endScreen.SetActive(true);
         if (win) _endScreenText.text = "Level Completed!";
         gameEnded = true;
+        Time.timeScale = 0;
     }
 
     private void UpdateScore(float newScore)
