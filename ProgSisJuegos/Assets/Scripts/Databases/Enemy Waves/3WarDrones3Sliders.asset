@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 164e596370c5620479a081e70d808924, type: 3}
-  m_Name: 3WarDrones
+  m_Name: 3WarDrones3Sliders
   m_EditorClassIdentifier: 
   _enemies:
   - {fileID: 446335862789580917, guid: 164a53e2cc3b0fc4e8e3bd1c29fd92f7, type: 3}
   - {fileID: 446335862789580917, guid: 164a53e2cc3b0fc4e8e3bd1c29fd92f7, type: 3}
   - {fileID: 446335862789580917, guid: 164a53e2cc3b0fc4e8e3bd1c29fd92f7, type: 3}
+  - {fileID: 4413666431233550698, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+  - {fileID: 4413666431233550698, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
+  - {fileID: 4413666431233550698, guid: f465223bb0bd3a44492d1aab4f38aae5, type: 3}
