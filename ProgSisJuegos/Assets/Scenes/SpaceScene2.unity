@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -375,6 +375,14 @@ PrefabInstance:
       propertyPath: _enemyWaves.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 2c41c0c1f453e5c4cb9d490d238790f0, type: 2}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _weaponsList.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135141194773615884, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
+      propertyPath: _weaponsList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 33a7392272eccdb4a8eea8a1283060aa, type: 2}
     - target: {fileID: 4744384303318102725, guid: b22955784ddb7204dbfff57a7d43c4b8, type: 3}
       propertyPath: m_RootOrder
       value: 11
