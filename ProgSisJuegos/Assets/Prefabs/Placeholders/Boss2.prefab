@@ -497,8 +497,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 100
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Radius: 975.6333
+  m_Center: {x: -0, y: 0.24994232, z: 0}
 --- !u!114 &674651031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850650f645d71949bd812fd22d060d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 1000
   angle: 180
   rotatingspeed: 50
   rotatingCannon: {fileID: 168489863437852886}
@@ -543,8 +543,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 100
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Radius: 975.6333
+  m_Center: {x: 0, y: 0.24994232, z: 0}
 --- !u!114 &820300749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850650f645d71949bd812fd22d060d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 1000
   angle: 180
   rotatingspeed: 50
   rotatingCannon: {fileID: 3688414899835251829}
@@ -579,8 +579,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 100
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Radius: 975.6333
+  m_Center: {x: 0, y: 0.2501641, z: 0}
 --- !u!114 &279096246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850650f645d71949bd812fd22d060d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 1000
   angle: 180
   rotatingspeed: 50
   rotatingCannon: {fileID: 5341620212047671166}
@@ -620,8 +620,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 100
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Radius: 975.6333
+  m_Center: {x: -0, y: 0.2501641, z: 0}
 --- !u!114 &278776272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850650f645d71949bd812fd22d060d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 1000
   angle: 180
   rotatingspeed: 50
   rotatingCannon: {fileID: 8528751103398785772}
