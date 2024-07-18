@@ -19,7 +19,7 @@ MonoBehaviour:
   _defaultAmmoAmount: 0
   _projectilePrefab: {fileID: 7054719867166835317, guid: b8f15d6d050898142ac36fa95b326b35, type: 3}
   _projectileDamage: 4
-  _projectileSpeed: 1.35
+  _projectileSpeed: 0.25
   _projectileLife: 8
   _sfx1: {fileID: 8300000, guid: b919ccd8de92bb042afea33134a19eed, type: 3}
   _sfx2: {fileID: 0}
