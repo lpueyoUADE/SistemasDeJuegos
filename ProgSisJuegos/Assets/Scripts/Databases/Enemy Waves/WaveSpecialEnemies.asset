@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WaveSpecialEnemies
   m_EditorClassIdentifier: 
   _enemies:
-  - {fileID: 5750745876213030487, guid: 1b01fb0ac572a2b409cc085bd6a2444e, type: 3}
+  - {fileID: 7118146329150294076, guid: c0de0692da55cff4580865e9f8851149, type: 3}
   - {fileID: 6425917158912724951, guid: 4ab8b905b72ed704d8a8c93d99cdd79f, type: 3}
   - {fileID: 2104125275109425018, guid: 6f39791381edd1e4f9b020fb218e5110, type: 3}
