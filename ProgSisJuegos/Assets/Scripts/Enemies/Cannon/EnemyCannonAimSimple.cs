@@ -4,19 +4,17 @@ using System.Collections.Generic;
 
 public class EnemyCannonAimSimple : MonoBehaviour
 {
-    public float range;
-    public float angle;
-    public float rotatingspeed = 4;
-    public GameObject rotatingCannon;
-    public Transform projectileOut;
-    public Vector3 target;
-    public bool exec = false;
+    [SerializeField] private float range;
+    [SerializeField] private float angle;
+    [SerializeField] private float rotatingspeed = 4;
+    [SerializeField] private GameObject rotatingCannon;
+    [SerializeField] private GameObject projectileOut;
 
-    public IWeapon currentWeapon;
-    public WeaponType weapon = WeaponType.EnemyBlueRail;
-
+    private Vector3 target;
+    private bool exec = false;
+    private IWeapon currentWeapon;
+    private WeaponType weapon = WeaponType.EnemyBlueRail;
     private List<IWeapon> _weaponList = new List<IWeapon>();
-
 
     Vector3 Origin => transform.position;
     Vector3 Forward => transform.forward;
@@ -32,9 +30,10 @@ public class EnemyCannonAimSimple : MonoBehaviour
 
         if (exec)
         {
-            currentWeapon?.Fire(projectileOut);
-            Vector3 finalDir = new Vector3(-target.x, -target.y, -target.z);
+            Vector3 finalDir = new Vector3(target.x, target.y, target.z);
             rotatingCannon.transform.rotation = Quaternion.SlerpUnclamped(rotatingCannon.transform.rotation, Quaternion.LookRotation(finalDir), delta * rotatingspeed);
+            projectileOut.transform.rotation = Quaternion.SlerpUnclamped(projectileOut.transform.rotation, Quaternion.LookRotation(finalDir), delta * 100);
+            currentWeapon?.Fire(projectileOut.transform);
             exec = false;
         }
 
