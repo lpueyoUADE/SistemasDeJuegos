@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e7c92b82268e874cb58a316f4805cce, type: 3}
-  m_Name: WeaponEnemyBlueRail
+  m_Name: WeaponEnemyGreenCrast
   m_EditorClassIdentifier: 
   _weaponIcon: {fileID: 21300000, guid: bfb4f2667d8d6a94db7d5c89a0ddb3d6, type: 3}
-  _type: 10
-  _recoil: 1.8
+  _type: 11
+  _recoil: 0.5
   _hasInfiniteAmmo: 1
   _defaultAmmoAmount: 0
-  _projectilePrefab: {fileID: 1044241210396319529, guid: 28ae0de8b1c360c448c0ea60186f17d3, type: 3}
-  _projectileDamage: 2.5
-  _projectileSpeed: 0.25
+  _projectilePrefab: {fileID: 7054719867166835317, guid: b8f15d6d050898142ac36fa95b326b35, type: 3}
+  _projectileDamage: 4
+  _projectileSpeed: 1.35
   _projectileLife: 8
-  _sfx1: {fileID: 8300000, guid: 64163306b7bcff642870ddfa08093ede, type: 3}
+  _sfx1: {fileID: 8300000, guid: b919ccd8de92bb042afea33134a19eed, type: 3}
   _sfx2: {fileID: 0}
   _sfx3: {fileID: 0}
   _sfx4: {fileID: 0}

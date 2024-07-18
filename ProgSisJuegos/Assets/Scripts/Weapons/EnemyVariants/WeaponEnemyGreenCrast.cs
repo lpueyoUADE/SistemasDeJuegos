@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponEnemyBlueRail : WeaponBase
+public class WeaponEnemyGreenCrast : WeaponBase
 {
     public override void Fire(Transform spawnTransform)
     {

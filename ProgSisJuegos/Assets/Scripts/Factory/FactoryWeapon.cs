@@ -36,7 +36,7 @@ public class FactoryWeapon
 
             // Enemy type
             case WeaponType.EnemyBlueRail: return new WeaponEnemyBlueRail();
-            case WeaponType.Bossweapon: return new WeaponBossWeapon();
+            case WeaponType.Bossweapon: return new WeaponEnemyGreenCrast();
 
             // Not found
             default: Debug.Log($"Factory (WEAPONS): Weapon of type {type} not found."); return new WeaponNone();
