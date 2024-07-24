@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScenarioPersistentData : MonoBehaviour
 {
+    public SceneInformationDatabase overrideScenarioData;
     [SerializeField] private UniversalPooleableObjectsDatabase _genericPooleableObjects;
     private static ScenarioPersistentData _instance;
     private static SceneInformationDatabase _sceneData;
@@ -22,6 +23,8 @@ public class ScenarioPersistentData : MonoBehaviour
         _instance = this;
         FactoryUniversalObjects.UpdateAvailableObjects(_genericPooleableObjects.PooleableObjects);
         DontDestroyOnLoad(gameObject);
+
+        if (overrideScenarioData != null) UpdateScenarioData(overrideScenarioData);
     }
 
     public void UpdateScenarioData(SceneInformationDatabase newData)

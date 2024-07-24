@@ -11,6 +11,7 @@ public class UIEvents
     public static Action<WeaponType, int> OnAddInventoryWeapon;
     public static Action<WeaponType> OnRemoveInventoryWeapon;
     public static Action<WeaponType> OnWeaponSwap;
+    public static Action<bool> OnWeaponSwapLeftRight;
 
     public static Action OnPlayerSpawn;
     public static Action<float, float> OnPlayerHPUpdate;

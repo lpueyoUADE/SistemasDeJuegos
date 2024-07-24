@@ -7,20 +7,20 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
     [SerializeField] protected ShipDatabase _shipData;
 
     [Header("References")]
-    [SerializeField] private ShieldBase _shieldObject; 
+    [SerializeField] protected ShieldBase _shieldObject; 
     [SerializeField] private Transform _projectileOut;
 
     // References
     private AudioSource _audioSource;
     private Rigidbody _rBody;
-    private ShieldBase _shieldScript;
+    protected ShieldBase _shieldScript;
 
     // Values
     private List<IWeapon> _weaponList = new List<IWeapon>();
     private IWeapon _currentWeapon;
     private int _weaponIndex;
     protected float _currentLife = 1;
-    private float _shieldTimeLeft = 0;
+    protected float _shieldTimeLeft = 0;
 
     // Public values
     public ShipDatabase ShipData => _shipData;
@@ -91,7 +91,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         _rBody.AddForce(direction * speed, type);
     }
 
-    public void UpdateShield(float delta)
+    public virtual void UpdateShield(float delta)
     {
         if (ShipIsShielded)
         {
@@ -195,9 +195,11 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
         {
             _shieldTimeLeft -= _shieldTimeLeft * 0.1f;
             if (_audioSource.time <= 0.25f) _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShield, 0.45f);
-            return;
+
+            _currentLife -= amount / ShipData.DamageResistance;
+            Debug.Log($"CL {_currentLife} / INCOMING {amount} - REDUCED: {amount / ShipData.DamageResistance}");
         }
-        _currentLife -= amount;
+        else _currentLife -= amount;
 
         if (_currentLife <= 0)
         {

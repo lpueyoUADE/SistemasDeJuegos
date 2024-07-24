@@ -82,6 +82,7 @@ public class PlayerController : ShipBase
     {
         base.AnyDamage(amount);
         PlayerEvents.OnPlayerHPUpdate?.Invoke(ShipCurrentLife, ShipData.Life);
+        PlayerEvents.OnPlayerDamaged?.Invoke();
     }
 
     public override void ShipRepair(float amount)
@@ -105,6 +106,7 @@ public class PlayerController : ShipBase
     public override void SwapWeapon(bool isNext = true)
     {
         base.SwapWeapon(!isNext);
+        UIEvents.OnWeaponSwapLeftRight?.Invoke(!isNext);
         PlayerEvents.OnWeaponSwap?.Invoke(ShipCurrentWeapon.WeaponType);
     }
 
@@ -119,6 +121,27 @@ public class PlayerController : ShipBase
         UIEvents.OnRemoveInventoryWeapon?.Invoke(ShipCurrentWeapon.WeaponType);
         base.RemoveWeapon(type);
         UIEvents.OnWeaponSwap?.Invoke(ShipCurrentWeapon.WeaponType);
+    }
+
+    public override void Shield(float duration, Color color)
+    {
+        base.Shield(duration, color);
+        PlayerEvents.OnShielded?.Invoke(duration);
+    }
+
+    public override void UpdateShield(float delta)
+    {
+        if (ShipIsShielded)
+        {
+            _shieldTimeLeft -= delta;
+            if (_shieldScript != null) _shieldScript.UpdateShieldTime(_shieldTimeLeft);
+        }
+
+        if (!ShipIsShielded && _shieldObject.gameObject.activeSelf)
+        {
+            _shieldObject.gameObject.SetActive(false);
+            PlayerEvents.OnShieldEnd?.Invoke();
+        }
     }
 
     private void PlayWeaponSound(AudioClip clip, float volume)

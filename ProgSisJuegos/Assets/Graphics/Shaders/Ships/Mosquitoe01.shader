@@ -41,7 +41,7 @@ Shader "Mosquitoe01"
 }
 /*ASEBEGIN
 Version=18900
-2620;57;1760;956;881;472;1;True;False
+480;188;1492;1027;747;504.5;1;True;False
 Node;AmplifyShaderEditor.ColorNode;3;-306,-41;Inherit;False;Property;_Color;Color;0;0;Create;True;0;0;0;False;0;False;0,1,0.05001187,0;0,1,0.05001183,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;4;-289,137;Inherit;False;Property;_Metallic;Metallic;1;0;Create;True;0;0;0;False;0;False;0;0.405;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;5;-301,243;Inherit;False;Property;_Smoothness;Smoothness;2;0;Create;True;0;0;0;False;0;False;0;0.045;0;1;0;1;FLOAT;0
@@ -50,4 +50,4 @@ WireConnection;0;0;3;0
 WireConnection;0;3;4;0
 WireConnection;0;4;5;0
 ASEEND*/
-//CHKSM=73B00DD4BD89DE2D7581565C0223165E9FBBCFD0
+//CHKSM=7F2FF3C5F7964C2E062A12324E66F81B3E8ED22A

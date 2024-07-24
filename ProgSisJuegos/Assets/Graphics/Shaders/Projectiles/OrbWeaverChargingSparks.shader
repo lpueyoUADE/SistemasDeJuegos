@@ -79,6 +79,38 @@ Shader "Custom/OrbWeaverChargingSparks"
 		}
 
 
+		float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+
+		float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+
+		float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+
+		float snoise( float2 v )
+		{
+			const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+			float2 i = floor( v + dot( v, C.yy ) );
+			float2 x0 = v - i + dot( i, C.xx );
+			float2 i1;
+			i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+			float4 x12 = x0.xyxy + C.xxzz;
+			x12.xy -= i1;
+			i = mod2D289( i );
+			float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+			float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+			m = m * m;
+			m = m * m;
+			float3 x = 2.0 * frac( p * C.www ) - 1.0;
+			float3 h = abs( x ) - 0.5;
+			float3 ox = floor( x + 0.5 );
+			float3 a0 = x - ox;
+			m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+			float3 g;
+			g.x = a0.x * x0.x + h.x * x0.y;
+			g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+			return 130.0 * dot( m, g );
+		}
+
+
 		void vertexDataFunc( inout appdata_full v, out Input o )
 		{
 			UNITY_INITIALIZE_OUTPUT( Input, o );
@@ -89,19 +121,19 @@ Shader "Custom/OrbWeaverChargingSparks"
 			simplePerlin3D2 = simplePerlin3D2*0.5 + 0.5;
 			float simplePerlin3D12 = snoise( temp_output_4_0*( _Scale1 * -0.99 ) );
 			simplePerlin3D12 = simplePerlin3D12*0.5 + 0.5;
-			float3 temp_cast_0 = (( mulTime6 / 1.0 )).xxx;
-			float simplePerlin3D8 = snoise( temp_cast_0 );
-			simplePerlin3D8 = simplePerlin3D8*0.5 + 0.5;
-			float temp_output_13_0 = ( ( simplePerlin3D2 - simplePerlin3D12 ) - simplePerlin3D8 );
+			float2 temp_cast_0 = (( mulTime6 / 1.0 )).xx;
+			float simplePerlin2D8 = snoise( temp_cast_0 );
+			simplePerlin2D8 = simplePerlin2D8*0.5 + 0.5;
+			float temp_output_13_0 = ( ( simplePerlin3D2 - simplePerlin3D12 ) - simplePerlin2D8 );
 			float3 ase_vertexNormal = v.normal.xyz;
-			v.vertex.xyz += ( temp_output_13_0 * ( ase_vertexNormal * float3(1,1,1) ) * 0.5 );
+			v.vertex.xyz += ( temp_output_13_0 * ( ase_vertexNormal * float3(1,1,1) ) * 0.8 );
 			v.vertex.w = 1;
 		}
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
 			float4 color19 = IsGammaSpace() ? float4(1,0.05694377,0,0) : float4(1,0.004589801,0,0);
-			float4 color26 = IsGammaSpace() ? float4(0.1191993,0,1,0) : float4(0.01326494,0,1,0);
+			float4 color26 = IsGammaSpace() ? float4(0,1,0.02520442,0) : float4(0,1,0.001950806,0);
 			float3 ase_vertex3Pos = mul( unity_WorldToObject, float4( i.worldPos , 1 ) );
 			float mulTime6 = _Time.y * _Speed1;
 			float3 temp_output_4_0 = ( ase_vertex3Pos + mulTime6 );
@@ -109,10 +141,10 @@ Shader "Custom/OrbWeaverChargingSparks"
 			simplePerlin3D2 = simplePerlin3D2*0.5 + 0.5;
 			float simplePerlin3D12 = snoise( temp_output_4_0*( _Scale1 * -0.99 ) );
 			simplePerlin3D12 = simplePerlin3D12*0.5 + 0.5;
-			float3 temp_cast_0 = (( mulTime6 / 1.0 )).xxx;
-			float simplePerlin3D8 = snoise( temp_cast_0 );
-			simplePerlin3D8 = simplePerlin3D8*0.5 + 0.5;
-			float temp_output_13_0 = ( ( simplePerlin3D2 - simplePerlin3D12 ) - simplePerlin3D8 );
+			float2 temp_cast_0 = (( mulTime6 / 1.0 )).xx;
+			float simplePerlin2D8 = snoise( temp_cast_0 );
+			simplePerlin2D8 = simplePerlin2D8*0.5 + 0.5;
+			float temp_output_13_0 = ( ( simplePerlin3D2 - simplePerlin3D12 ) - simplePerlin2D8 );
 			float4 lerpResult20 = lerp( color19 , color26 , saturate( temp_output_13_0 ));
 			o.Emission = lerpResult20.rgb;
 			o.Alpha = temp_output_13_0;
@@ -195,7 +227,7 @@ Shader "Custom/OrbWeaverChargingSparks"
 }
 /*ASEBEGIN
 Version=18900
-489;303;1239;764;1748.228;185.7052;1;True;False
+2557;0;1920;1059;2114.969;442.3085;2.320729;True;False
 Node;AmplifyShaderEditor.RangedFloatNode;7;-1723.613,211.9497;Inherit;False;Property;_Speed1;Speed;1;0;Create;True;0;0;0;False;0;False;1.2;1.2;1;10;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;3;-917.5023,212.5969;Inherit;False;Property;_Scale1;Scale;0;0;Create;True;0;0;0;False;0;False;2;2;0.1;5;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;6;-1360.712,220.4649;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
@@ -207,15 +239,15 @@ Node;AmplifyShaderEditor.RangedFloatNode;10;-1148.5,458;Inherit;False;Constant;_
 Node;AmplifyShaderEditor.NoiseGeneratorNode;12;-576.8312,609.3312;Inherit;True;Simplex3D;True;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;2;-576.5,91;Inherit;True;Simplex3D;True;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleDivideOpNode;9;-920.4,369.4998;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.NoiseGeneratorNode;8;-590.5,345;Inherit;True;Simplex3D;True;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleSubtractOpNode;11;-243.2001,286.4;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleSubtractOpNode;11;-240.2001,292.4;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.NoiseGeneratorNode;8;-581.5,355;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.Vector3Node;15;-38.3689,935.5801;Inherit;False;Constant;_Vector0;Vector 0;2;0;Create;True;0;0;0;False;0;False;1,1,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.NormalVertexDataNode;14;-20.16902,776.98;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleSubtractOpNode;13;143.6848,484.4406;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleSubtractOpNode;13;145.6848,478.4406;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;16;228.1311,757.4801;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.RangedFloatNode;17;211.2311,987.58;Inherit;False;Constant;_VertexScale;VertexScale;2;0;Create;True;0;0;0;False;0;False;0.5;0;0.1;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;17;211.2311,987.58;Inherit;False;Constant;_VertexScale;VertexScale;2;0;Create;True;0;0;0;False;0;False;0.8;0;0.1;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ColorNode;19;345.3433,-72.94173;Inherit;False;Constant;_Color1;Color1;2;0;Create;True;0;0;0;False;0;False;1,0.05694377,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;26;126.0164,110.1451;Inherit;False;Constant;_Color2;Color2;2;0;Create;True;0;0;0;False;0;False;0.1191993,0,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;26;126.0164,110.1451;Inherit;False;Constant;_Color2;Color2;2;0;Create;True;0;0;0;False;0;False;0,1,0.02520442,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SaturateNode;21;367.6882,256.7152;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;18;575.231,760.08;Inherit;True;3;3;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.LerpOp;20;772.8214,102.2228;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
@@ -231,9 +263,9 @@ WireConnection;2;0;4;0
 WireConnection;2;1;3;0
 WireConnection;9;0;6;0
 WireConnection;9;1;10;0
-WireConnection;8;0;9;0
 WireConnection;11;0;2;0
 WireConnection;11;1;12;0
+WireConnection;8;0;9;0
 WireConnection;13;0;11;0
 WireConnection;13;1;8;0
 WireConnection;16;0;14;0
@@ -249,4 +281,4 @@ WireConnection;0;2;20;0
 WireConnection;0;9;13;0
 WireConnection;0;11;18;0
 ASEEND*/
-//CHKSM=0A0661BBB6EC8ECB630E4C515762769D9BE24D38
+//CHKSM=B6183B5290AA14FEC115596D4B34C810AEBB0CC0

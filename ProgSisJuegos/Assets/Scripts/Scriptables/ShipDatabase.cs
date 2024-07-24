@@ -36,7 +36,7 @@ public class ShipDatabase : ScriptableObject
     [SerializeField] private float _life = 10;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _acceleration;
-    [SerializeField, Range(0, 99)] protected float _damageResistance;
+    [SerializeField, Range(0, 10)] protected float _damageResistance;
     [SerializeField] protected WeaponType _defaultWeapon;
     [SerializeField] private float _collisionDamage;
 
