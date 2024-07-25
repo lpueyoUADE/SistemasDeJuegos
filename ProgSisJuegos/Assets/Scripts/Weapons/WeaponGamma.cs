@@ -30,6 +30,7 @@ public class WeaponGamma : WeaponBase
     {
         base.UseAmmo();
         PlayerEvents.OnWeaponAmmoUpdate(WeapType, _currentAmmo);
+        PlayerEvents.OnWeaponFire?.Invoke();
 
         if (_currentAmmo <= 0)
         {

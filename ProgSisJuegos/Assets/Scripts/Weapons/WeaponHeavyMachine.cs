@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class WeaponHeavyMachine : WeaponBase
 {
-
+    public override void UseAmmo()
+    {
+        base.UseAmmo();
+        PlayerEvents.OnWeaponFire?.Invoke();
+    }
 }

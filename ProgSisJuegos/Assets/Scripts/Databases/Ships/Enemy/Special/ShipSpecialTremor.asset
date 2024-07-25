@@ -20,7 +20,7 @@ MonoBehaviour:
   _life: 80
   _maxSpeed: 5
   _acceleration: 15
-  _damageResistance: 80
+  _damageResistance: 6
   _defaultWeapon: 10
   _collisionDamage: 0
   _shieldDuration: 1.5

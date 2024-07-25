@@ -1326,6 +1326,8 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1414,6 +1416,38 @@ MonoBehaviour:
   followSpeed: 3
   offset: {x: 0, y: 3, z: -8}
   _player: {fileID: 0}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93c403f7baa4e34fa5b28763a5a99c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: c97c8b01307dfbb42bebe1ff978c0417, type: 3}
+  _pulseMinIntegrity: 0.5
+  _pulseSpeed: 10
+  _pulseMaxIntensity: 1
+  _pulseColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7bb5526d571ed44a55810e4cb71db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: 058c8733a08947f49bbf8e4093695f2a, type: 3}
+  _spaceTexture: {fileID: 2800000, guid: 4986f0179406f5f4cb177c091ecbc2b1, type: 3}
+  _starsTexture: {fileID: 2800000, guid: 34d77054fea59914c918139d27964c85, type: 3}
 --- !u!1001 &970548702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4403,6 +4437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI2
       objectReference: {fileID: 0}
+    - target: {fileID: 3783564808836396856, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4150122701709311940, guid: be69117e002ce684997d815b2c83aad5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -4434,6 +4472,22 @@ PrefabInstance:
     - target: {fileID: 4150122701709311940, guid: be69117e002ce684997d815b2c83aad5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.r
+      value: 0.05724919
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be69117e002ce684997d815b2c83aad5, type: 3}

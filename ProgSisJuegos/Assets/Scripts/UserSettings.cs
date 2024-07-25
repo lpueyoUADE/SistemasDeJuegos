@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 
 public class UserSettings : MonoBehaviour
 {
+    public ShipBase overrideUserShip;
     private static UserSettings instance;
     [SerializeField] private static ShipBase _playership;
     [SerializeField] private AudioMixer _mixer;
@@ -23,6 +24,8 @@ public class UserSettings : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        if (overrideUserShip != null) UpdatePlayerShip(overrideUserShip);
     }
 
     public static void UpdatePlayerShip(ShipBase newShip)

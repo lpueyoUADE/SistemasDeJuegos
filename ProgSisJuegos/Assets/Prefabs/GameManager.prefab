@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyWaves: []
+  _levelBoss: {fileID: 0}
+  spawnDistanceFromPlayer: 0
   minWaitTime: 0
   maxWaitTime: 0
-  timeToNextWave: 0

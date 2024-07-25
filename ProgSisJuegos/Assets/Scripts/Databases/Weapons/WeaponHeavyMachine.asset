@@ -18,7 +18,7 @@ MonoBehaviour:
   _hasInfiniteAmmo: 1
   _defaultAmmoAmount: 0
   _projectilePrefab: {fileID: 8263002280387982021, guid: 39a42c1399088f14fa47f93a66b85988, type: 3}
-  _projectileDamage: 4
+  _projectileDamage: 10
   _projectileSpeed: 10
   _projectileLife: 1
   _sfx1: {fileID: 8300000, guid: 66a6e117a07a5264e9ff67d273f645a0, type: 3}

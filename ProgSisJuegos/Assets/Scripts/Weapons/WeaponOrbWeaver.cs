@@ -64,6 +64,7 @@ public class WeaponOrbWeaver : WeaponBase
     {
         base.UseAmmo();
         PlayerEvents.OnWeaponAmmoUpdate(WeapType, _currentAmmo);
+        PlayerEvents.OnWeaponFire?.Invoke();
 
         if (_currentAmmo <= 0) PlayerEvents.OnWeaponAmmoEmpty?.Invoke(this);
     }

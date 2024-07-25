@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 058c8733a08947f49bbf8e4093695f2a
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _SpaceColored: {fileID: 2800000, guid: 4986f0179406f5f4cb177c091ecbc2b1, type: 3}
+  - _SpaceOnlyStars: {fileID: 2800000, guid: 34d77054fea59914c918139d27964c85, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

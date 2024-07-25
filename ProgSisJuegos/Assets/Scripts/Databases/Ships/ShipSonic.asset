@@ -20,8 +20,9 @@ MonoBehaviour:
   _life: 30
   _maxSpeed: 12
   _acceleration: 25
-  _damageResistance: 10
+  _damageResistance: 2
   _defaultWeapon: 1
+  _collisionDamage: 0
   _shieldDuration: 2
   _shieldColor: {r: 0, g: 1, b: 0, a: 1}
   _shieldColorSpeed: 20

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     private GameObject _createdWeaponSelector;
     private Dictionary<WeaponType, GameObject> _currentWeaponsInUI = new Dictionary<WeaponType, GameObject>();
     private bool gameEnded;
+    private int _currentIndex = 0;
 
     private void Awake()
     {
