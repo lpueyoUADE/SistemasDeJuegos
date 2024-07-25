@@ -207,7 +207,7 @@ public class ShipBase : MonoBehaviour, IDamageable, IShip
             return;
         }
 
-        Shield(ShipShieldDuration, ShipShieldColor);
+        if (!ShipIsShielded) Shield(ShipShieldDuration, ShipShieldColor);
         if (this.gameObject.activeSelf) _audioSource?.PlayOneShot(Sounds.SoundsDatabase.ProjectileHittingShip);
     }
 

@@ -226,6 +226,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.b
+      value: 0.12409544
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821601981709270983, guid: be69117e002ce684997d815b2c83aad5, type: 3}
+      propertyPath: _overlayColor.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be69117e002ce684997d815b2c83aad5, type: 3}
 --- !u!224 &5430897 stripped
