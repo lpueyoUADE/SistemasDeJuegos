@@ -9,7 +9,7 @@ Ariel Irala | Nicolás Perez Viña | Luciano Pueyo
 Ariel Irala
 ##
 
-### Programación Gráfica - Patrones
+### Programación de Sistemas de Juego - Patrones
 	1. Strategy.
 	2. Flyweight.
 	3. Prototype.
